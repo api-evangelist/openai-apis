@@ -1,0 +1,133 @@
+name: OpenAI APIs
+description: Collection of OpenAI's artificial intelligence APIs for natural language processing, image generation, speech, and embeddings
+image: https://openai.com/favicon.ico
+url: https://platform.openai.com/docs/api-reference
+created: '2024'
+modified: '2024'
+apis:
+- name: OpenAI Chat Completions API
+  description: API for conversational AI using GPT models including GPT-4 and GPT-3.5
+  image: https://openai.com/favicon.ico
+  humanUrl: https://platform.openai.com/docs/api-reference/chat
+  baseUrl: https://api.openai.com/v1
+  tags:
+  - AI
+  - Chat
+  - Conversational AI
+  - GPT
+  - Language Models
+  properties:
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/chat
+  - type: OpenAPI
+    url: https://github.com/openai/openai-openapi/blob/master/openapi.yaml
+  contact:
+  - FN: OpenAI Support
+    email: support@openai.com
+    url: https://help.openai.com
+- name: OpenAI Completions API
+  description: Legacy text completion API for generating text continuations
+  image: https://openai.com/favicon.ico
+  humanUrl: https://platform.openai.com/docs/api-reference/completions
+  baseUrl: https://api.openai.com/v1
+  tags:
+  - AI
+  - Text Generation
+  - Language Models
+  properties:
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/completions
+  - type: OpenAPI
+    url: https://github.com/openai/openai-openapi/blob/master/openapi.yaml
+- name: OpenAI Images API
+  description: API for generating, editing, and creating variations of images using DALL-E
+  image: https://openai.com/favicon.ico
+  humanUrl: https://platform.openai.com/docs/api-reference/images
+  baseUrl: https://api.openai.com/v1
+  tags:
+  - AI
+  - Image Generation
+  - DALL-E
+  - Computer Vision
+  properties:
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/images
+  - type: OpenAPI
+    url: https://github.com/openai/openai-openapi/blob/master/openapi.yaml
+- name: OpenAI Embeddings API
+  description: API for converting text into numerical vector representations for semantic search and similarity
+  image: https://openai.com/favicon.ico
+  humanUrl: https://platform.openai.com/docs/api-reference/embeddings
+  baseUrl: https://api.openai.com/v1
+  tags:
+  - AI
+  - Embeddings
+  - Vector Search
+  - Semantic Search
+  properties:
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/embeddings
+  - type: OpenAPI
+    url: https://github.com/openai/openai-openapi/blob/master/openapi.yaml
+- name: OpenAI Audio API
+  description: API for speech-to-text transcription and text-to-speech generation
+  image: https://openai.com/favicon.ico
+  humanUrl: https://platform.openai.com/docs/api-reference/audio
+  baseUrl: https://api.openai.com/v1
+  tags:
+  - AI
+  - Audio
+  - Speech Recognition
+  - Text-to-Speech
+  - Whisper
+  properties:
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/audio
+  - type: OpenAPI
+    url: https://github.com/openai/openai-openapi/blob/master/openapi.yaml
+- name: OpenAI Moderations API
+  description: API for detecting potentially harmful or unsafe content
+  image: https://openai.com/favicon.ico
+  humanUrl: https://platform.openai.com/docs/api-reference/moderations
+  baseUrl: https://api.openai.com/v1
+  tags:
+  - AI
+  - Content Moderation
+  - Safety
+  properties:
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/moderations
+  - type: OpenAPI
+    url: https://github.com/openai/openai-openapi/blob/master/openapi.yaml
+- name: OpenAI Assistants API
+  description: API for building AI assistants with custom instructions and tool access
+  image: https://openai.com/favicon.ico
+  humanUrl: https://platform.openai.com/docs/api-reference/assistants
+  baseUrl: https://api.openai.com/v1
+  tags:
+  - AI
+  - Assistants
+  - Agents
+  - Tools
+  properties:
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/assistants
+  - type: OpenAPI
+    url: https://github.com/openai/openai-openapi/blob/master/openapi.yaml
+common:
+- type: Authentication
+  url: https://platform.openai.com/docs/api-reference/authentication
+- type: Pricing
+  url: https://openai.com/api/pricing/
+- type: Rate Limits
+  url: https://platform.openai.com/docs/guides/rate-limits
+- type: Terms of Service
+  url: https://openai.com/policies/terms-of-use
+- type: Privacy Policy
+  url: https://openai.com/policies/privacy-policy
+- type: Status Page
+  url: https://status.openai.com/
+maintainers:
+- FN: OpenAI
+  email: support@openai.com
+  url: https://openai.com
