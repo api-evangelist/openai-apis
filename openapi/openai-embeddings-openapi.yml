@@ -1,0 +1,144 @@
+openapi: 3.1.0
+info:
+  title: OpenAI Embeddings API
+  description: >-
+    API for converting text into numerical vector representations. Embeddings
+    measure the relatedness of text strings and are useful for search,
+    clustering, recommendations, and anomaly detection.
+  version: '1.0'
+  contact:
+    name: OpenAI Support
+    email: support@openai.com
+    url: https://help.openai.com
+  termsOfService: https://openai.com/policies/terms-of-use
+externalDocs:
+  description: OpenAI Embeddings API Documentation
+  url: https://platform.openai.com/docs/api-reference/embeddings
+servers:
+  - url: https://api.openai.com/v1
+    description: OpenAI Production API
+tags:
+  - name: Embeddings
+    description: Text embedding operations
+security:
+  - bearerAuth: []
+paths:
+  /embeddings:
+    post:
+      operationId: createEmbedding
+      summary: Create embeddings
+      description: >-
+        Creates an embedding vector representing the input text. The resulting
+        vector can be used for semantic search, clustering, and other tasks.
+      tags:
+        - Embeddings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEmbeddingRequest'
+      responses:
+        '200':
+          description: Embedding response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmbeddingResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized - invalid or missing API key
+        '429':
+          description: Rate limit exceeded
+        '500':
+          description: Server error
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+      description: OpenAI API key passed as a Bearer token
+  schemas:
+    CreateEmbeddingRequest:
+      type: object
+      required:
+        - model
+        - input
+      properties:
+        input:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+            - type: array
+              items:
+                type: integer
+            - type: array
+              items:
+                type: array
+                items:
+                  type: integer
+          description: Input text to embed, as a string or array of strings/tokens
+        model:
+          type: string
+          description: ID of the model to use (e.g., text-embedding-ada-002, text-embedding-3-small, text-embedding-3-large)
+          examples:
+            - text-embedding-3-small
+        encoding_format:
+          type: string
+          enum:
+            - float
+            - base64
+          default: float
+          description: The format to return the embeddings in
+        dimensions:
+          type: integer
+          description: >-
+            The number of dimensions the resulting output embeddings should
+            have. Supported in text-embedding-3 and later models.
+        user:
+          type: string
+          description: A unique identifier representing your end-user
+    EmbeddingResponse:
+      type: object
+      properties:
+        object:
+          type: string
+          enum:
+            - list
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Embedding'
+        model:
+          type: string
+          description: The model used for embedding
+        usage:
+          type: object
+          properties:
+            prompt_tokens:
+              type: integer
+              description: Number of tokens in the input
+            total_tokens:
+              type: integer
+              description: Total number of tokens used
+    Embedding:
+      type: object
+      properties:
+        object:
+          type: string
+          enum:
+            - embedding
+        embedding:
+          oneOf:
+            - type: array
+              items:
+                type: number
+            - type: string
+          description: The embedding vector (float array or base64)
+        index:
+          type: integer
+          description: The index of the embedding in the list of embeddings

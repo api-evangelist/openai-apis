@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.openai.com/schemas/openai/moderation.json",
+  "title": "OpenAI Moderation Result",
+  "description": "Represents a content moderation result classifying text against categories such as hate, harassment, self-harm, sexual content, and violence.",
+  "type": "object",
+  "properties": {
+    "flagged": {
+      "type": "boolean",
+      "description": "Whether the content was flagged as potentially harmful"
+    },
+    "categories": {
+      "type": "object",
+      "properties": {
+        "hate": {
+          "type": "boolean",
+          "description": "Content expressing hate toward a group"
+        },
+        "hate/threatening": {
+          "type": "boolean",
+          "description": "Hateful content including violence or threats"
+        },
+        "harassment": {
+          "type": "boolean",
+          "description": "Content that harasses a target"
+        },
+        "harassment/threatening": {
+          "type": "boolean",
+          "description": "Harassment including violence or threats"
+        },
+        "self-harm": {
+          "type": "boolean",
+          "description": "Content promoting or depicting self-harm"
+        },
+        "self-harm/intent": {
+          "type": "boolean",
+          "description": "Content expressing intent to self-harm"
+        },
+        "self-harm/instructions": {
+          "type": "boolean",
+          "description": "Content providing self-harm instructions"
+        },
+        "sexual": {
+          "type": "boolean",
+          "description": "Sexual content"
+        },
+        "sexual/minors": {
+          "type": "boolean",
+          "description": "Sexual content involving minors"
+        },
+        "violence": {
+          "type": "boolean",
+          "description": "Content depicting violence"
+        },
+        "violence/graphic": {
+          "type": "boolean",
+          "description": "Graphic violence content"
+        }
+      },
+      "description": "Boolean flags for each moderation category"
+    },
+    "category_scores": {
+      "type": "object",
+      "properties": {
+        "hate": { "type": "number" },
+        "hate/threatening": { "type": "number" },
+        "harassment": { "type": "number" },
+        "harassment/threatening": { "type": "number" },
+        "self-harm": { "type": "number" },
+        "self-harm/intent": { "type": "number" },
+        "self-harm/instructions": { "type": "number" },
+        "sexual": { "type": "number" },
+        "sexual/minors": { "type": "number" },
+        "violence": { "type": "number" },
+        "violence/graphic": { "type": "number" }
+      },
+      "description": "Confidence scores for each moderation category (0-1)"
+    }
+  },
+  "required": ["flagged", "categories", "category_scores"]
+}

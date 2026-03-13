@@ -1,0 +1,276 @@
+openapi: 3.1.0
+info:
+  title: OpenAI Images API
+  description: >-
+    API for generating, editing, and creating variations of images using
+    DALL-E models. Supports text-to-image generation, image editing with
+    masks, and creating variations of existing images.
+  version: '1.0'
+  contact:
+    name: OpenAI Support
+    email: support@openai.com
+    url: https://help.openai.com
+  termsOfService: https://openai.com/policies/terms-of-use
+externalDocs:
+  description: OpenAI Images API Documentation
+  url: https://platform.openai.com/docs/api-reference/images
+servers:
+  - url: https://api.openai.com/v1
+    description: OpenAI Production API
+tags:
+  - name: Images
+    description: Image generation, editing, and variation operations
+security:
+  - bearerAuth: []
+paths:
+  /images/generations:
+    post:
+      operationId: createImage
+      summary: Create image
+      description: >-
+        Creates an image given a text prompt using DALL-E models.
+      tags:
+        - Images
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateImageRequest'
+      responses:
+        '200':
+          description: Image generation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized - invalid or missing API key
+        '429':
+          description: Rate limit exceeded
+        '500':
+          description: Server error
+  /images/edits:
+    post:
+      operationId: createImageEdit
+      summary: Create image edit
+      description: >-
+        Creates an edited or extended image given an original image and a
+        prompt. The mask specifies which areas of the image to edit.
+      tags:
+        - Images
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateImageEditRequest'
+      responses:
+        '200':
+          description: Image edit response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized - invalid or missing API key
+        '429':
+          description: Rate limit exceeded
+  /images/variations:
+    post:
+      operationId: createImageVariation
+      summary: Create image variation
+      description: >-
+        Creates a variation of a given image.
+      tags:
+        - Images
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateImageVariationRequest'
+      responses:
+        '200':
+          description: Image variation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized - invalid or missing API key
+        '429':
+          description: Rate limit exceeded
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+      description: OpenAI API key passed as a Bearer token
+  schemas:
+    CreateImageRequest:
+      type: object
+      required:
+        - prompt
+      properties:
+        prompt:
+          type: string
+          maxLength: 4000
+          description: A text description of the desired image(s)
+        model:
+          type: string
+          default: dall-e-2
+          description: The model to use for image generation (dall-e-2 or dall-e-3)
+          examples:
+            - dall-e-3
+        n:
+          type: integer
+          minimum: 1
+          maximum: 10
+          default: 1
+          description: The number of images to generate
+        quality:
+          type: string
+          enum:
+            - standard
+            - hd
+          default: standard
+          description: The quality of the image (dall-e-3 only)
+        response_format:
+          type: string
+          enum:
+            - url
+            - b64_json
+          default: url
+          description: The format in which the generated images are returned
+        size:
+          type: string
+          enum:
+            - 256x256
+            - 512x512
+            - 1024x1024
+            - 1792x1024
+            - 1024x1792
+          default: 1024x1024
+          description: The size of the generated images
+        style:
+          type: string
+          enum:
+            - vivid
+            - natural
+          default: vivid
+          description: The style of the generated images (dall-e-3 only)
+        user:
+          type: string
+          description: A unique identifier representing your end-user
+    CreateImageEditRequest:
+      type: object
+      required:
+        - image
+        - prompt
+      properties:
+        image:
+          type: string
+          format: binary
+          description: The image to edit (PNG, less than 4MB, square)
+        mask:
+          type: string
+          format: binary
+          description: Additional image whose transparent areas indicate where to edit
+        prompt:
+          type: string
+          maxLength: 1000
+          description: A text description of the desired edits
+        model:
+          type: string
+          default: dall-e-2
+          description: The model to use for image editing
+        n:
+          type: integer
+          minimum: 1
+          maximum: 10
+          default: 1
+          description: The number of images to generate
+        size:
+          type: string
+          enum:
+            - 256x256
+            - 512x512
+            - 1024x1024
+          default: 1024x1024
+          description: The size of the generated images
+        response_format:
+          type: string
+          enum:
+            - url
+            - b64_json
+          default: url
+          description: The format in which the generated images are returned
+        user:
+          type: string
+          description: A unique identifier representing your end-user
+    CreateImageVariationRequest:
+      type: object
+      required:
+        - image
+      properties:
+        image:
+          type: string
+          format: binary
+          description: The image to use as the basis for variation(s)
+        model:
+          type: string
+          default: dall-e-2
+          description: The model to use for creating variations
+        n:
+          type: integer
+          minimum: 1
+          maximum: 10
+          default: 1
+          description: The number of images to generate
+        response_format:
+          type: string
+          enum:
+            - url
+            - b64_json
+          default: url
+          description: The format in which the generated images are returned
+        size:
+          type: string
+          enum:
+            - 256x256
+            - 512x512
+            - 1024x1024
+          default: 1024x1024
+          description: The size of the generated images
+        user:
+          type: string
+          description: A unique identifier representing your end-user
+    ImageResponse:
+      type: object
+      properties:
+        created:
+          type: integer
+          description: Unix timestamp of when the image was created
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+                format: uri
+                description: The URL of the generated image (when response_format is url)
+              b64_json:
+                type: string
+                description: Base64-encoded JSON of the image (when response_format is b64_json)
+              revised_prompt:
+                type: string
+                description: The revised prompt used for generation (dall-e-3 only)

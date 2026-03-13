@@ -1,0 +1,175 @@
+openapi: 3.1.0
+info:
+  title: OpenAI Moderations API
+  description: >-
+    API for detecting potentially harmful or unsafe content. Classifies text
+    and images against categories such as hate, harassment, self-harm,
+    sexual content, and violence.
+  version: '1.0'
+  contact:
+    name: OpenAI Support
+    email: support@openai.com
+    url: https://help.openai.com
+  termsOfService: https://openai.com/policies/terms-of-use
+externalDocs:
+  description: OpenAI Moderations API Documentation
+  url: https://platform.openai.com/docs/api-reference/moderations
+servers:
+  - url: https://api.openai.com/v1
+    description: OpenAI Production API
+tags:
+  - name: Moderations
+    description: Content moderation operations
+security:
+  - bearerAuth: []
+paths:
+  /moderations:
+    post:
+      operationId: createModeration
+      summary: Create moderation
+      description: >-
+        Classifies if text and/or images are potentially harmful across
+        several categories including hate, harassment, self-harm, sexual
+        content, and violence.
+      tags:
+        - Moderations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateModerationRequest'
+      responses:
+        '200':
+          description: Moderation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModerationResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized - invalid or missing API key
+        '429':
+          description: Rate limit exceeded
+        '500':
+          description: Server error
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+      description: OpenAI API key passed as a Bearer token
+  schemas:
+    CreateModerationRequest:
+      type: object
+      required:
+        - input
+      properties:
+        input:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+          description: The input text to classify for moderation
+        model:
+          type: string
+          description: >-
+            The content moderation model to use
+            (text-moderation-latest, text-moderation-stable, omni-moderation-latest)
+          default: omni-moderation-latest
+          examples:
+            - omni-moderation-latest
+    ModerationResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the moderation request
+        model:
+          type: string
+          description: The model used for moderation
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModerationResult'
+    ModerationResult:
+      type: object
+      properties:
+        flagged:
+          type: boolean
+          description: Whether the content was flagged as potentially harmful
+        categories:
+          type: object
+          properties:
+            hate:
+              type: boolean
+              description: Content that expresses hate toward a group
+            hate/threatening:
+              type: boolean
+              description: Hateful content that includes violence or threats
+            harassment:
+              type: boolean
+              description: Content that harasses a target
+            harassment/threatening:
+              type: boolean
+              description: Harassment content that includes violence or threats
+            self-harm:
+              type: boolean
+              description: Content that promotes or depicts self-harm
+            self-harm/intent:
+              type: boolean
+              description: Content where the speaker expresses intent to self-harm
+            self-harm/instructions:
+              type: boolean
+              description: Content that provides instructions for self-harm
+            sexual:
+              type: boolean
+              description: Sexual content
+            sexual/minors:
+              type: boolean
+              description: Sexual content involving minors
+            violence:
+              type: boolean
+              description: Content depicting violence
+            violence/graphic:
+              type: boolean
+              description: Graphic violence content
+        category_scores:
+          type: object
+          properties:
+            hate:
+              type: number
+              description: Score for hate category
+            hate/threatening:
+              type: number
+              description: Score for hate/threatening category
+            harassment:
+              type: number
+              description: Score for harassment category
+            harassment/threatening:
+              type: number
+              description: Score for harassment/threatening category
+            self-harm:
+              type: number
+              description: Score for self-harm category
+            self-harm/intent:
+              type: number
+              description: Score for self-harm/intent category
+            self-harm/instructions:
+              type: number
+              description: Score for self-harm/instructions category
+            sexual:
+              type: number
+              description: Score for sexual category
+            sexual/minors:
+              type: number
+              description: Score for sexual/minors category
+            violence:
+              type: number
+              description: Score for violence category
+            violence/graphic:
+              type: number
+              description: Score for violence/graphic category

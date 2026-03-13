@@ -1,0 +1,201 @@
+openapi: 3.1.0
+info:
+  title: OpenAI Completions API
+  description: >-
+    Legacy text completion API for generating text continuations using GPT
+    models. Given a prompt, the model returns one or more predicted
+    completions along with token probabilities.
+  version: '1.0'
+  contact:
+    name: OpenAI Support
+    email: support@openai.com
+    url: https://help.openai.com
+  termsOfService: https://openai.com/policies/terms-of-use
+externalDocs:
+  description: OpenAI Completions API Documentation
+  url: https://platform.openai.com/docs/api-reference/completions
+servers:
+  - url: https://api.openai.com/v1
+    description: OpenAI Production API
+tags:
+  - name: Completions
+    description: Legacy text completion operations
+security:
+  - bearerAuth: []
+paths:
+  /completions:
+    post:
+      operationId: createCompletion
+      summary: Create completion
+      description: >-
+        Creates a completion for the provided prompt and parameters. This is
+        a legacy endpoint; use the Chat Completions API for new applications.
+      tags:
+        - Completions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCompletionRequest'
+      responses:
+        '200':
+          description: Completion response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompletionResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized - invalid or missing API key
+        '429':
+          description: Rate limit exceeded
+        '500':
+          description: Server error
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+      description: OpenAI API key passed as a Bearer token
+  schemas:
+    CreateCompletionRequest:
+      type: object
+      required:
+        - model
+        - prompt
+      properties:
+        model:
+          type: string
+          description: ID of the model to use (e.g., gpt-3.5-turbo-instruct)
+          examples:
+            - gpt-3.5-turbo-instruct
+        prompt:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+          description: The prompt(s) to generate completions for
+        suffix:
+          type: string
+          description: The suffix that comes after a completion of inserted text
+        max_tokens:
+          type: integer
+          default: 16
+          description: Maximum number of tokens to generate in the completion
+        temperature:
+          type: number
+          minimum: 0
+          maximum: 2
+          default: 1
+          description: Sampling temperature between 0 and 2
+        top_p:
+          type: number
+          minimum: 0
+          maximum: 1
+          default: 1
+          description: Nucleus sampling parameter
+        n:
+          type: integer
+          minimum: 1
+          default: 1
+          description: Number of completions to generate for each prompt
+        stream:
+          type: boolean
+          default: false
+          description: Whether to stream back partial progress
+        logprobs:
+          type: integer
+          minimum: 0
+          maximum: 5
+          description: Include log probabilities on the most likely output tokens
+        echo:
+          type: boolean
+          default: false
+          description: Echo back the prompt in addition to the completion
+        stop:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+          description: Up to 4 sequences where the API will stop generating
+        presence_penalty:
+          type: number
+          minimum: -2
+          maximum: 2
+          default: 0
+          description: Penalize new tokens based on presence in text so far
+        frequency_penalty:
+          type: number
+          minimum: -2
+          maximum: 2
+          default: 0
+          description: Penalize new tokens based on frequency in text so far
+        best_of:
+          type: integer
+          minimum: 1
+          default: 1
+          description: Generates best_of completions and returns the best
+        logit_bias:
+          type: object
+          additionalProperties:
+            type: number
+          description: Modify the likelihood of specified tokens appearing
+        user:
+          type: string
+          description: A unique identifier representing your end-user
+    CompletionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A unique identifier for the completion
+        object:
+          type: string
+          enum:
+            - text_completion
+        created:
+          type: integer
+          description: Unix timestamp of when the completion was created
+        model:
+          type: string
+          description: The model used for the completion
+        choices:
+          type: array
+          items:
+            type: object
+            properties:
+              text:
+                type: string
+                description: The generated text
+              index:
+                type: integer
+              logprobs:
+                type: object
+                nullable: true
+              finish_reason:
+                type: string
+                enum:
+                  - stop
+                  - length
+        usage:
+          $ref: '#/components/schemas/Usage'
+        system_fingerprint:
+          type: string
+          description: Fingerprint of the backend configuration
+    Usage:
+      type: object
+      properties:
+        prompt_tokens:
+          type: integer
+          description: Number of tokens in the prompt
+        completion_tokens:
+          type: integer
+          description: Number of tokens in the generated completion
+        total_tokens:
+          type: integer
+          description: Total number of tokens used

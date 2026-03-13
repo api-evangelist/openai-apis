@@ -1,0 +1,310 @@
+openapi: 3.1.0
+info:
+  title: OpenAI Audio API
+  description: >-
+    API for speech-to-text transcription, translation, and text-to-speech
+    generation. Uses the Whisper model for transcription and translation,
+    and the TTS model for speech synthesis.
+  version: '1.0'
+  contact:
+    name: OpenAI Support
+    email: support@openai.com
+    url: https://help.openai.com
+  termsOfService: https://openai.com/policies/terms-of-use
+externalDocs:
+  description: OpenAI Audio API Documentation
+  url: https://platform.openai.com/docs/api-reference/audio
+servers:
+  - url: https://api.openai.com/v1
+    description: OpenAI Production API
+tags:
+  - name: Speech
+    description: Text-to-speech operations
+  - name: Transcription
+    description: Speech-to-text transcription operations
+  - name: Translation
+    description: Audio translation operations
+security:
+  - bearerAuth: []
+paths:
+  /audio/speech:
+    post:
+      operationId: createSpeech
+      summary: Create speech
+      description: >-
+        Generates audio from the input text using the specified voice and model.
+      tags:
+        - Speech
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSpeechRequest'
+      responses:
+        '200':
+          description: Audio file containing the generated speech
+          content:
+            audio/mpeg:
+              schema:
+                type: string
+                format: binary
+            audio/opus:
+              schema:
+                type: string
+                format: binary
+            audio/aac:
+              schema:
+                type: string
+                format: binary
+            audio/flac:
+              schema:
+                type: string
+                format: binary
+            audio/wav:
+              schema:
+                type: string
+                format: binary
+            audio/pcm:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized - invalid or missing API key
+        '429':
+          description: Rate limit exceeded
+  /audio/transcriptions:
+    post:
+      operationId: createTranscription
+      summary: Create transcription
+      description: >-
+        Transcribes audio into the input language as text using the Whisper model.
+      tags:
+        - Transcription
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateTranscriptionRequest'
+      responses:
+        '200':
+          description: Transcription response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TranscriptionResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized - invalid or missing API key
+        '429':
+          description: Rate limit exceeded
+  /audio/translations:
+    post:
+      operationId: createTranslation
+      summary: Create translation
+      description: >-
+        Translates audio into English text using the Whisper model.
+      tags:
+        - Translation
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateTranslationRequest'
+      responses:
+        '200':
+          description: Translation response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TranslationResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized - invalid or missing API key
+        '429':
+          description: Rate limit exceeded
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+      description: OpenAI API key passed as a Bearer token
+  schemas:
+    CreateSpeechRequest:
+      type: object
+      required:
+        - model
+        - input
+        - voice
+      properties:
+        model:
+          type: string
+          description: The TTS model to use (tts-1 or tts-1-hd)
+          examples:
+            - tts-1
+        input:
+          type: string
+          maxLength: 4096
+          description: The text to generate audio for
+        voice:
+          type: string
+          enum:
+            - alloy
+            - echo
+            - fable
+            - onyx
+            - nova
+            - shimmer
+          description: The voice to use when generating the audio
+        response_format:
+          type: string
+          enum:
+            - mp3
+            - opus
+            - aac
+            - flac
+            - wav
+            - pcm
+          default: mp3
+          description: The format of the audio output
+        speed:
+          type: number
+          minimum: 0.25
+          maximum: 4.0
+          default: 1.0
+          description: The speed of the generated audio
+    CreateTranscriptionRequest:
+      type: object
+      required:
+        - file
+        - model
+      properties:
+        file:
+          type: string
+          format: binary
+          description: >-
+            The audio file to transcribe (flac, mp3, mp4, mpeg, mpga, m4a,
+            ogg, wav, or webm)
+        model:
+          type: string
+          description: The model to use for transcription (whisper-1)
+          examples:
+            - whisper-1
+        language:
+          type: string
+          description: The language of the input audio in ISO-639-1 format
+        prompt:
+          type: string
+          description: Optional text to guide the model's style or continue a previous segment
+        response_format:
+          type: string
+          enum:
+            - json
+            - text
+            - srt
+            - verbose_json
+            - vtt
+          default: json
+          description: The format of the transcription output
+        temperature:
+          type: number
+          minimum: 0
+          maximum: 1
+          default: 0
+          description: Sampling temperature between 0 and 1
+        timestamp_granularities:
+          type: array
+          items:
+            type: string
+            enum:
+              - word
+              - segment
+          description: The timestamp granularities to populate
+    CreateTranslationRequest:
+      type: object
+      required:
+        - file
+        - model
+      properties:
+        file:
+          type: string
+          format: binary
+          description: The audio file to translate
+        model:
+          type: string
+          description: The model to use for translation (whisper-1)
+          examples:
+            - whisper-1
+        prompt:
+          type: string
+          description: Optional text to guide the model's style
+        response_format:
+          type: string
+          enum:
+            - json
+            - text
+            - srt
+            - verbose_json
+            - vtt
+          default: json
+          description: The format of the translation output
+        temperature:
+          type: number
+          minimum: 0
+          maximum: 1
+          default: 0
+          description: Sampling temperature between 0 and 1
+    TranscriptionResponse:
+      type: object
+      properties:
+        text:
+          type: string
+          description: The transcribed text
+        task:
+          type: string
+          description: The task performed (transcribe)
+        language:
+          type: string
+          description: The detected or specified language
+        duration:
+          type: number
+          description: The duration of the audio in seconds
+        words:
+          type: array
+          items:
+            type: object
+            properties:
+              word:
+                type: string
+              start:
+                type: number
+              end:
+                type: number
+          description: Word-level timestamps (when requested)
+        segments:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              start:
+                type: number
+              end:
+                type: number
+              text:
+                type: string
+          description: Segment-level timestamps (when requested)
+    TranslationResponse:
+      type: object
+      properties:
+        text:
+          type: string
+          description: The translated text in English

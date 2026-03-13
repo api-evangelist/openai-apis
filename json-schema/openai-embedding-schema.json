@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.openai.com/schemas/openai/embedding.json",
+  "title": "OpenAI Embedding",
+  "description": "Represents an embedding vector returned by the embedding endpoint, containing the numerical vector representation and its index.",
+  "type": "object",
+  "properties": {
+    "object": {
+      "type": "string",
+      "const": "embedding",
+      "description": "The object type, always embedding"
+    },
+    "embedding": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "description": "The embedding vector as an array of floats"
+        },
+        {
+          "type": "string",
+          "description": "The embedding vector as a base64-encoded string"
+        }
+      ],
+      "description": "The embedding vector representing the input text"
+    },
+    "index": {
+      "type": "integer",
+      "description": "The index of the embedding in the list of embeddings"
+    }
+  },
+  "required": ["object", "embedding", "index"]
+}

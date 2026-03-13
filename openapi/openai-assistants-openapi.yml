@@ -1,0 +1,908 @@
+openapi: 3.1.0
+info:
+  title: OpenAI Assistants API
+  description: >-
+    API for building AI assistants with custom instructions, knowledge
+    retrieval, code execution, and function calling capabilities. Supports
+    managing assistants, threads, messages, and runs.
+  version: '2.0'
+  contact:
+    name: OpenAI Support
+    email: support@openai.com
+    url: https://help.openai.com
+  termsOfService: https://openai.com/policies/terms-of-use
+externalDocs:
+  description: OpenAI Assistants API Documentation
+  url: https://platform.openai.com/docs/api-reference/assistants
+servers:
+  - url: https://api.openai.com/v1
+    description: OpenAI Production API
+tags:
+  - name: Assistants
+    description: Manage AI assistants
+  - name: Threads
+    description: Manage conversation threads
+  - name: Messages
+    description: Manage messages within threads
+  - name: Runs
+    description: Execute assistants on threads
+security:
+  - bearerAuth: []
+paths:
+  /assistants:
+    get:
+      operationId: listAssistants
+      summary: List assistants
+      description: Returns a list of assistants.
+      tags:
+        - Assistants
+      parameters:
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/order'
+        - $ref: '#/components/parameters/after'
+        - $ref: '#/components/parameters/before'
+        - $ref: '#/components/parameters/OpenAIBeta'
+      responses:
+        '200':
+          description: List of assistants
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListResponse'
+        '401':
+          description: Unauthorized
+    post:
+      operationId: createAssistant
+      summary: Create assistant
+      description: Create an assistant with a model and instructions.
+      tags:
+        - Assistants
+      parameters:
+        - $ref: '#/components/parameters/OpenAIBeta'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAssistantRequest'
+      responses:
+        '200':
+          description: Assistant created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Assistant'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+  /assistants/{assistant_id}:
+    get:
+      operationId: getAssistant
+      summary: Retrieve assistant
+      description: Retrieves an assistant by ID.
+      tags:
+        - Assistants
+      parameters:
+        - $ref: '#/components/parameters/assistantId'
+        - $ref: '#/components/parameters/OpenAIBeta'
+      responses:
+        '200':
+          description: Assistant details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Assistant'
+        '404':
+          description: Assistant not found
+    post:
+      operationId: modifyAssistant
+      summary: Modify assistant
+      description: Modifies an assistant.
+      tags:
+        - Assistants
+      parameters:
+        - $ref: '#/components/parameters/assistantId'
+        - $ref: '#/components/parameters/OpenAIBeta'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModifyAssistantRequest'
+      responses:
+        '200':
+          description: Assistant modified
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Assistant'
+        '400':
+          description: Invalid request
+    delete:
+      operationId: deleteAssistant
+      summary: Delete assistant
+      description: Delete an assistant by ID.
+      tags:
+        - Assistants
+      parameters:
+        - $ref: '#/components/parameters/assistantId'
+        - $ref: '#/components/parameters/OpenAIBeta'
+      responses:
+        '200':
+          description: Assistant deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteResponse'
+        '404':
+          description: Assistant not found
+  /threads:
+    post:
+      operationId: createThread
+      summary: Create thread
+      description: Create a thread.
+      tags:
+        - Threads
+      parameters:
+        - $ref: '#/components/parameters/OpenAIBeta'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateThreadRequest'
+      responses:
+        '200':
+          description: Thread created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Thread'
+        '400':
+          description: Invalid request
+  /threads/{thread_id}:
+    get:
+      operationId: getThread
+      summary: Retrieve thread
+      description: Retrieves a thread by ID.
+      tags:
+        - Threads
+      parameters:
+        - $ref: '#/components/parameters/threadId'
+        - $ref: '#/components/parameters/OpenAIBeta'
+      responses:
+        '200':
+          description: Thread details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Thread'
+        '404':
+          description: Thread not found
+    post:
+      operationId: modifyThread
+      summary: Modify thread
+      description: Modifies a thread.
+      tags:
+        - Threads
+      parameters:
+        - $ref: '#/components/parameters/threadId'
+        - $ref: '#/components/parameters/OpenAIBeta'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                metadata:
+                  type: object
+                  description: Metadata to attach to the thread
+      responses:
+        '200':
+          description: Thread modified
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Thread'
+    delete:
+      operationId: deleteThread
+      summary: Delete thread
+      description: Delete a thread by ID.
+      tags:
+        - Threads
+      parameters:
+        - $ref: '#/components/parameters/threadId'
+        - $ref: '#/components/parameters/OpenAIBeta'
+      responses:
+        '200':
+          description: Thread deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteResponse'
+  /threads/{thread_id}/messages:
+    get:
+      operationId: listMessages
+      summary: List messages
+      description: Returns a list of messages for a given thread.
+      tags:
+        - Messages
+      parameters:
+        - $ref: '#/components/parameters/threadId'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/order'
+        - $ref: '#/components/parameters/after'
+        - $ref: '#/components/parameters/before'
+        - $ref: '#/components/parameters/OpenAIBeta'
+      responses:
+        '200':
+          description: List of messages
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListResponse'
+    post:
+      operationId: createMessage
+      summary: Create message
+      description: Create a message within a thread.
+      tags:
+        - Messages
+      parameters:
+        - $ref: '#/components/parameters/threadId'
+        - $ref: '#/components/parameters/OpenAIBeta'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMessageRequest'
+      responses:
+        '200':
+          description: Message created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+        '400':
+          description: Invalid request
+  /threads/{thread_id}/messages/{message_id}:
+    get:
+      operationId: getMessage
+      summary: Retrieve message
+      description: Retrieve a message by ID.
+      tags:
+        - Messages
+      parameters:
+        - $ref: '#/components/parameters/threadId'
+        - $ref: '#/components/parameters/messageId'
+        - $ref: '#/components/parameters/OpenAIBeta'
+      responses:
+        '200':
+          description: Message details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+        '404':
+          description: Message not found
+  /threads/{thread_id}/runs:
+    get:
+      operationId: listRuns
+      summary: List runs
+      description: Returns a list of runs belonging to a thread.
+      tags:
+        - Runs
+      parameters:
+        - $ref: '#/components/parameters/threadId'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/order'
+        - $ref: '#/components/parameters/after'
+        - $ref: '#/components/parameters/before'
+        - $ref: '#/components/parameters/OpenAIBeta'
+      responses:
+        '200':
+          description: List of runs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListResponse'
+    post:
+      operationId: createRun
+      summary: Create run
+      description: Create a run on a thread.
+      tags:
+        - Runs
+      parameters:
+        - $ref: '#/components/parameters/threadId'
+        - $ref: '#/components/parameters/OpenAIBeta'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRunRequest'
+      responses:
+        '200':
+          description: Run created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Run'
+        '400':
+          description: Invalid request
+  /threads/{thread_id}/runs/{run_id}:
+    get:
+      operationId: getRun
+      summary: Retrieve run
+      description: Retrieves a run by ID.
+      tags:
+        - Runs
+      parameters:
+        - $ref: '#/components/parameters/threadId'
+        - $ref: '#/components/parameters/runId'
+        - $ref: '#/components/parameters/OpenAIBeta'
+      responses:
+        '200':
+          description: Run details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Run'
+        '404':
+          description: Run not found
+  /threads/{thread_id}/runs/{run_id}/cancel:
+    post:
+      operationId: cancelRun
+      summary: Cancel run
+      description: Cancels an in-progress run.
+      tags:
+        - Runs
+      parameters:
+        - $ref: '#/components/parameters/threadId'
+        - $ref: '#/components/parameters/runId'
+        - $ref: '#/components/parameters/OpenAIBeta'
+      responses:
+        '200':
+          description: Run cancelled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Run'
+  /threads/{thread_id}/runs/{run_id}/submit_tool_outputs:
+    post:
+      operationId: submitToolOutputs
+      summary: Submit tool outputs
+      description: >-
+        Submit outputs from tool calls when a run has the status
+        requires_action with required_action type submit_tool_outputs.
+      tags:
+        - Runs
+      parameters:
+        - $ref: '#/components/parameters/threadId'
+        - $ref: '#/components/parameters/runId'
+        - $ref: '#/components/parameters/OpenAIBeta'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - tool_outputs
+              properties:
+                tool_outputs:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      tool_call_id:
+                        type: string
+                      output:
+                        type: string
+      responses:
+        '200':
+          description: Run resumed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Run'
+  /threads/runs:
+    post:
+      operationId: createThreadAndRun
+      summary: Create thread and run
+      description: Create a thread and run it in one request.
+      tags:
+        - Runs
+      parameters:
+        - $ref: '#/components/parameters/OpenAIBeta'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - assistant_id
+              properties:
+                assistant_id:
+                  type: string
+                  description: The ID of the assistant to use
+                thread:
+                  $ref: '#/components/schemas/CreateThreadRequest'
+                model:
+                  type: string
+                instructions:
+                  type: string
+                tools:
+                  type: array
+                  items:
+                    type: object
+                metadata:
+                  type: object
+      responses:
+        '200':
+          description: Run created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Run'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+      description: OpenAI API key passed as a Bearer token
+  parameters:
+    assistantId:
+      name: assistant_id
+      in: path
+      required: true
+      description: The ID of the assistant
+      schema:
+        type: string
+    threadId:
+      name: thread_id
+      in: path
+      required: true
+      description: The ID of the thread
+      schema:
+        type: string
+    messageId:
+      name: message_id
+      in: path
+      required: true
+      description: The ID of the message
+      schema:
+        type: string
+    runId:
+      name: run_id
+      in: path
+      required: true
+      description: The ID of the run
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of objects to return (1-100, default 20)
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+    order:
+      name: order
+      in: query
+      description: Sort order by created_at timestamp
+      schema:
+        type: string
+        enum:
+          - asc
+          - desc
+        default: desc
+    after:
+      name: after
+      in: query
+      description: A cursor for pagination (object ID to start after)
+      schema:
+        type: string
+    before:
+      name: before
+      in: query
+      description: A cursor for pagination (object ID to end before)
+      schema:
+        type: string
+    OpenAIBeta:
+      name: OpenAI-Beta
+      in: header
+      required: true
+      description: Required header for the Assistants API beta
+      schema:
+        type: string
+        enum:
+          - assistants=v2
+  schemas:
+    Assistant:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The identifier of the assistant
+        object:
+          type: string
+          enum:
+            - assistant
+        created_at:
+          type: integer
+          description: Unix timestamp of creation
+        name:
+          type: string
+          nullable: true
+          description: The name of the assistant
+        description:
+          type: string
+          nullable: true
+          description: The description of the assistant
+        model:
+          type: string
+          description: ID of the model used by the assistant
+        instructions:
+          type: string
+          nullable: true
+          description: The system instructions for the assistant
+        tools:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                enum:
+                  - code_interpreter
+                  - file_search
+                  - function
+          description: List of tools enabled on the assistant
+        metadata:
+          type: object
+          description: Key-value metadata attached to the assistant
+        temperature:
+          type: number
+          description: Sampling temperature for the assistant
+        top_p:
+          type: number
+          description: Nucleus sampling parameter
+        response_format:
+          oneOf:
+            - type: string
+              enum:
+                - auto
+            - type: object
+          description: Response format configuration
+    CreateAssistantRequest:
+      type: object
+      required:
+        - model
+      properties:
+        model:
+          type: string
+          description: ID of the model to use
+        name:
+          type: string
+          nullable: true
+          description: The name of the assistant (max 256 chars)
+        description:
+          type: string
+          nullable: true
+          description: The description of the assistant (max 512 chars)
+        instructions:
+          type: string
+          nullable: true
+          description: System instructions for the assistant (max 256000 chars)
+        tools:
+          type: array
+          items:
+            type: object
+          description: List of tools enabled on the assistant (max 128)
+        metadata:
+          type: object
+          description: Key-value metadata (max 16 pairs)
+        temperature:
+          type: number
+          minimum: 0
+          maximum: 2
+          description: Sampling temperature
+        top_p:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: Nucleus sampling parameter
+        response_format:
+          oneOf:
+            - type: string
+              enum:
+                - auto
+            - type: object
+          description: Response format configuration
+    ModifyAssistantRequest:
+      type: object
+      properties:
+        model:
+          type: string
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        instructions:
+          type: string
+          nullable: true
+        tools:
+          type: array
+          items:
+            type: object
+        metadata:
+          type: object
+        temperature:
+          type: number
+        top_p:
+          type: number
+        response_format:
+          oneOf:
+            - type: string
+            - type: object
+    Thread:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The identifier of the thread
+        object:
+          type: string
+          enum:
+            - thread
+        created_at:
+          type: integer
+          description: Unix timestamp of creation
+        metadata:
+          type: object
+          description: Key-value metadata attached to the thread
+    CreateThreadRequest:
+      type: object
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateMessageRequest'
+          description: Initial messages to start the thread with
+        metadata:
+          type: object
+          description: Key-value metadata for the thread
+    Message:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The identifier of the message
+        object:
+          type: string
+          enum:
+            - thread.message
+        created_at:
+          type: integer
+          description: Unix timestamp of creation
+        thread_id:
+          type: string
+          description: The thread this message belongs to
+        role:
+          type: string
+          enum:
+            - user
+            - assistant
+          description: The role of the entity that produced the message
+        content:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                enum:
+                  - text
+                  - image_file
+                  - image_url
+              text:
+                type: object
+                properties:
+                  value:
+                    type: string
+                  annotations:
+                    type: array
+                    items:
+                      type: object
+          description: The content of the message
+        assistant_id:
+          type: string
+          nullable: true
+          description: The assistant that authored this message
+        run_id:
+          type: string
+          nullable: true
+          description: The run associated with this message
+        metadata:
+          type: object
+          description: Key-value metadata attached to the message
+    CreateMessageRequest:
+      type: object
+      required:
+        - role
+        - content
+      properties:
+        role:
+          type: string
+          enum:
+            - user
+            - assistant
+          description: The role of the entity creating the message
+        content:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: object
+          description: The content of the message
+        metadata:
+          type: object
+          description: Key-value metadata for the message
+    Run:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The identifier of the run
+        object:
+          type: string
+          enum:
+            - thread.run
+        created_at:
+          type: integer
+          description: Unix timestamp of creation
+        thread_id:
+          type: string
+          description: The thread this run belongs to
+        assistant_id:
+          type: string
+          description: The assistant used for this run
+        status:
+          type: string
+          enum:
+            - queued
+            - in_progress
+            - requires_action
+            - cancelling
+            - cancelled
+            - failed
+            - completed
+            - incomplete
+            - expired
+          description: The status of the run
+        required_action:
+          type: object
+          nullable: true
+          properties:
+            type:
+              type: string
+              enum:
+                - submit_tool_outputs
+            submit_tool_outputs:
+              type: object
+              properties:
+                tool_calls:
+                  type: array
+                  items:
+                    type: object
+          description: Details on required action if status is requires_action
+        model:
+          type: string
+          description: The model used for this run
+        instructions:
+          type: string
+          nullable: true
+          description: The instructions used for this run
+        tools:
+          type: array
+          items:
+            type: object
+          description: The tools used for this run
+        metadata:
+          type: object
+          description: Key-value metadata attached to the run
+        usage:
+          type: object
+          nullable: true
+          properties:
+            prompt_tokens:
+              type: integer
+            completion_tokens:
+              type: integer
+            total_tokens:
+              type: integer
+          description: Token usage statistics for the run
+        started_at:
+          type: integer
+          nullable: true
+          description: Unix timestamp of when the run started
+        completed_at:
+          type: integer
+          nullable: true
+          description: Unix timestamp of when the run completed
+        cancelled_at:
+          type: integer
+          nullable: true
+          description: Unix timestamp of when the run was cancelled
+        failed_at:
+          type: integer
+          nullable: true
+          description: Unix timestamp of when the run failed
+        expires_at:
+          type: integer
+          nullable: true
+          description: Unix timestamp of when the run will expire
+    CreateRunRequest:
+      type: object
+      required:
+        - assistant_id
+      properties:
+        assistant_id:
+          type: string
+          description: The ID of the assistant to use for this run
+        model:
+          type: string
+          description: Override the model for this run
+        instructions:
+          type: string
+          nullable: true
+          description: Override the instructions for this run
+        additional_instructions:
+          type: string
+          nullable: true
+          description: Additional instructions appended to the assistant's instructions
+        tools:
+          type: array
+          items:
+            type: object
+          description: Override the tools for this run
+        metadata:
+          type: object
+          description: Key-value metadata for the run
+        stream:
+          type: boolean
+          description: Whether to stream the run
+    ListResponse:
+      type: object
+      properties:
+        object:
+          type: string
+          enum:
+            - list
+        data:
+          type: array
+          items:
+            type: object
+        first_id:
+          type: string
+        last_id:
+          type: string
+        has_more:
+          type: boolean
+    DeleteResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        deleted:
+          type: boolean

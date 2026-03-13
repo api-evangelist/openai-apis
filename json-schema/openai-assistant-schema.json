@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.openai.com/schemas/openai/assistant.json",
+  "title": "OpenAI Assistant",
+  "description": "Represents an AI assistant that can be configured with instructions, tools, and a model to respond to user messages within threads.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the assistant"
+    },
+    "object": {
+      "type": "string",
+      "const": "assistant",
+      "description": "The object type, always assistant"
+    },
+    "created_at": {
+      "type": "integer",
+      "description": "Unix timestamp of when the assistant was created"
+    },
+    "name": {
+      "type": ["string", "null"],
+      "maxLength": 256,
+      "description": "The name of the assistant"
+    },
+    "description": {
+      "type": ["string", "null"],
+      "maxLength": 512,
+      "description": "The description of the assistant"
+    },
+    "model": {
+      "type": "string",
+      "description": "ID of the model used by the assistant"
+    },
+    "instructions": {
+      "type": ["string", "null"],
+      "maxLength": 256000,
+      "description": "The system instructions that the assistant uses"
+    },
+    "tools": {
+      "type": "array",
+      "maxItems": 128,
+      "items": {
+        "$ref": "#/$defs/Tool"
+      },
+      "description": "List of tools enabled on the assistant"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Key-value pairs attached to the assistant (max 16 pairs)"
+    },
+    "temperature": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 2,
+      "description": "Sampling temperature for the assistant"
+    },
+    "top_p": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Nucleus sampling parameter"
+    },
+    "response_format": {
+      "description": "Specifies the format the model must output",
+      "oneOf": [
+        {
+          "type": "string",
+          "const": "auto"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["text", "json_object", "json_schema"]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "required": ["id", "object", "created_at", "model", "tools"],
+  "$defs": {
+    "Tool": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["code_interpreter", "file_search", "function"],
+          "description": "The type of tool"
+        },
+        "function": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The name of the function"
+            },
+            "description": {
+              "type": "string",
+              "description": "A description of the function"
+            },
+            "parameters": {
+              "type": "object",
+              "description": "The parameters as a JSON Schema object"
+            }
+          },
+          "description": "Function definition (only for function type tools)"
+        }
+      },
+      "required": ["type"]
+    }
+  }
+}
