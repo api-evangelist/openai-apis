@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: OpenAI Images API
+  title: OpenAI APIs OpenAI Images API
   description: >-
     API for generating, editing, and creating variations of images using
     DALL-E models. Supports text-to-image generation, image editing with
@@ -26,7 +26,7 @@ paths:
   /images/generations:
     post:
       operationId: createImage
-      summary: Create image
+      summary: OpenAI APIs Create image
       description: >-
         Creates an image given a text prompt using DALL-E models.
       tags:
@@ -55,7 +55,7 @@ paths:
   /images/edits:
     post:
       operationId: createImageEdit
-      summary: Create image edit
+      summary: OpenAI APIs Create image edit
       description: >-
         Creates an edited or extended image given an original image and a
         prompt. The mask specifies which areas of the image to edit.
@@ -83,7 +83,7 @@ paths:
   /images/variations:
     post:
       operationId: createImageVariation
-      summary: Create image variation
+      summary: OpenAI APIs Create image variation
       description: >-
         Creates a variation of a given image.
       tags:

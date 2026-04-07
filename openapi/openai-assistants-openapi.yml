@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: OpenAI Assistants API
+  title: OpenAI APIs OpenAI Assistants API
   description: >-
     API for building AI assistants with custom instructions, knowledge
     retrieval, code execution, and function calling capabilities. Supports
@@ -32,7 +32,7 @@ paths:
   /assistants:
     get:
       operationId: listAssistants
-      summary: List assistants
+      summary: OpenAI APIs List assistants
       description: Returns a list of assistants.
       tags:
         - Assistants
@@ -53,7 +53,7 @@ paths:
           description: Unauthorized
     post:
       operationId: createAssistant
-      summary: Create assistant
+      summary: OpenAI APIs Create assistant
       description: Create an assistant with a model and instructions.
       tags:
         - Assistants
@@ -79,7 +79,7 @@ paths:
   /assistants/{assistant_id}:
     get:
       operationId: getAssistant
-      summary: Retrieve assistant
+      summary: OpenAI APIs Retrieve assistant
       description: Retrieves an assistant by ID.
       tags:
         - Assistants
@@ -97,7 +97,7 @@ paths:
           description: Assistant not found
     post:
       operationId: modifyAssistant
-      summary: Modify assistant
+      summary: OpenAI APIs Modify assistant
       description: Modifies an assistant.
       tags:
         - Assistants
@@ -121,7 +121,7 @@ paths:
           description: Invalid request
     delete:
       operationId: deleteAssistant
-      summary: Delete assistant
+      summary: OpenAI APIs Delete assistant
       description: Delete an assistant by ID.
       tags:
         - Assistants
@@ -140,7 +140,7 @@ paths:
   /threads:
     post:
       operationId: createThread
-      summary: Create thread
+      summary: OpenAI APIs Create thread
       description: Create a thread.
       tags:
         - Threads
@@ -163,7 +163,7 @@ paths:
   /threads/{thread_id}:
     get:
       operationId: getThread
-      summary: Retrieve thread
+      summary: OpenAI APIs Retrieve thread
       description: Retrieves a thread by ID.
       tags:
         - Threads
@@ -181,7 +181,7 @@ paths:
           description: Thread not found
     post:
       operationId: modifyThread
-      summary: Modify thread
+      summary: OpenAI APIs Modify thread
       description: Modifies a thread.
       tags:
         - Threads
@@ -207,7 +207,7 @@ paths:
                 $ref: '#/components/schemas/Thread'
     delete:
       operationId: deleteThread
-      summary: Delete thread
+      summary: OpenAI APIs Delete thread
       description: Delete a thread by ID.
       tags:
         - Threads
@@ -224,7 +224,7 @@ paths:
   /threads/{thread_id}/messages:
     get:
       operationId: listMessages
-      summary: List messages
+      summary: OpenAI APIs List messages
       description: Returns a list of messages for a given thread.
       tags:
         - Messages
@@ -244,7 +244,7 @@ paths:
                 $ref: '#/components/schemas/ListResponse'
     post:
       operationId: createMessage
-      summary: Create message
+      summary: OpenAI APIs Create message
       description: Create a message within a thread.
       tags:
         - Messages
@@ -269,7 +269,7 @@ paths:
   /threads/{thread_id}/messages/{message_id}:
     get:
       operationId: getMessage
-      summary: Retrieve message
+      summary: OpenAI APIs Retrieve message
       description: Retrieve a message by ID.
       tags:
         - Messages
@@ -289,7 +289,7 @@ paths:
   /threads/{thread_id}/runs:
     get:
       operationId: listRuns
-      summary: List runs
+      summary: OpenAI APIs List runs
       description: Returns a list of runs belonging to a thread.
       tags:
         - Runs
@@ -309,7 +309,7 @@ paths:
                 $ref: '#/components/schemas/ListResponse'
     post:
       operationId: createRun
-      summary: Create run
+      summary: OpenAI APIs Create run
       description: Create a run on a thread.
       tags:
         - Runs
@@ -334,7 +334,7 @@ paths:
   /threads/{thread_id}/runs/{run_id}:
     get:
       operationId: getRun
-      summary: Retrieve run
+      summary: OpenAI APIs Retrieve run
       description: Retrieves a run by ID.
       tags:
         - Runs
@@ -354,7 +354,7 @@ paths:
   /threads/{thread_id}/runs/{run_id}/cancel:
     post:
       operationId: cancelRun
-      summary: Cancel run
+      summary: OpenAI APIs Cancel run
       description: Cancels an in-progress run.
       tags:
         - Runs
@@ -372,7 +372,7 @@ paths:
   /threads/{thread_id}/runs/{run_id}/submit_tool_outputs:
     post:
       operationId: submitToolOutputs
-      summary: Submit tool outputs
+      summary: OpenAI APIs Submit tool outputs
       description: >-
         Submit outputs from tool calls when a run has the status
         requires_action with required_action type submit_tool_outputs.
@@ -410,7 +410,7 @@ paths:
   /threads/runs:
     post:
       operationId: createThreadAndRun
-      summary: Create thread and run
+      summary: OpenAI APIs Create thread and run
       description: Create a thread and run it in one request.
       tags:
         - Runs

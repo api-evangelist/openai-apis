@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: OpenAI Moderations API
+  title: OpenAI APIs OpenAI Moderations API
   description: >-
     API for detecting potentially harmful or unsafe content. Classifies text
     and images against categories such as hate, harassment, self-harm,
@@ -26,7 +26,7 @@ paths:
   /moderations:
     post:
       operationId: createModeration
-      summary: Create moderation
+      summary: OpenAI APIs Create moderation
       description: >-
         Classifies if text and/or images are potentially harmful across
         several categories including hate, harassment, self-harm, sexual

@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: OpenAI Chat Completions API
+  title: OpenAI APIs OpenAI Chat Completions API
   description: >-
     API for conversational AI using GPT models. Creates model responses for
     chat conversations, supporting text and multimodal inputs with
@@ -26,7 +26,7 @@ paths:
   /chat/completions:
     post:
       operationId: createChatCompletion
-      summary: Create chat completion
+      summary: OpenAI APIs Create chat completion
       description: >-
         Creates a model response for the given chat conversation. Supports
         text, image, and audio inputs and can produce text, tool call, and

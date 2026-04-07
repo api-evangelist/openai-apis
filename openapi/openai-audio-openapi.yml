@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: OpenAI Audio API
+  title: OpenAI APIs OpenAI Audio API
   description: >-
     API for speech-to-text transcription, translation, and text-to-speech
     generation. Uses the Whisper model for transcription and translation,
@@ -30,7 +30,7 @@ paths:
   /audio/speech:
     post:
       operationId: createSpeech
-      summary: Create speech
+      summary: OpenAI APIs Create speech
       description: >-
         Generates audio from the input text using the specified voice and model.
       tags:
@@ -78,7 +78,7 @@ paths:
   /audio/transcriptions:
     post:
       operationId: createTranscription
-      summary: Create transcription
+      summary: OpenAI APIs Create transcription
       description: >-
         Transcribes audio into the input language as text using the Whisper model.
       tags:
@@ -105,7 +105,7 @@ paths:
   /audio/translations:
     post:
       operationId: createTranslation
-      summary: Create translation
+      summary: OpenAI APIs Create translation
       description: >-
         Translates audio into English text using the Whisper model.
       tags:
