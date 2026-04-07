@@ -8,10 +8,10 @@ type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Artificial Intelligence
-  - Language Models
-  - Image Generation
-  - Speech
   - Embeddings
+  - Image Generation
+  - Language Models
+  - Speech
 url: https://raw.githubusercontent.com/api-evangelist/openai-apis/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-03-16'
@@ -36,8 +36,8 @@ apis:
     humanURL: https://platform.openai.com/docs/api-reference/images
     baseURL: https://api.openai.com/v1
     tags:
-      - Image Generation
       - DALL-E
+      - Image Generation
     properties:
       - type: Documentation
         url: https://platform.openai.com/docs/api-reference/images
@@ -69,8 +69,8 @@ apis:
     humanURL: https://platform.openai.com/docs/api-reference/assistants
     baseURL: https://api.openai.com/v1
     tags:
-      - Assistants
       - Agents
+      - Assistants
     properties:
       - type: Documentation
         url: https://platform.openai.com/docs/api-reference/assistants

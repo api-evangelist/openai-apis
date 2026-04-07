@@ -20,12 +20,12 @@ servers:
 tags:
   - name: Assistants
     description: Manage AI assistants
-  - name: Threads
-    description: Manage conversation threads
   - name: Messages
     description: Manage messages within threads
   - name: Runs
     description: Execute assistants on threads
+  - name: Threads
+    description: Manage conversation threads
 security:
   - bearerAuth: []
 paths:
