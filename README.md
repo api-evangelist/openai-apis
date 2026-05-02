@@ -1,131 +1,147 @@
 # OpenAI APIs (openai-apis)
-Collection of OpenAI's artificial intelligence APIs for natural language processing, image generation, speech, and embeddings
+Collection of OpenAI's artificial intelligence APIs for natural language processing, image generation, speech, and embeddings including Chat Completions, Completions, Images, Audio, Embeddings, Moderations, and Assistants APIs.
 
-**URL:** [Visit APIs.json URL](https://platform.openai.com/docs/api-reference)
+**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/openai-apis/refs/heads/main/apis.yml)
+
+## Scope
+
+- **Type:** Index
+- **Position:** Consumer
+- **Access:** 3rd-Party
+
+## Tags:
+
+ - Artificial Intelligence, Embeddings, Image Generation, Language Models, Speech
 
 ## Timestamps
 
-- **Created:** 2024 
-- **Modified:** 2024 
+- **Created:** 2024-01-01
+- **Modified:** 2026-04-28
 
 ## APIs
 
 ### OpenAI Chat Completions API
-API for conversational AI using GPT models including GPT-4 and GPT-3.5
+API for conversational AI using GPT models.
 
 **Human URL:** [https://platform.openai.com/docs/api-reference/chat](https://platform.openai.com/docs/api-reference/chat)
 
+**Base URL:** https://api.openai.com/v1
 
 #### Tags:
 
- - AI, Chat, Conversational AI, GPT, Language Models
+ - Chat, GPT
 
 #### Properties
 
 - [Documentation](https://platform.openai.com/docs/api-reference/chat)
-- [OpenAPI](https://github.com/openai/openai-openapi/blob/master/openapi.yaml)
+- [OpenAPI](openapi/openai-chat-completions-openapi.yml)
 
 ### OpenAI Completions API
-Legacy text completion API for generating text continuations
+Legacy text completion API for generating text continuations from a prompt.
 
 **Human URL:** [https://platform.openai.com/docs/api-reference/completions](https://platform.openai.com/docs/api-reference/completions)
 
+**Base URL:** https://api.openai.com/v1
 
 #### Tags:
 
- - AI, Text Generation, Language Models
+ - Completions, GPT
 
 #### Properties
 
 - [Documentation](https://platform.openai.com/docs/api-reference/completions)
-- [OpenAPI](https://github.com/openai/openai-openapi/blob/master/openapi.yaml)
+- [OpenAPI](openapi/openai-completions-openapi.yml)
 
 ### OpenAI Images API
-API for generating, editing, and creating variations of images using DALL-E
+API for generating, editing, and creating image variations using DALL-E.
 
 **Human URL:** [https://platform.openai.com/docs/api-reference/images](https://platform.openai.com/docs/api-reference/images)
 
+**Base URL:** https://api.openai.com/v1
 
 #### Tags:
 
- - AI, Image Generation, DALL-E, Computer Vision
+ - DALL-E, Image Generation
 
 #### Properties
 
 - [Documentation](https://platform.openai.com/docs/api-reference/images)
-- [OpenAPI](https://github.com/openai/openai-openapi/blob/master/openapi.yaml)
+- [OpenAPI](openapi/openai-images-openapi.yml)
 
 ### OpenAI Embeddings API
-API for converting text into numerical vector representations for semantic search and similarity
+API for converting text into vector representations.
 
 **Human URL:** [https://platform.openai.com/docs/api-reference/embeddings](https://platform.openai.com/docs/api-reference/embeddings)
 
+**Base URL:** https://api.openai.com/v1
 
 #### Tags:
 
- - AI, Embeddings, Vector Search, Semantic Search
+ - Embeddings, Vectors
 
 #### Properties
 
 - [Documentation](https://platform.openai.com/docs/api-reference/embeddings)
-- [OpenAPI](https://github.com/openai/openai-openapi/blob/master/openapi.yaml)
+- [OpenAPI](openapi/openai-embeddings-openapi.yml)
 
 ### OpenAI Audio API
-API for speech-to-text transcription and text-to-speech generation
+API for speech-to-text transcription and text-to-speech generation.
 
 **Human URL:** [https://platform.openai.com/docs/api-reference/audio](https://platform.openai.com/docs/api-reference/audio)
 
+**Base URL:** https://api.openai.com/v1
 
 #### Tags:
 
- - AI, Audio, Speech Recognition, Text-to-Speech, Whisper
+ - Audio, Speech
 
 #### Properties
 
 - [Documentation](https://platform.openai.com/docs/api-reference/audio)
-- [OpenAPI](https://github.com/openai/openai-openapi/blob/master/openapi.yaml)
+- [OpenAPI](openapi/openai-audio-openapi.yml)
 
 ### OpenAI Moderations API
-API for detecting potentially harmful or unsafe content
+API for detecting potentially harmful or unsafe content across text and images.
 
 **Human URL:** [https://platform.openai.com/docs/api-reference/moderations](https://platform.openai.com/docs/api-reference/moderations)
 
+**Base URL:** https://api.openai.com/v1
 
 #### Tags:
 
- - AI, Content Moderation, Safety
+ - Moderation, Safety
 
 #### Properties
 
 - [Documentation](https://platform.openai.com/docs/api-reference/moderations)
-- [OpenAPI](https://github.com/openai/openai-openapi/blob/master/openapi.yaml)
+- [OpenAPI](openapi/openai-moderations-openapi.yml)
 
 ### OpenAI Assistants API
-API for building AI assistants with custom instructions and tool access
+API for building AI assistants with custom instructions and tool access.
 
 **Human URL:** [https://platform.openai.com/docs/api-reference/assistants](https://platform.openai.com/docs/api-reference/assistants)
 
+**Base URL:** https://api.openai.com/v1
 
 #### Tags:
 
- - AI, Assistants, Agents, Tools
+ - Agents, Assistants
 
 #### Properties
 
 - [Documentation](https://platform.openai.com/docs/api-reference/assistants)
-- [OpenAPI](https://github.com/openai/openai-openapi/blob/master/openapi.yaml)
+- [OpenAPI](openapi/openai-assistants-openapi.yml)
 
 ## Common Properties
 
 - [Authentication](https://platform.openai.com/docs/api-reference/authentication)
 - [Pricing](https://openai.com/api/pricing/)
-- [Rate Limits](https://platform.openai.com/docs/guides/rate-limits)
 - [Terms of Service](https://openai.com/policies/terms-of-use)
 - [Privacy Policy](https://openai.com/policies/privacy-policy)
-- [Status Page](https://status.openai.com/)
+- [Status](https://status.openai.com/)
 
 ## Maintainers
 
-**FN:** OpenAI
+**FN:** Kin Lane
 
-**Email:** support@openai.com
+**Email:** kin@apievangelist.com
