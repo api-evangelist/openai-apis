@@ -1,173 +1,123 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: OpenAI APIs
+providerId: openai-apis
+created: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
+tags:
+  - Artificial Intelligence
+  - Language Models
+  - FinOps
+  - Cost Management
+  - FOCUS
+description: 'FOCUS-aligned FinOps for the OpenAI API platform: token-based pay-as-you-go billing across
+  text, image, audio, and video models, with batch and prompt-caching discounts plus optional Provisioned
+  Throughput commitments for enterprise.'
+sources:
+  - https://openai.com/api/pricing/
+  - https://platform.openai.com/docs/guides/rate-limits
+  - https://platform.openai.com/usage
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
   dataSpec: FOCUS
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
-provider: OpenAI APIs
-providerId: openai-apis
-publisherName: OpenAI APIs
-serviceCategory: API
-created: '2026-05-04'
-modified: '2026-05-04'
-tags:
-  - Artificial Intelligence
-  - Embeddings
-  - Image Generation
-  - Language Models
-  - Speech
-  - FinOps
-  - Cost Management
-  - FOCUS
-description: FinOps framework definition for the OpenAI APIs API surface. Provides a FOCUS-aligned mapping
-  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+publisherName: OpenAI, L.L.C.
+serviceCategory: AI Infrastructure
 billingModel:
-  pricingCategory: Usage-Based
+  pricingCategory: Token-Based Usage + Committed Throughput
   billingFrequency: Monthly
   billingCurrency: USD
   chargeCategories:
     - Usage
     - Purchase
-    - Tax
     - Credit
     - Adjustment
-  chargeFrequency: Recurring
 focusColumns:
-  ServiceName: OpenAI APIs
-  ServiceCategory: Developer Tools / API
-  ProviderName: OpenAI APIs
-  PublisherName: OpenAI APIs
-  InvoiceIssuerName: OpenAI APIs
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  ServiceName: OpenAI API
+  ServiceCategory: AI Infrastructure
+  ProviderName: OpenAI
+  PublisherName: OpenAI, L.L.C.
+  InvoiceIssuerName: OpenAI, L.L.C.
   BillingCurrency: USD
   ChargeCategory: Usage
+  PricingUnit: token
 meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
+  - name: tokens_input
+    unit: token
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
+      - model
+      - organization
+      - project
+      - api_key
+      - cached
+  - name: tokens_output
+    unit: token
     aggregation: sum
     dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
+      - model
+      - organization
+      - project
+      - api_key
+      - reasoning
+  - name: cached_tokens
+    unit: token
+    aggregation: sum
+    dimensions:
+      - model
+      - organization
+  - name: image_generations
+    unit: image
+    aggregation: sum
+    dimensions:
+      - model
+      - resolution
+      - quality
+  - name: video_seconds
     unit: second
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: OpenAI Chat Completions API
-    baseURL: https://api.openai.com/v1
-    tags:
-      - Chat
-      - GPT
-    serviceName: OpenAI Chat Completions API
-    serviceCategory: API
-  - name: OpenAI Completions API
-    baseURL: https://api.openai.com/v1
-    tags:
-      - Completions
-      - GPT
-    serviceName: OpenAI Completions API
-    serviceCategory: API
-  - name: OpenAI Images API
-    baseURL: https://api.openai.com/v1
-    tags:
-      - DALL-E
-      - Image Generation
-    serviceName: OpenAI Images API
-    serviceCategory: API
-  - name: OpenAI Embeddings API
-    baseURL: https://api.openai.com/v1
-    tags:
-      - Embeddings
-      - Vectors
-    serviceName: OpenAI Embeddings API
-    serviceCategory: API
-  - name: OpenAI Audio API
-    baseURL: https://api.openai.com/v1
-    tags:
-      - Audio
-      - Speech
-    serviceName: OpenAI Audio API
-    serviceCategory: API
-  - name: OpenAI Moderations API
-    baseURL: https://api.openai.com/v1
-    tags:
-      - Moderation
-      - Safety
-    serviceName: OpenAI Moderations API
-    serviceCategory: API
-  - name: OpenAI Assistants API
-    baseURL: https://api.openai.com/v1
-    tags:
-      - Agents
-      - Assistants
-    serviceName: OpenAI Assistants API
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+      - model
+      - resolution
+  - name: audio_seconds
+    unit: second
+    aggregation: sum
+    dimensions:
+      - model
+      - direction
+  - name: tool_calls
+    unit: call
+    aggregation: sum
+    dimensions:
+      - tool
+  - name: file_storage
+    unit: GB-day
+    aggregation: sum
+    dimensions:
+      - vector_store
+  - name: provisioned_throughput_hours
+    unit: PTU-hour
+    aggregation: sum
+    dimensions:
+      - model
+principles:
+  - name: Visibility
+    description: Use the Usage dashboard, the /v1/usage endpoint, and project-scoped API keys to attribute
+      tokens and cost per team/feature in near-real-time.
+  - name: Allocation
+    description: Create separate Projects and API keys per workload; tag requests with metadata such as
+      user/feature in your application logs to back-allocate spend.
+  - name: Optimization
+    description: Route to the cheapest sufficient model (nano/mini before flagship), enable prompt caching,
+      use the Batch API for non-urgent jobs (50% off), trim system prompts, and prefer structured outputs
+      over chain-of-thought when latency permits.
+  - name: Accountability
+    description: Set hard usage limits and per-project budget alerts in the OpenAI console; assign a model-cost
+      owner who reviews the monthly invoice against forecast and investigates token-cost regressions.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

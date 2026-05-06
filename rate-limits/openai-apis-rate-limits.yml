@@ -4,116 +4,92 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: OpenAI APIs
 providerId: openai-apis
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
   - Artificial Intelligence
-  - Embeddings
-  - Image Generation
   - Language Models
-  - Speech
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the OpenAI APIs API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
+description: OpenAI applies rate limits per-organization and per-model across five usage dimensions —
+  RPM (requests per minute), RPD (requests per day), TPM (tokens per minute), TPD (tokens per day), and
+  IPM (images per minute). Limits scale with a usage-tier system (Free, Tier 1 through Tier 5) that auto-promotes
+  accounts as cumulative spend and account age increase. Reasoning models (o-series) and mini variants
+  have separate limit pools; check the live console under Settings > Limits for exact per-model values.
+sources:
+  - https://platform.openai.com/docs/guides/rate-limits
+  - https://platform.openai.com/account/limits
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  limit: x-ratelimit-limit-requests
+  limitTokens: x-ratelimit-limit-tokens
+  remaining: x-ratelimit-remaining-requests
+  remainingTokens: x-ratelimit-remaining-tokens
+  reset: x-ratelimit-reset-requests
+  resetTokens: x-ratelimit-reset-tokens
 responseCodes:
   throttled: 429
   quotaExceeded: 429
+  serverError: 500
   serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
+  - name: Free tier (GPT-4o-class, evaluation)
+    scope: organization
     metric: requests_per_minute
-    limit: 10
-    burst: 20
+    limit: 3
     timeFrame: minute
-    applies:
-      - OpenAI Chat Completions API
-      - OpenAI Completions API
-      - OpenAI Images API
-      - OpenAI Embeddings API
-      - OpenAI Audio API
-      - OpenAI Moderations API
-      - OpenAI Assistants API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - OpenAI Chat Completions API
-      - OpenAI Completions API
-      - OpenAI Images API
-      - OpenAI Embeddings API
-      - OpenAI Audio API
-      - OpenAI Moderations API
-      - OpenAI Assistants API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
+    notes: Free trial credits; severely capped. Also limited to 200 RPD.
+  - name: Tier 1 (GPT-4o), after $5+ cumulative spend
+    scope: organization/model
     metric: requests_per_minute
-    limit: 100
-    burst: 200
+    limit: 500
     timeFrame: minute
-    applies:
-      - OpenAI Chat Completions API
-      - OpenAI Completions API
-      - OpenAI Images API
-      - OpenAI Embeddings API
-      - OpenAI Audio API
-      - OpenAI Moderations API
-      - OpenAI Assistants API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - OpenAI Chat Completions API
-      - OpenAI Completions API
-      - OpenAI Images API
-      - OpenAI Embeddings API
-      - OpenAI Audio API
-      - OpenAI Moderations API
-      - OpenAI Assistants API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
+    notes: Roughly 30,000 TPM on GPT-4o; 10x higher TPM on mini variants.
+  - name: Tier 1 (GPT-5.4 / GPT-5.5)
+    scope: organization/model
     metric: requests_per_minute
     limit: 1000
-    burst: 5000
     timeFrame: minute
-    applies:
-      - OpenAI Chat Completions API
-      - OpenAI Completions API
-      - OpenAI Images API
-      - OpenAI Embeddings API
-      - OpenAI Audio API
-      - OpenAI Moderations API
-      - OpenAI Assistants API
+    notes: Approximately 500K TPM at Tier 1 for GPT-5 family.
+  - name: Tier 4 (typical scale customer)
+    scope: organization/model
+    metric: requests_per_minute
+    limit: 10000
+    timeFrame: minute
+    notes: Approximately 30M TPM aggregated across flagship text models.
+  - name: Tier 5 (highest, $1,000+ spend, 30+ days)
+    scope: organization/model
+    metric: requests_per_minute
+    limit: 30000
+    timeFrame: minute
+    notes: Up to 1B input TPM on mini-class models; ~200x Tier 1.
+  - name: Reasoning models (o-series) — separate pool
+    scope: organization/model
+    metric: varies
+    limit: see platform.openai.com/account/limits
+    notes: o1, o3, o4-mini have their own limit pool reflecting longer compute time per request.
+  - name: Image generation (gpt-image-2 / DALL-E)
+    scope: organization
+    metric: images_per_minute
+    limit: see per-tier limits in console
+    notes: IPM scales with tier; varies by model.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Tier auto-promotion
+    description: Accounts auto-promote to higher tiers based on cumulative spend (e.g. $5 unlocks Tier
+      1, $50 Tier 2, $1,000 Tier 5) and minimum days since first payment.
+  - name: Backoff
+    description: On 429, honor x-ratelimit-reset-* hints and back off exponentially with jitter. The Retry-After
+      header is set on some 429 responses.
+  - name: Token-based limits
+    description: TPM and TPD constrain combined input + output tokens. Streaming responses still count
+      against TPM at completion.
+  - name: Batch API has separate pool
+    description: Batch jobs have a separate enqueued-tokens limit and do not consume RPM/TPM of the synchronous
+      pool.
+  - name: Provisioned Throughput
+    description: Enterprise customers can purchase Provisioned Throughput Units (PTUs) for dedicated,
+      committed capacity outside the shared tier pool.
+  - name: Soft vs hard
+    description: Most limits are soft — repeated 429s do not ban the key. Sustained abuse can trigger
+      organization-level blocks.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
