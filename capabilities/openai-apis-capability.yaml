@@ -1,0 +1,574 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenAI APIs OpenAI Assistants API
+  description: API for building AI assistants with custom instructions, knowledge retrieval, code execution, and function
+    calling capabilities. Supports managing assistants, threads, messages, and runs.
+  tags:
+  - Openai
+  - Apis
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: openai-apis
+    baseUri: https://api.openai.com/v1
+    description: OpenAI APIs OpenAI Assistants API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{OPENAI_APIS_TOKEN}}'
+    resources:
+    - name: assistants
+      path: /assistants
+      operations:
+      - name: listassistants
+        method: GET
+        description: OpenAI APIs List assistants
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createassistant
+        method: POST
+        description: OpenAI APIs Create assistant
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: assistants-assistant-id
+      path: /assistants/{assistant_id}
+      operations:
+      - name: getassistant
+        method: GET
+        description: OpenAI APIs Retrieve assistant
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: modifyassistant
+        method: POST
+        description: OpenAI APIs Modify assistant
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteassistant
+        method: DELETE
+        description: OpenAI APIs Delete assistant
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: threads
+      path: /threads
+      operations:
+      - name: createthread
+        method: POST
+        description: OpenAI APIs Create thread
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: threads-thread-id
+      path: /threads/{thread_id}
+      operations:
+      - name: getthread
+        method: GET
+        description: OpenAI APIs Retrieve thread
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: modifythread
+        method: POST
+        description: OpenAI APIs Modify thread
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletethread
+        method: DELETE
+        description: OpenAI APIs Delete thread
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: threads-thread-id-messages
+      path: /threads/{thread_id}/messages
+      operations:
+      - name: listmessages
+        method: GET
+        description: OpenAI APIs List messages
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createmessage
+        method: POST
+        description: OpenAI APIs Create message
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: threads-thread-id-messages-message-id
+      path: /threads/{thread_id}/messages/{message_id}
+      operations:
+      - name: getmessage
+        method: GET
+        description: OpenAI APIs Retrieve message
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: threads-thread-id-runs
+      path: /threads/{thread_id}/runs
+      operations:
+      - name: listruns
+        method: GET
+        description: OpenAI APIs List runs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createrun
+        method: POST
+        description: OpenAI APIs Create run
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: threads-thread-id-runs-run-id
+      path: /threads/{thread_id}/runs/{run_id}
+      operations:
+      - name: getrun
+        method: GET
+        description: OpenAI APIs Retrieve run
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: threads-thread-id-runs-run-id-cancel
+      path: /threads/{thread_id}/runs/{run_id}/cancel
+      operations:
+      - name: cancelrun
+        method: POST
+        description: OpenAI APIs Cancel run
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: threads-thread-id-runs-run-id-submit-tool-output
+      path: /threads/{thread_id}/runs/{run_id}/submit_tool_outputs
+      operations:
+      - name: submittooloutputs
+        method: POST
+        description: OpenAI APIs Submit tool outputs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: threads-runs
+      path: /threads/runs
+      operations:
+      - name: createthreadandrun
+        method: POST
+        description: OpenAI APIs Create thread and run
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: openai-apis-rest
+    description: REST adapter for OpenAI APIs OpenAI Assistants API.
+    resources:
+    - path: /assistants
+      name: listassistants
+      operations:
+      - method: GET
+        name: listassistants
+        description: OpenAI APIs List assistants
+        call: openai-apis.listassistants
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /assistants
+      name: createassistant
+      operations:
+      - method: POST
+        name: createassistant
+        description: OpenAI APIs Create assistant
+        call: openai-apis.createassistant
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /assistants/{assistant_id}
+      name: getassistant
+      operations:
+      - method: GET
+        name: getassistant
+        description: OpenAI APIs Retrieve assistant
+        call: openai-apis.getassistant
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /assistants/{assistant_id}
+      name: modifyassistant
+      operations:
+      - method: POST
+        name: modifyassistant
+        description: OpenAI APIs Modify assistant
+        call: openai-apis.modifyassistant
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /assistants/{assistant_id}
+      name: deleteassistant
+      operations:
+      - method: DELETE
+        name: deleteassistant
+        description: OpenAI APIs Delete assistant
+        call: openai-apis.deleteassistant
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /threads
+      name: createthread
+      operations:
+      - method: POST
+        name: createthread
+        description: OpenAI APIs Create thread
+        call: openai-apis.createthread
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /threads/{thread_id}
+      name: getthread
+      operations:
+      - method: GET
+        name: getthread
+        description: OpenAI APIs Retrieve thread
+        call: openai-apis.getthread
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /threads/{thread_id}
+      name: modifythread
+      operations:
+      - method: POST
+        name: modifythread
+        description: OpenAI APIs Modify thread
+        call: openai-apis.modifythread
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /threads/{thread_id}
+      name: deletethread
+      operations:
+      - method: DELETE
+        name: deletethread
+        description: OpenAI APIs Delete thread
+        call: openai-apis.deletethread
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /threads/{thread_id}/messages
+      name: listmessages
+      operations:
+      - method: GET
+        name: listmessages
+        description: OpenAI APIs List messages
+        call: openai-apis.listmessages
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /threads/{thread_id}/messages
+      name: createmessage
+      operations:
+      - method: POST
+        name: createmessage
+        description: OpenAI APIs Create message
+        call: openai-apis.createmessage
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /threads/{thread_id}/messages/{message_id}
+      name: getmessage
+      operations:
+      - method: GET
+        name: getmessage
+        description: OpenAI APIs Retrieve message
+        call: openai-apis.getmessage
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /threads/{thread_id}/runs
+      name: listruns
+      operations:
+      - method: GET
+        name: listruns
+        description: OpenAI APIs List runs
+        call: openai-apis.listruns
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /threads/{thread_id}/runs
+      name: createrun
+      operations:
+      - method: POST
+        name: createrun
+        description: OpenAI APIs Create run
+        call: openai-apis.createrun
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /threads/{thread_id}/runs/{run_id}
+      name: getrun
+      operations:
+      - method: GET
+        name: getrun
+        description: OpenAI APIs Retrieve run
+        call: openai-apis.getrun
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /threads/{thread_id}/runs/{run_id}/cancel
+      name: cancelrun
+      operations:
+      - method: POST
+        name: cancelrun
+        description: OpenAI APIs Cancel run
+        call: openai-apis.cancelrun
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /threads/{thread_id}/runs/{run_id}/submit_tool_outputs
+      name: submittooloutputs
+      operations:
+      - method: POST
+        name: submittooloutputs
+        description: OpenAI APIs Submit tool outputs
+        call: openai-apis.submittooloutputs
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /threads/runs
+      name: createthreadandrun
+      operations:
+      - method: POST
+        name: createthreadandrun
+        description: OpenAI APIs Create thread and run
+        call: openai-apis.createthreadandrun
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: openai-apis-mcp
+    transport: http
+    description: MCP adapter for OpenAI APIs OpenAI Assistants API for AI agent use.
+    tools:
+    - name: listassistants
+      description: OpenAI APIs List assistants
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openai-apis.listassistants
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createassistant
+      description: OpenAI APIs Create assistant
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openai-apis.createassistant
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getassistant
+      description: OpenAI APIs Retrieve assistant
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openai-apis.getassistant
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: modifyassistant
+      description: OpenAI APIs Modify assistant
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openai-apis.modifyassistant
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteassistant
+      description: OpenAI APIs Delete assistant
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: openai-apis.deleteassistant
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createthread
+      description: OpenAI APIs Create thread
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openai-apis.createthread
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getthread
+      description: OpenAI APIs Retrieve thread
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openai-apis.getthread
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: modifythread
+      description: OpenAI APIs Modify thread
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openai-apis.modifythread
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletethread
+      description: OpenAI APIs Delete thread
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: openai-apis.deletethread
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listmessages
+      description: OpenAI APIs List messages
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openai-apis.listmessages
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createmessage
+      description: OpenAI APIs Create message
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openai-apis.createmessage
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getmessage
+      description: OpenAI APIs Retrieve message
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openai-apis.getmessage
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listruns
+      description: OpenAI APIs List runs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openai-apis.listruns
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createrun
+      description: OpenAI APIs Create run
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openai-apis.createrun
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getrun
+      description: OpenAI APIs Retrieve run
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openai-apis.getrun
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cancelrun
+      description: OpenAI APIs Cancel run
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openai-apis.cancelrun
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: submittooloutputs
+      description: OpenAI APIs Submit tool outputs
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openai-apis.submittooloutputs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createthreadandrun
+      description: OpenAI APIs Create thread and run
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openai-apis.createthreadandrun
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    OPENAI_APIS_TOKEN: OPENAI_APIS_TOKEN
