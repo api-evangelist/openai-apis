@@ -116,11 +116,11 @@ common:
     url: https://platform.openai.com/docs/api-reference/authentication
   - type: Pricing
     url: https://openai.com/api/pricing/
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://openai.com/policies/terms-of-use
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://openai.com/policies/privacy-policy
-  - type: Status
+  - type: StatusPage
     url: https://status.openai.com/
 maintainers:
   - FN: Kin Lane
