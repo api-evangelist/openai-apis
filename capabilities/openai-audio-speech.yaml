@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenAI APIs OpenAI Audio API — Speech
+  description: 'OpenAI APIs OpenAI Audio API — Speech. 1 operations. Lead operation: OpenAI APIs Create speech. Self-contained
+    Naftiko capability covering one Openai Apis business surface.'
+  tags:
+  - Openai Apis
+  - Speech
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    OPENAI_APIS_API_KEY: OPENAI_APIS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openai-audio-speech
+    baseUri: https://api.openai.com/v1
+    description: OpenAI APIs OpenAI Audio API — Speech business capability. Self-contained, no shared references.
+    resources:
+    - name: audio-speech
+      path: /audio/speech
+      operations:
+      - name: createspeech
+        method: POST
+        description: OpenAI APIs Create speech
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.OPENAI_APIS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: openai-audio-speech-rest
+    port: 8080
+    description: REST adapter for OpenAI APIs OpenAI Audio API — Speech. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/audio/speech
+      name: audio-speech
+      description: REST surface for audio-speech.
+      operations:
+      - method: POST
+        name: createspeech
+        description: OpenAI APIs Create speech
+        call: openai-audio-speech.createspeech
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openai-audio-speech-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for OpenAI APIs OpenAI Audio API — Speech. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: openai-apis-create-speech
+      description: OpenAI APIs Create speech
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openai-audio-speech.createspeech
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

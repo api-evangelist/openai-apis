@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenAI APIs OpenAI Completions API — Completions
+  description: 'OpenAI APIs OpenAI Completions API — Completions. 1 operations. Lead operation: OpenAI APIs Create completion.
+    Self-contained Naftiko capability covering one Openai Apis business surface.'
+  tags:
+  - Openai Apis
+  - Completions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    OPENAI_APIS_API_KEY: OPENAI_APIS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openai-completions-completions
+    baseUri: https://api.openai.com/v1
+    description: OpenAI APIs OpenAI Completions API — Completions business capability. Self-contained, no shared references.
+    resources:
+    - name: completions
+      path: /completions
+      operations:
+      - name: createcompletion
+        method: POST
+        description: OpenAI APIs Create completion
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.OPENAI_APIS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: openai-completions-completions-rest
+    port: 8080
+    description: REST adapter for OpenAI APIs OpenAI Completions API — Completions. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/completions
+      name: completions
+      description: REST surface for completions.
+      operations:
+      - method: POST
+        name: createcompletion
+        description: OpenAI APIs Create completion
+        call: openai-completions-completions.createcompletion
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openai-completions-completions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for OpenAI APIs OpenAI Completions API — Completions. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: openai-apis-create-completion
+      description: OpenAI APIs Create completion
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openai-completions-completions.createcompletion
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

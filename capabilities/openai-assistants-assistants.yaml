@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenAI APIs OpenAI Assistants API — Assistants
+  description: 'OpenAI APIs OpenAI Assistants API — Assistants. 5 operations. Lead operation: OpenAI APIs List assistants.
+    Self-contained Naftiko capability covering one Openai Apis business surface.'
+  tags:
+  - Openai Apis
+  - Assistants
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    OPENAI_APIS_API_KEY: OPENAI_APIS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openai-assistants-assistants
+    baseUri: https://api.openai.com/v1
+    description: OpenAI APIs OpenAI Assistants API — Assistants business capability. Self-contained, no shared references.
+    resources:
+    - name: assistants
+      path: /assistants
+      operations:
+      - name: listassistants
+        method: GET
+        description: OpenAI APIs List assistants
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createassistant
+        method: POST
+        description: OpenAI APIs Create assistant
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: assistants-assistant_id
+      path: /assistants/{assistant_id}
+      operations:
+      - name: getassistant
+        method: GET
+        description: OpenAI APIs Retrieve assistant
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: modifyassistant
+        method: POST
+        description: OpenAI APIs Modify assistant
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteassistant
+        method: DELETE
+        description: OpenAI APIs Delete assistant
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.OPENAI_APIS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: openai-assistants-assistants-rest
+    port: 8080
+    description: REST adapter for OpenAI APIs OpenAI Assistants API — Assistants. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/assistants
+      name: assistants
+      description: REST surface for assistants.
+      operations:
+      - method: GET
+        name: listassistants
+        description: OpenAI APIs List assistants
+        call: openai-assistants-assistants.listassistants
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createassistant
+        description: OpenAI APIs Create assistant
+        call: openai-assistants-assistants.createassistant
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/assistants/{assistant-id}
+      name: assistants-assistant-id
+      description: REST surface for assistants-assistant_id.
+      operations:
+      - method: GET
+        name: getassistant
+        description: OpenAI APIs Retrieve assistant
+        call: openai-assistants-assistants.getassistant
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: modifyassistant
+        description: OpenAI APIs Modify assistant
+        call: openai-assistants-assistants.modifyassistant
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteassistant
+        description: OpenAI APIs Delete assistant
+        call: openai-assistants-assistants.deleteassistant
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openai-assistants-assistants-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for OpenAI APIs OpenAI Assistants API — Assistants. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: openai-apis-list-assistants
+      description: OpenAI APIs List assistants
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openai-assistants-assistants.listassistants
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: openai-apis-create-assistant
+      description: OpenAI APIs Create assistant
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openai-assistants-assistants.createassistant
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: openai-apis-retrieve-assistant
+      description: OpenAI APIs Retrieve assistant
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openai-assistants-assistants.getassistant
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: openai-apis-modify-assistant
+      description: OpenAI APIs Modify assistant
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openai-assistants-assistants.modifyassistant
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: openai-apis-delete-assistant
+      description: OpenAI APIs Delete assistant
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: openai-assistants-assistants.deleteassistant
+      outputParameters:
+      - type: object
+        mapping: $.

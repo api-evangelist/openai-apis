@@ -1,0 +1,164 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenAI APIs OpenAI Images API — Images
+  description: 'OpenAI APIs OpenAI Images API — Images. 3 operations. Lead operation: OpenAI APIs Create image edit. Self-contained
+    Naftiko capability covering one Openai Apis business surface.'
+  tags:
+  - Openai Apis
+  - Images
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    OPENAI_APIS_API_KEY: OPENAI_APIS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openai-images-images
+    baseUri: https://api.openai.com/v1
+    description: OpenAI APIs OpenAI Images API — Images business capability. Self-contained, no shared references.
+    resources:
+    - name: images-edits
+      path: /images/edits
+      operations:
+      - name: createimageedit
+        method: POST
+        description: OpenAI APIs Create image edit
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: images-generations
+      path: /images/generations
+      operations:
+      - name: createimage
+        method: POST
+        description: OpenAI APIs Create image
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: images-variations
+      path: /images/variations
+      operations:
+      - name: createimagevariation
+        method: POST
+        description: OpenAI APIs Create image variation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.OPENAI_APIS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: openai-images-images-rest
+    port: 8080
+    description: REST adapter for OpenAI APIs OpenAI Images API — Images. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/images/edits
+      name: images-edits
+      description: REST surface for images-edits.
+      operations:
+      - method: POST
+        name: createimageedit
+        description: OpenAI APIs Create image edit
+        call: openai-images-images.createimageedit
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/images/generations
+      name: images-generations
+      description: REST surface for images-generations.
+      operations:
+      - method: POST
+        name: createimage
+        description: OpenAI APIs Create image
+        call: openai-images-images.createimage
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/images/variations
+      name: images-variations
+      description: REST surface for images-variations.
+      operations:
+      - method: POST
+        name: createimagevariation
+        description: OpenAI APIs Create image variation
+        call: openai-images-images.createimagevariation
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openai-images-images-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for OpenAI APIs OpenAI Images API — Images. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: openai-apis-create-image-edit
+      description: OpenAI APIs Create image edit
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openai-images-images.createimageedit
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: openai-apis-create-image
+      description: OpenAI APIs Create image
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openai-images-images.createimage
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: openai-apis-create-image-variation
+      description: OpenAI APIs Create image variation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openai-images-images.createimagevariation
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

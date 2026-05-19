@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenAI APIs OpenAI Moderations API — Moderations
+  description: 'OpenAI APIs OpenAI Moderations API — Moderations. 1 operations. Lead operation: OpenAI APIs Create moderation.
+    Self-contained Naftiko capability covering one Openai Apis business surface.'
+  tags:
+  - Openai Apis
+  - Moderations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    OPENAI_APIS_API_KEY: OPENAI_APIS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openai-moderations-moderations
+    baseUri: https://api.openai.com/v1
+    description: OpenAI APIs OpenAI Moderations API — Moderations business capability. Self-contained, no shared references.
+    resources:
+    - name: moderations
+      path: /moderations
+      operations:
+      - name: createmoderation
+        method: POST
+        description: OpenAI APIs Create moderation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.OPENAI_APIS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: openai-moderations-moderations-rest
+    port: 8080
+    description: REST adapter for OpenAI APIs OpenAI Moderations API — Moderations. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/moderations
+      name: moderations
+      description: REST surface for moderations.
+      operations:
+      - method: POST
+        name: createmoderation
+        description: OpenAI APIs Create moderation
+        call: openai-moderations-moderations.createmoderation
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openai-moderations-moderations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for OpenAI APIs OpenAI Moderations API — Moderations. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: openai-apis-create-moderation
+      description: OpenAI APIs Create moderation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openai-moderations-moderations.createmoderation
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
