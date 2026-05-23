@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateChatCompletionRequest",
+  "title": "CreateChatCompletionRequest",
+  "type": "object",
+  "required": [
+    "model",
+    "messages"
+  ],
+  "properties": {
+    "model": {
+      "type": "string",
+      "description": "ID of the model to use (e.g., gpt-4o, gpt-4-turbo, gpt-3.5-turbo)",
+      "examples": [
+        "gpt-4o"
+      ]
+    },
+    "messages": {
+      "type": "array",
+      "description": "A list of messages comprising the conversation so far",
+      "items": {
+        "$ref": "#/components/schemas/ChatMessage"
+      }
+    },
+    "temperature": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 2,
+      "default": 1,
+      "description": "Sampling temperature between 0 and 2"
+    },
+    "top_p": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 1,
+      "description": "Nucleus sampling parameter"
+    },
+    "n": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 1,
+      "description": "Number of chat completion choices to generate"
+    },
+    "stream": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to stream partial message deltas"
+    },
+    "stop": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ],
+      "description": "Up to 4 sequences where the API will stop generating"
+    },
+    "max_tokens": {
+      "type": "integer",
+      "description": "Maximum number of tokens to generate in the completion"
+    },
+    "max_completion_tokens": {
+      "type": "integer",
+      "description": "Upper bound for tokens generated in the completion including reasoning tokens"
+    },
+    "presence_penalty": {
+      "type": "number",
+      "minimum": -2,
+      "maximum": 2,
+      "default": 0,
+      "description": "Penalize new tokens based on presence in text so far"
+    },
+    "frequency_penalty": {
+      "type": "number",
+      "minimum": -2,
+      "maximum": 2,
+      "default": 0,
+      "description": "Penalize new tokens based on frequency in text so far"
+    },
+    "logit_bias": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number"
+      },
+      "description": "Modify the likelihood of specified tokens appearing"
+    },
+    "user": {
+      "type": "string",
+      "description": "A unique identifier representing your end-user"
+    },
+    "tools": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Tool"
+      },
+      "description": "A list of tools the model may call"
+    },
+    "tool_choice": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "none",
+            "auto",
+            "required"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "function"
+              ]
+            },
+            "function": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "description": "Controls which tool is called by the model"
+    },
+    "response_format": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "text",
+            "json_object",
+            "json_schema"
+          ]
+        }
+      },
+      "description": "Specifies the format that the model must output"
+    },
+    "seed": {
+      "type": "integer",
+      "description": "Deterministic sampling seed for reproducible outputs"
+    }
+  }
+}

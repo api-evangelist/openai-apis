@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateAssistantRequest",
+  "title": "CreateAssistantRequest",
+  "type": "object",
+  "required": [
+    "model"
+  ],
+  "properties": {
+    "model": {
+      "type": "string",
+      "description": "ID of the model to use"
+    },
+    "name": {
+      "type": "string",
+      "nullable": true,
+      "description": "The name of the assistant (max 256 chars)"
+    },
+    "description": {
+      "type": "string",
+      "nullable": true,
+      "description": "The description of the assistant (max 512 chars)"
+    },
+    "instructions": {
+      "type": "string",
+      "nullable": true,
+      "description": "System instructions for the assistant (max 256000 chars)"
+    },
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "List of tools enabled on the assistant (max 128)"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Key-value metadata (max 16 pairs)"
+    },
+    "temperature": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 2,
+      "description": "Sampling temperature"
+    },
+    "top_p": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Nucleus sampling parameter"
+    },
+    "response_format": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "auto"
+          ]
+        },
+        {
+          "type": "object"
+        }
+      ],
+      "description": "Response format configuration"
+    }
+  }
+}

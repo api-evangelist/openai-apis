@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateImageVariationRequest",
+  "title": "CreateImageVariationRequest",
+  "type": "object",
+  "required": [
+    "image"
+  ],
+  "properties": {
+    "image": {
+      "type": "string",
+      "format": "binary",
+      "description": "The image to use as the basis for variation(s)"
+    },
+    "model": {
+      "type": "string",
+      "default": "dall-e-2",
+      "description": "The model to use for creating variations"
+    },
+    "n": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10,
+      "default": 1,
+      "description": "The number of images to generate"
+    },
+    "response_format": {
+      "type": "string",
+      "enum": [
+        "url",
+        "b64_json"
+      ],
+      "default": "url",
+      "description": "The format in which the generated images are returned"
+    },
+    "size": {
+      "type": "string",
+      "enum": [
+        "256x256",
+        "512x512",
+        "1024x1024"
+      ],
+      "default": "1024x1024",
+      "description": "The size of the generated images"
+    },
+    "user": {
+      "type": "string",
+      "description": "A unique identifier representing your end-user"
+    }
+  }
+}

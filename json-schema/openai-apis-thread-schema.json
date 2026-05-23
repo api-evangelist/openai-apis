@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Thread",
+  "title": "Thread",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The identifier of the thread"
+    },
+    "object": {
+      "type": "string",
+      "enum": [
+        "thread"
+      ]
+    },
+    "created_at": {
+      "type": "integer",
+      "description": "Unix timestamp of creation"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Key-value metadata attached to the thread"
+    }
+  }
+}

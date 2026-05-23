@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateCompletionRequest",
+  "title": "CreateCompletionRequest",
+  "type": "object",
+  "required": [
+    "model",
+    "prompt"
+  ],
+  "properties": {
+    "model": {
+      "type": "string",
+      "description": "ID of the model to use (e.g., gpt-3.5-turbo-instruct)",
+      "examples": [
+        "gpt-3.5-turbo-instruct"
+      ]
+    },
+    "prompt": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ],
+      "description": "The prompt(s) to generate completions for"
+    },
+    "suffix": {
+      "type": "string",
+      "description": "The suffix that comes after a completion of inserted text"
+    },
+    "max_tokens": {
+      "type": "integer",
+      "default": 16,
+      "description": "Maximum number of tokens to generate in the completion"
+    },
+    "temperature": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 2,
+      "default": 1,
+      "description": "Sampling temperature between 0 and 2"
+    },
+    "top_p": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 1,
+      "description": "Nucleus sampling parameter"
+    },
+    "n": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 1,
+      "description": "Number of completions to generate for each prompt"
+    },
+    "stream": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to stream back partial progress"
+    },
+    "logprobs": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 5,
+      "description": "Include log probabilities on the most likely output tokens"
+    },
+    "echo": {
+      "type": "boolean",
+      "default": false,
+      "description": "Echo back the prompt in addition to the completion"
+    },
+    "stop": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ],
+      "description": "Up to 4 sequences where the API will stop generating"
+    },
+    "presence_penalty": {
+      "type": "number",
+      "minimum": -2,
+      "maximum": 2,
+      "default": 0,
+      "description": "Penalize new tokens based on presence in text so far"
+    },
+    "frequency_penalty": {
+      "type": "number",
+      "minimum": -2,
+      "maximum": 2,
+      "default": 0,
+      "description": "Penalize new tokens based on frequency in text so far"
+    },
+    "best_of": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 1,
+      "description": "Generates best_of completions and returns the best"
+    },
+    "logit_bias": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number"
+      },
+      "description": "Modify the likelihood of specified tokens appearing"
+    },
+    "user": {
+      "type": "string",
+      "description": "A unique identifier representing your end-user"
+    }
+  }
+}

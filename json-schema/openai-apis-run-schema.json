@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Run",
+  "title": "Run",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The identifier of the run"
+    },
+    "object": {
+      "type": "string",
+      "enum": [
+        "thread.run"
+      ]
+    },
+    "created_at": {
+      "type": "integer",
+      "description": "Unix timestamp of creation"
+    },
+    "thread_id": {
+      "type": "string",
+      "description": "The thread this run belongs to"
+    },
+    "assistant_id": {
+      "type": "string",
+      "description": "The assistant used for this run"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "queued",
+        "in_progress",
+        "requires_action",
+        "cancelling",
+        "cancelled",
+        "failed",
+        "completed",
+        "incomplete",
+        "expired"
+      ],
+      "description": "The status of the run"
+    },
+    "required_action": {
+      "type": "object",
+      "nullable": true,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "submit_tool_outputs"
+          ]
+        },
+        "submit_tool_outputs": {
+          "type": "object",
+          "properties": {
+            "tool_calls": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      },
+      "description": "Details on required action if status is requires_action"
+    },
+    "model": {
+      "type": "string",
+      "description": "The model used for this run"
+    },
+    "instructions": {
+      "type": "string",
+      "nullable": true,
+      "description": "The instructions used for this run"
+    },
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "The tools used for this run"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Key-value metadata attached to the run"
+    },
+    "usage": {
+      "type": "object",
+      "nullable": true,
+      "properties": {
+        "prompt_tokens": {
+          "type": "integer"
+        },
+        "completion_tokens": {
+          "type": "integer"
+        },
+        "total_tokens": {
+          "type": "integer"
+        }
+      },
+      "description": "Token usage statistics for the run"
+    },
+    "started_at": {
+      "type": "integer",
+      "nullable": true,
+      "description": "Unix timestamp of when the run started"
+    },
+    "completed_at": {
+      "type": "integer",
+      "nullable": true,
+      "description": "Unix timestamp of when the run completed"
+    },
+    "cancelled_at": {
+      "type": "integer",
+      "nullable": true,
+      "description": "Unix timestamp of when the run was cancelled"
+    },
+    "failed_at": {
+      "type": "integer",
+      "nullable": true,
+      "description": "Unix timestamp of when the run failed"
+    },
+    "expires_at": {
+      "type": "integer",
+      "nullable": true,
+      "description": "Unix timestamp of when the run will expire"
+    }
+  }
+}

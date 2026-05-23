@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateEmbeddingRequest",
+  "title": "CreateEmbeddingRequest",
+  "type": "object",
+  "required": [
+    "model",
+    "input"
+  ],
+  "properties": {
+    "input": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          }
+        }
+      ],
+      "description": "Input text to embed, as a string or array of strings/tokens"
+    },
+    "model": {
+      "type": "string",
+      "description": "ID of the model to use (e.g., text-embedding-ada-002, text-embedding-3-small, text-embedding-3-large)",
+      "examples": [
+        "text-embedding-3-small"
+      ]
+    },
+    "encoding_format": {
+      "type": "string",
+      "enum": [
+        "float",
+        "base64"
+      ],
+      "default": "float",
+      "description": "The format to return the embeddings in"
+    },
+    "dimensions": {
+      "type": "integer",
+      "description": "The number of dimensions the resulting output embeddings should have. Supported in text-embedding-3 and later models."
+    },
+    "user": {
+      "type": "string",
+      "description": "A unique identifier representing your end-user"
+    }
+  }
+}

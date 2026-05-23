@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Assistant",
+  "title": "Assistant",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The identifier of the assistant"
+    },
+    "object": {
+      "type": "string",
+      "enum": [
+        "assistant"
+      ]
+    },
+    "created_at": {
+      "type": "integer",
+      "description": "Unix timestamp of creation"
+    },
+    "name": {
+      "type": "string",
+      "nullable": true,
+      "description": "The name of the assistant"
+    },
+    "description": {
+      "type": "string",
+      "nullable": true,
+      "description": "The description of the assistant"
+    },
+    "model": {
+      "type": "string",
+      "description": "ID of the model used by the assistant"
+    },
+    "instructions": {
+      "type": "string",
+      "nullable": true,
+      "description": "The system instructions for the assistant"
+    },
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "code_interpreter",
+              "file_search",
+              "function"
+            ]
+          }
+        }
+      },
+      "description": "List of tools enabled on the assistant"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Key-value metadata attached to the assistant"
+    },
+    "temperature": {
+      "type": "number",
+      "description": "Sampling temperature for the assistant"
+    },
+    "top_p": {
+      "type": "number",
+      "description": "Nucleus sampling parameter"
+    },
+    "response_format": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "auto"
+          ]
+        },
+        {
+          "type": "object"
+        }
+      ],
+      "description": "Response format configuration"
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateImageRequest",
+  "title": "CreateImageRequest",
+  "type": "object",
+  "required": [
+    "prompt"
+  ],
+  "properties": {
+    "prompt": {
+      "type": "string",
+      "maxLength": 4000,
+      "description": "A text description of the desired image(s)"
+    },
+    "model": {
+      "type": "string",
+      "default": "dall-e-2",
+      "description": "The model to use for image generation (dall-e-2 or dall-e-3)",
+      "examples": [
+        "dall-e-3"
+      ]
+    },
+    "n": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10,
+      "default": 1,
+      "description": "The number of images to generate"
+    },
+    "quality": {
+      "type": "string",
+      "enum": [
+        "standard",
+        "hd"
+      ],
+      "default": "standard",
+      "description": "The quality of the image (dall-e-3 only)"
+    },
+    "response_format": {
+      "type": "string",
+      "enum": [
+        "url",
+        "b64_json"
+      ],
+      "default": "url",
+      "description": "The format in which the generated images are returned"
+    },
+    "size": {
+      "type": "string",
+      "enum": [
+        "256x256",
+        "512x512",
+        "1024x1024",
+        "1792x1024",
+        "1024x1792"
+      ],
+      "default": "1024x1024",
+      "description": "The size of the generated images"
+    },
+    "style": {
+      "type": "string",
+      "enum": [
+        "vivid",
+        "natural"
+      ],
+      "default": "vivid",
+      "description": "The style of the generated images (dall-e-3 only)"
+    },
+    "user": {
+      "type": "string",
+      "description": "A unique identifier representing your end-user"
+    }
+  }
+}

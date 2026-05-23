@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateImageEditRequest",
+  "title": "CreateImageEditRequest",
+  "type": "object",
+  "required": [
+    "image",
+    "prompt"
+  ],
+  "properties": {
+    "image": {
+      "type": "string",
+      "format": "binary",
+      "description": "The image to edit (PNG, less than 4MB, square)"
+    },
+    "mask": {
+      "type": "string",
+      "format": "binary",
+      "description": "Additional image whose transparent areas indicate where to edit"
+    },
+    "prompt": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "A text description of the desired edits"
+    },
+    "model": {
+      "type": "string",
+      "default": "dall-e-2",
+      "description": "The model to use for image editing"
+    },
+    "n": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10,
+      "default": 1,
+      "description": "The number of images to generate"
+    },
+    "size": {
+      "type": "string",
+      "enum": [
+        "256x256",
+        "512x512",
+        "1024x1024"
+      ],
+      "default": "1024x1024",
+      "description": "The size of the generated images"
+    },
+    "response_format": {
+      "type": "string",
+      "enum": [
+        "url",
+        "b64_json"
+      ],
+      "default": "url",
+      "description": "The format in which the generated images are returned"
+    },
+    "user": {
+      "type": "string",
+      "description": "A unique identifier representing your end-user"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ModerationResponse",
+  "title": "ModerationResponse",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier for the moderation request"
+    },
+    "model": {
+      "type": "string",
+      "description": "The model used for moderation"
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ModerationResult"
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Message",
+  "title": "Message",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The identifier of the message"
+    },
+    "object": {
+      "type": "string",
+      "enum": [
+        "thread.message"
+      ]
+    },
+    "created_at": {
+      "type": "integer",
+      "description": "Unix timestamp of creation"
+    },
+    "thread_id": {
+      "type": "string",
+      "description": "The thread this message belongs to"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "user",
+        "assistant"
+      ],
+      "description": "The role of the entity that produced the message"
+    },
+    "content": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "text",
+              "image_file",
+              "image_url"
+            ]
+          },
+          "text": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string"
+              },
+              "annotations": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "description": "The content of the message"
+    },
+    "assistant_id": {
+      "type": "string",
+      "nullable": true,
+      "description": "The assistant that authored this message"
+    },
+    "run_id": {
+      "type": "string",
+      "nullable": true,
+      "description": "The run associated with this message"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Key-value metadata attached to the message"
+    }
+  }
+}

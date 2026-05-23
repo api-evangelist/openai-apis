@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateThreadRequest",
+  "title": "CreateThreadRequest",
+  "type": "object",
+  "properties": {
+    "messages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CreateMessageRequest"
+      },
+      "description": "Initial messages to start the thread with"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Key-value metadata for the thread"
+    }
+  }
+}

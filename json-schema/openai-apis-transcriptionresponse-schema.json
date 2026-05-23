@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TranscriptionResponse",
+  "title": "TranscriptionResponse",
+  "type": "object",
+  "properties": {
+    "text": {
+      "type": "string",
+      "description": "The transcribed text"
+    },
+    "task": {
+      "type": "string",
+      "description": "The task performed (transcribe)"
+    },
+    "language": {
+      "type": "string",
+      "description": "The detected or specified language"
+    },
+    "duration": {
+      "type": "number",
+      "description": "The duration of the audio in seconds"
+    },
+    "words": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "word": {
+            "type": "string"
+          },
+          "start": {
+            "type": "number"
+          },
+          "end": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Word-level timestamps (when requested)"
+    },
+    "segments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "start": {
+            "type": "number"
+          },
+          "end": {
+            "type": "number"
+          },
+          "text": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Segment-level timestamps (when requested)"
+    }
+  }
+}

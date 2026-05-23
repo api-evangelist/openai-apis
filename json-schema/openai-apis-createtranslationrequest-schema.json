@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateTranslationRequest",
+  "title": "CreateTranslationRequest",
+  "type": "object",
+  "required": [
+    "file",
+    "model"
+  ],
+  "properties": {
+    "file": {
+      "type": "string",
+      "format": "binary",
+      "description": "The audio file to translate"
+    },
+    "model": {
+      "type": "string",
+      "description": "The model to use for translation (whisper-1)",
+      "examples": [
+        "whisper-1"
+      ]
+    },
+    "prompt": {
+      "type": "string",
+      "description": "Optional text to guide the model's style"
+    },
+    "response_format": {
+      "type": "string",
+      "enum": [
+        "json",
+        "text",
+        "srt",
+        "verbose_json",
+        "vtt"
+      ],
+      "default": "json",
+      "description": "The format of the translation output"
+    },
+    "temperature": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 0,
+      "description": "Sampling temperature between 0 and 1"
+    }
+  }
+}

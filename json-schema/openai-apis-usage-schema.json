@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Usage",
+  "title": "Usage",
+  "type": "object",
+  "properties": {
+    "prompt_tokens": {
+      "type": "integer",
+      "description": "Number of tokens in the prompt"
+    },
+    "completion_tokens": {
+      "type": "integer",
+      "description": "Number of tokens in the generated completion"
+    },
+    "total_tokens": {
+      "type": "integer",
+      "description": "Total number of tokens used"
+    }
+  }
+}

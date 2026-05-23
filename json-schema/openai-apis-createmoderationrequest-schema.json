@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateModerationRequest",
+  "title": "CreateModerationRequest",
+  "type": "object",
+  "required": [
+    "input"
+  ],
+  "properties": {
+    "input": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ],
+      "description": "The input text to classify for moderation"
+    },
+    "model": {
+      "type": "string",
+      "description": "The content moderation model to use (text-moderation-latest, text-moderation-stable, omni-moderation-latest)",
+      "default": "omni-moderation-latest",
+      "examples": [
+        "omni-moderation-latest"
+      ]
+    }
+  }
+}

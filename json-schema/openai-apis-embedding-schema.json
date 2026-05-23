@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Embedding",
+  "title": "Embedding",
+  "type": "object",
+  "properties": {
+    "object": {
+      "type": "string",
+      "enum": [
+        "embedding"
+      ]
+    },
+    "embedding": {
+      "oneOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "description": "The embedding vector (float array or base64)"
+    },
+    "index": {
+      "type": "integer",
+      "description": "The index of the embedding in the list of embeddings"
+    }
+  }
+}

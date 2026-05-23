@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ModerationResult",
+  "title": "ModerationResult",
+  "type": "object",
+  "properties": {
+    "flagged": {
+      "type": "boolean",
+      "description": "Whether the content was flagged as potentially harmful"
+    },
+    "categories": {
+      "type": "object",
+      "properties": {
+        "hate": {
+          "type": "boolean",
+          "description": "Content that expresses hate toward a group"
+        },
+        "hate/threatening": {
+          "type": "boolean",
+          "description": "Hateful content that includes violence or threats"
+        },
+        "harassment": {
+          "type": "boolean",
+          "description": "Content that harasses a target"
+        },
+        "harassment/threatening": {
+          "type": "boolean",
+          "description": "Harassment content that includes violence or threats"
+        },
+        "self-harm": {
+          "type": "boolean",
+          "description": "Content that promotes or depicts self-harm"
+        },
+        "self-harm/intent": {
+          "type": "boolean",
+          "description": "Content where the speaker expresses intent to self-harm"
+        },
+        "self-harm/instructions": {
+          "type": "boolean",
+          "description": "Content that provides instructions for self-harm"
+        },
+        "sexual": {
+          "type": "boolean",
+          "description": "Sexual content"
+        },
+        "sexual/minors": {
+          "type": "boolean",
+          "description": "Sexual content involving minors"
+        },
+        "violence": {
+          "type": "boolean",
+          "description": "Content depicting violence"
+        },
+        "violence/graphic": {
+          "type": "boolean",
+          "description": "Graphic violence content"
+        }
+      }
+    },
+    "category_scores": {
+      "type": "object",
+      "properties": {
+        "hate": {
+          "type": "number",
+          "description": "Score for hate category"
+        },
+        "hate/threatening": {
+          "type": "number",
+          "description": "Score for hate/threatening category"
+        },
+        "harassment": {
+          "type": "number",
+          "description": "Score for harassment category"
+        },
+        "harassment/threatening": {
+          "type": "number",
+          "description": "Score for harassment/threatening category"
+        },
+        "self-harm": {
+          "type": "number",
+          "description": "Score for self-harm category"
+        },
+        "self-harm/intent": {
+          "type": "number",
+          "description": "Score for self-harm/intent category"
+        },
+        "self-harm/instructions": {
+          "type": "number",
+          "description": "Score for self-harm/instructions category"
+        },
+        "sexual": {
+          "type": "number",
+          "description": "Score for sexual category"
+        },
+        "sexual/minors": {
+          "type": "number",
+          "description": "Score for sexual/minors category"
+        },
+        "violence": {
+          "type": "number",
+          "description": "Score for violence category"
+        },
+        "violence/graphic": {
+          "type": "number",
+          "description": "Score for violence/graphic category"
+        }
+      }
+    }
+  }
+}

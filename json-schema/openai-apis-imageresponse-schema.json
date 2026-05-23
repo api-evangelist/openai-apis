@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ImageResponse",
+  "title": "ImageResponse",
+  "type": "object",
+  "properties": {
+    "created": {
+      "type": "integer",
+      "description": "Unix timestamp of when the image was created"
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "The URL of the generated image (when response_format is url)"
+          },
+          "b64_json": {
+            "type": "string",
+            "description": "Base64-encoded JSON of the image (when response_format is b64_json)"
+          },
+          "revised_prompt": {
+            "type": "string",
+            "description": "The revised prompt used for generation (dall-e-3 only)"
+          }
+        }
+      }
+    }
+  }
+}

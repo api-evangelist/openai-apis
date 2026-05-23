@@ -1,0 +1,247 @@
+{
+  "provider": "OpenAI APIs",
+  "providerId": "openai-apis",
+  "kind": "json-structure",
+  "description": "Structural overview of the OpenAI APIs API surface; extracted from openapi/.",
+  "schemaCount": 11,
+  "operationCount": 18,
+  "schemas": [
+    {
+      "name": "Assistant",
+      "type": "object",
+      "propertyCount": 12,
+      "required": []
+    },
+    {
+      "name": "CreateAssistantRequest",
+      "type": "object",
+      "propertyCount": 9,
+      "required": [
+        "model"
+      ]
+    },
+    {
+      "name": "ModifyAssistantRequest",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "Thread",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "CreateThreadRequest",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Message",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "CreateMessageRequest",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "role",
+        "content"
+      ]
+    },
+    {
+      "name": "Run",
+      "type": "object",
+      "propertyCount": 17,
+      "required": []
+    },
+    {
+      "name": "CreateRunRequest",
+      "type": "object",
+      "propertyCount": 7,
+      "required": [
+        "assistant_id"
+      ]
+    },
+    {
+      "name": "ListResponse",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "DeleteResponse",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/assistants",
+      "operationId": "listAssistants",
+      "summary": "OpenAI APIs List assistants",
+      "tags": [
+        "Assistants"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/assistants",
+      "operationId": "createAssistant",
+      "summary": "OpenAI APIs Create assistant",
+      "tags": [
+        "Assistants"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/assistants/{assistant_id}",
+      "operationId": "getAssistant",
+      "summary": "OpenAI APIs Retrieve assistant",
+      "tags": [
+        "Assistants"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/assistants/{assistant_id}",
+      "operationId": "modifyAssistant",
+      "summary": "OpenAI APIs Modify assistant",
+      "tags": [
+        "Assistants"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/assistants/{assistant_id}",
+      "operationId": "deleteAssistant",
+      "summary": "OpenAI APIs Delete assistant",
+      "tags": [
+        "Assistants"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/threads",
+      "operationId": "createThread",
+      "summary": "OpenAI APIs Create thread",
+      "tags": [
+        "Threads"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/threads/{thread_id}",
+      "operationId": "getThread",
+      "summary": "OpenAI APIs Retrieve thread",
+      "tags": [
+        "Threads"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/threads/{thread_id}",
+      "operationId": "modifyThread",
+      "summary": "OpenAI APIs Modify thread",
+      "tags": [
+        "Threads"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/threads/{thread_id}",
+      "operationId": "deleteThread",
+      "summary": "OpenAI APIs Delete thread",
+      "tags": [
+        "Threads"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/threads/{thread_id}/messages",
+      "operationId": "listMessages",
+      "summary": "OpenAI APIs List messages",
+      "tags": [
+        "Messages"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/threads/{thread_id}/messages",
+      "operationId": "createMessage",
+      "summary": "OpenAI APIs Create message",
+      "tags": [
+        "Messages"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/threads/{thread_id}/messages/{message_id}",
+      "operationId": "getMessage",
+      "summary": "OpenAI APIs Retrieve message",
+      "tags": [
+        "Messages"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/threads/{thread_id}/runs",
+      "operationId": "listRuns",
+      "summary": "OpenAI APIs List runs",
+      "tags": [
+        "Runs"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/threads/{thread_id}/runs",
+      "operationId": "createRun",
+      "summary": "OpenAI APIs Create run",
+      "tags": [
+        "Runs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/threads/{thread_id}/runs/{run_id}",
+      "operationId": "getRun",
+      "summary": "OpenAI APIs Retrieve run",
+      "tags": [
+        "Runs"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/threads/{thread_id}/runs/{run_id}/cancel",
+      "operationId": "cancelRun",
+      "summary": "OpenAI APIs Cancel run",
+      "tags": [
+        "Runs"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/threads/{thread_id}/runs/{run_id}/submit_tool_outputs",
+      "operationId": "submitToolOutputs",
+      "summary": "OpenAI APIs Submit tool outputs",
+      "tags": [
+        "Runs"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/threads/runs",
+      "operationId": "createThreadAndRun",
+      "summary": "OpenAI APIs Create thread and run",
+      "tags": [
+        "Runs"
+      ]
+    }
+  ]
+}

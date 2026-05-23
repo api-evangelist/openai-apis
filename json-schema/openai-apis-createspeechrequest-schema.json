@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateSpeechRequest",
+  "title": "CreateSpeechRequest",
+  "type": "object",
+  "required": [
+    "model",
+    "input",
+    "voice"
+  ],
+  "properties": {
+    "model": {
+      "type": "string",
+      "description": "The TTS model to use (tts-1 or tts-1-hd)",
+      "examples": [
+        "tts-1"
+      ]
+    },
+    "input": {
+      "type": "string",
+      "maxLength": 4096,
+      "description": "The text to generate audio for"
+    },
+    "voice": {
+      "type": "string",
+      "enum": [
+        "alloy",
+        "echo",
+        "fable",
+        "onyx",
+        "nova",
+        "shimmer"
+      ],
+      "description": "The voice to use when generating the audio"
+    },
+    "response_format": {
+      "type": "string",
+      "enum": [
+        "mp3",
+        "opus",
+        "aac",
+        "flac",
+        "wav",
+        "pcm"
+      ],
+      "default": "mp3",
+      "description": "The format of the audio output"
+    },
+    "speed": {
+      "type": "number",
+      "minimum": 0.25,
+      "maximum": 4.0,
+      "default": 1.0,
+      "description": "The speed of the generated audio"
+    }
+  }
+}

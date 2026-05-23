@@ -1,0 +1,13 @@
+name: OpenAI APIs Domain Vocabulary
+provider: OpenAI APIs
+providerId: openai-apis
+description: Tag-derived vocabulary for the OpenAI APIs API surface; sourced from openapi/ tags.
+terms:
+- term: Assistants
+  description: Manage AI assistants
+- term: Messages
+  description: Manage messages within threads
+- term: Runs
+  description: Execute assistants on threads
+- term: Threads
+  description: Manage conversation threads

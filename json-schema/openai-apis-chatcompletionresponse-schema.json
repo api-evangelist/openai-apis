@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ChatCompletionResponse",
+  "title": "ChatCompletionResponse",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "A unique identifier for the chat completion"
+    },
+    "object": {
+      "type": "string",
+      "enum": [
+        "chat.completion"
+      ]
+    },
+    "created": {
+      "type": "integer",
+      "description": "Unix timestamp of when the completion was created"
+    },
+    "model": {
+      "type": "string",
+      "description": "The model used for the completion"
+    },
+    "choices": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "integer"
+          },
+          "message": {
+            "$ref": "#/components/schemas/ChatMessage"
+          },
+          "finish_reason": {
+            "type": "string",
+            "enum": [
+              "stop",
+              "length",
+              "tool_calls",
+              "content_filter"
+            ]
+          }
+        }
+      }
+    },
+    "usage": {
+      "$ref": "#/components/schemas/Usage"
+    },
+    "system_fingerprint": {
+      "type": "string",
+      "description": "Fingerprint of the backend configuration"
+    }
+  }
+}
