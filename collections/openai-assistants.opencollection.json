@@ -1,0 +1,596 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenAI APIs OpenAI Assistants API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Assistants",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "OpenAI APIs List assistants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openai.com/v1/assistants",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of objects to return (1-100, default 20)"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order by created_at timestamp"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "A cursor for pagination (object ID to start after)"
+              },
+              {
+                "name": "before",
+                "value": "",
+                "type": "query",
+                "description": "A cursor for pagination (object ID to end before)"
+              }
+            ]
+          },
+          "docs": "Returns a list of assistants."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Create assistant",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openai.com/v1/assistants",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an assistant with a model and instructions."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Retrieve assistant",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openai.com/v1/assistants/:assistant_id",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "assistant_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the assistant"
+              }
+            ]
+          },
+          "docs": "Retrieves an assistant by ID."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Modify assistant",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openai.com/v1/assistants/:assistant_id",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "assistant_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the assistant"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modifies an assistant."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Delete assistant",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.openai.com/v1/assistants/:assistant_id",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "assistant_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the assistant"
+              }
+            ]
+          },
+          "docs": "Delete an assistant by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Threads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "OpenAI APIs Create thread",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openai.com/v1/threads",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a thread."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Retrieve thread",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openai.com/v1/threads/:thread_id",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "thread_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the thread"
+              }
+            ]
+          },
+          "docs": "Retrieves a thread by ID."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Modify thread",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openai.com/v1/threads/:thread_id",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "thread_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the thread"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modifies a thread."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Delete thread",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.openai.com/v1/threads/:thread_id",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "thread_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the thread"
+              }
+            ]
+          },
+          "docs": "Delete a thread by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Messages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "OpenAI APIs List messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openai.com/v1/threads/:thread_id/messages",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "thread_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the thread"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of objects to return (1-100, default 20)"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order by created_at timestamp"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "A cursor for pagination (object ID to start after)"
+              },
+              {
+                "name": "before",
+                "value": "",
+                "type": "query",
+                "description": "A cursor for pagination (object ID to end before)"
+              }
+            ]
+          },
+          "docs": "Returns a list of messages for a given thread."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Create message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openai.com/v1/threads/:thread_id/messages",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "thread_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the thread"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a message within a thread."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Retrieve message",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openai.com/v1/threads/:thread_id/messages/:message_id",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "thread_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the thread"
+              },
+              {
+                "name": "message_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the message"
+              }
+            ]
+          },
+          "docs": "Retrieve a message by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Runs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "OpenAI APIs List runs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openai.com/v1/threads/:thread_id/runs",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "thread_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the thread"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of objects to return (1-100, default 20)"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order by created_at timestamp"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "A cursor for pagination (object ID to start after)"
+              },
+              {
+                "name": "before",
+                "value": "",
+                "type": "query",
+                "description": "A cursor for pagination (object ID to end before)"
+              }
+            ]
+          },
+          "docs": "Returns a list of runs belonging to a thread."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Create run",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openai.com/v1/threads/:thread_id/runs",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "thread_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the thread"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a run on a thread."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Retrieve run",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openai.com/v1/threads/:thread_id/runs/:run_id",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "thread_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the thread"
+              },
+              {
+                "name": "run_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the run"
+              }
+            ]
+          },
+          "docs": "Retrieves a run by ID."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Cancel run",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openai.com/v1/threads/:thread_id/runs/:run_id/cancel",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "thread_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the thread"
+              },
+              {
+                "name": "run_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the run"
+              }
+            ]
+          },
+          "docs": "Cancels an in-progress run."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Submit tool outputs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openai.com/v1/threads/:thread_id/runs/:run_id/submit_tool_outputs",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "thread_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the thread"
+              },
+              {
+                "name": "run_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the run"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit outputs from tool calls when a run has the status requires_action with required_action type submit_tool_outputs."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Create thread and run",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openai.com/v1/threads/runs",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a thread and run it in one request."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
