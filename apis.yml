@@ -110,6 +110,14 @@ apis:
       - type: OpenAPI
         url: openapi/openai-assistants-openapi.yml
 common:
+  - type: TrustCenter
+    url: security/openai-apis-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/openai-apis-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/openai-apis-domain-security.yml
+  - type: Authentication
+    url: authentication/openai-apis-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/openai
   - type: Authentication
@@ -122,6 +130,8 @@ common:
     url: https://openai.com/policies/privacy-policy
   - type: StatusPage
     url: https://status.openai.com/
+  - url: https://openai.com/news/rss.xml
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

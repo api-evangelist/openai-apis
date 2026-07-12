@@ -1,0 +1,22 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/openai-assistants-openapi.yml, openapi/openai-audio-openapi.yml, openapi/openai-chat-completions-openapi.yml,
+  openapi/openai-completions-openapi.yml, openapi/openai-embeddings-openapi.yml, openapi/openai-images-openapi.yml,
+  openapi/openai-moderations-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: API Key
+  description: OpenAI API key passed as a Bearer token
+  sources:
+  - openapi/openai-assistants-openapi.yml
+  - openapi/openai-audio-openapi.yml
+  - openapi/openai-chat-completions-openapi.yml
+  - openapi/openai-completions-openapi.yml
+  - openapi/openai-embeddings-openapi.yml
+  - openapi/openai-images-openapi.yml
+  - openapi/openai-moderations-openapi.yml
