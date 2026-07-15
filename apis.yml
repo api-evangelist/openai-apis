@@ -110,6 +110,8 @@ apis:
       - type: OpenAPI
         url: openapi/openai-assistants-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/openai-apis-agentic-access.yml
   - type: TrustCenter
     url: security/openai-apis-trust-center.yml
   - type: VulnerabilityDisclosure
