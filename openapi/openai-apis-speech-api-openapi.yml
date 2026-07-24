@@ -1,0 +1,120 @@
+openapi: 3.1.0
+info:
+  title: OpenAI APIs OpenAI Assistants Speech API
+  description: API for building AI assistants with custom instructions, knowledge retrieval, code execution, and function calling capabilities. Supports managing assistants, threads, messages, and runs.
+  version: '2.0'
+  contact:
+    name: OpenAI Support
+    email: support@openai.com
+    url: https://help.openai.com
+  termsOfService: https://openai.com/policies/terms-of-use
+servers:
+- url: https://api.openai.com/v1
+  description: OpenAI Production API
+security:
+- bearerAuth: []
+tags:
+- name: Speech
+  description: Text-to-speech operations
+paths:
+  /audio/speech:
+    post:
+      operationId: createSpeech
+      summary: OpenAI APIs Create speech
+      description: Generates audio from the input text using the specified voice and model.
+      tags:
+      - Speech
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSpeechRequest'
+      responses:
+        '200':
+          description: Audio file containing the generated speech
+          content:
+            audio/mpeg:
+              schema:
+                type: string
+                format: binary
+            audio/opus:
+              schema:
+                type: string
+                format: binary
+            audio/aac:
+              schema:
+                type: string
+                format: binary
+            audio/flac:
+              schema:
+                type: string
+                format: binary
+            audio/wav:
+              schema:
+                type: string
+                format: binary
+            audio/pcm:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized - invalid or missing API key
+        '429':
+          description: Rate limit exceeded
+components:
+  schemas:
+    CreateSpeechRequest:
+      type: object
+      required:
+      - model
+      - input
+      - voice
+      properties:
+        model:
+          type: string
+          description: The TTS model to use (tts-1 or tts-1-hd)
+          examples:
+          - tts-1
+        input:
+          type: string
+          maxLength: 4096
+          description: The text to generate audio for
+        voice:
+          type: string
+          enum:
+          - alloy
+          - echo
+          - fable
+          - onyx
+          - nova
+          - shimmer
+          description: The voice to use when generating the audio
+        response_format:
+          type: string
+          enum:
+          - mp3
+          - opus
+          - aac
+          - flac
+          - wav
+          - pcm
+          default: mp3
+          description: The format of the audio output
+        speed:
+          type: number
+          minimum: 0.25
+          maximum: 4.0
+          default: 1.0
+          description: The speed of the generated audio
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+      description: OpenAI API key passed as a Bearer token
+externalDocs:
+  description: OpenAI Assistants API Documentation
+  url: https://platform.openai.com/docs/api-reference/assistants

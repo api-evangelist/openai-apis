@@ -1,0 +1,341 @@
+openapi: 3.1.0
+info:
+  title: OpenAI APIs OpenAI Assistants API
+  description: API for building AI assistants with custom instructions, knowledge retrieval, code execution, and function calling capabilities. Supports managing assistants, threads, messages, and runs.
+  version: '2.0'
+  contact:
+    name: OpenAI Support
+    email: support@openai.com
+    url: https://help.openai.com
+  termsOfService: https://openai.com/policies/terms-of-use
+servers:
+- url: https://api.openai.com/v1
+  description: OpenAI Production API
+security:
+- bearerAuth: []
+tags:
+- name: Assistants
+  description: Manage AI assistants
+paths:
+  /assistants:
+    get:
+      operationId: listAssistants
+      summary: OpenAI APIs List assistants
+      description: Returns a list of assistants.
+      tags:
+      - Assistants
+      parameters:
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/order'
+      - $ref: '#/components/parameters/after'
+      - $ref: '#/components/parameters/before'
+      - $ref: '#/components/parameters/OpenAIBeta'
+      responses:
+        '200':
+          description: List of assistants
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListResponse'
+        '401':
+          description: Unauthorized
+    post:
+      operationId: createAssistant
+      summary: OpenAI APIs Create assistant
+      description: Create an assistant with a model and instructions.
+      tags:
+      - Assistants
+      parameters:
+      - $ref: '#/components/parameters/OpenAIBeta'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAssistantRequest'
+      responses:
+        '200':
+          description: Assistant created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Assistant'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+  /assistants/{assistant_id}:
+    get:
+      operationId: getAssistant
+      summary: OpenAI APIs Retrieve assistant
+      description: Retrieves an assistant by ID.
+      tags:
+      - Assistants
+      parameters:
+      - $ref: '#/components/parameters/assistantId'
+      - $ref: '#/components/parameters/OpenAIBeta'
+      responses:
+        '200':
+          description: Assistant details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Assistant'
+        '404':
+          description: Assistant not found
+    post:
+      operationId: modifyAssistant
+      summary: OpenAI APIs Modify assistant
+      description: Modifies an assistant.
+      tags:
+      - Assistants
+      parameters:
+      - $ref: '#/components/parameters/assistantId'
+      - $ref: '#/components/parameters/OpenAIBeta'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModifyAssistantRequest'
+      responses:
+        '200':
+          description: Assistant modified
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Assistant'
+        '400':
+          description: Invalid request
+    delete:
+      operationId: deleteAssistant
+      summary: OpenAI APIs Delete assistant
+      description: Delete an assistant by ID.
+      tags:
+      - Assistants
+      parameters:
+      - $ref: '#/components/parameters/assistantId'
+      - $ref: '#/components/parameters/OpenAIBeta'
+      responses:
+        '200':
+          description: Assistant deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteResponse'
+        '404':
+          description: Assistant not found
+components:
+  schemas:
+    DeleteResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        deleted:
+          type: boolean
+    ModifyAssistantRequest:
+      type: object
+      properties:
+        model:
+          type: string
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        instructions:
+          type: string
+          nullable: true
+        tools:
+          type: array
+          items:
+            type: object
+        metadata:
+          type: object
+        temperature:
+          type: number
+        top_p:
+          type: number
+        response_format:
+          oneOf:
+          - type: string
+          - type: object
+    ListResponse:
+      type: object
+      properties:
+        object:
+          type: string
+          enum:
+          - list
+        data:
+          type: array
+          items:
+            type: object
+        first_id:
+          type: string
+        last_id:
+          type: string
+        has_more:
+          type: boolean
+    Assistant:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The identifier of the assistant
+        object:
+          type: string
+          enum:
+          - assistant
+        created_at:
+          type: integer
+          description: Unix timestamp of creation
+        name:
+          type: string
+          nullable: true
+          description: The name of the assistant
+        description:
+          type: string
+          nullable: true
+          description: The description of the assistant
+        model:
+          type: string
+          description: ID of the model used by the assistant
+        instructions:
+          type: string
+          nullable: true
+          description: The system instructions for the assistant
+        tools:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - code_interpreter
+                - file_search
+                - function
+          description: List of tools enabled on the assistant
+        metadata:
+          type: object
+          description: Key-value metadata attached to the assistant
+        temperature:
+          type: number
+          description: Sampling temperature for the assistant
+        top_p:
+          type: number
+          description: Nucleus sampling parameter
+        response_format:
+          oneOf:
+          - type: string
+            enum:
+            - auto
+          - type: object
+          description: Response format configuration
+    CreateAssistantRequest:
+      type: object
+      required:
+      - model
+      properties:
+        model:
+          type: string
+          description: ID of the model to use
+        name:
+          type: string
+          nullable: true
+          description: The name of the assistant (max 256 chars)
+        description:
+          type: string
+          nullable: true
+          description: The description of the assistant (max 512 chars)
+        instructions:
+          type: string
+          nullable: true
+          description: System instructions for the assistant (max 256000 chars)
+        tools:
+          type: array
+          items:
+            type: object
+          description: List of tools enabled on the assistant (max 128)
+        metadata:
+          type: object
+          description: Key-value metadata (max 16 pairs)
+        temperature:
+          type: number
+          minimum: 0
+          maximum: 2
+          description: Sampling temperature
+        top_p:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: Nucleus sampling parameter
+        response_format:
+          oneOf:
+          - type: string
+            enum:
+            - auto
+          - type: object
+          description: Response format configuration
+  parameters:
+    order:
+      name: order
+      in: query
+      description: Sort order by created_at timestamp
+      schema:
+        type: string
+        enum:
+        - asc
+        - desc
+        default: desc
+    after:
+      name: after
+      in: query
+      description: A cursor for pagination (object ID to start after)
+      schema:
+        type: string
+    before:
+      name: before
+      in: query
+      description: A cursor for pagination (object ID to end before)
+      schema:
+        type: string
+    assistantId:
+      name: assistant_id
+      in: path
+      required: true
+      description: The ID of the assistant
+      schema:
+        type: string
+    OpenAIBeta:
+      name: OpenAI-Beta
+      in: header
+      required: true
+      description: Required header for the Assistants API beta
+      schema:
+        type: string
+        enum:
+        - assistants=v2
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of objects to return (1-100, default 20)
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+      description: OpenAI API key passed as a Bearer token
+externalDocs:
+  description: OpenAI Assistants API Documentation
+  url: https://platform.openai.com/docs/api-reference/assistants

@@ -1,38 +1,29 @@
 openapi: 3.1.0
 info:
-  title: OpenAI APIs OpenAI Moderations API
-  description: >-
-    API for detecting potentially harmful or unsafe content. Classifies text
-    and images against categories such as hate, harassment, self-harm,
-    sexual content, and violence.
-  version: '1.0'
+  title: OpenAI APIs OpenAI Assistants Moderations API
+  description: API for building AI assistants with custom instructions, knowledge retrieval, code execution, and function calling capabilities. Supports managing assistants, threads, messages, and runs.
+  version: '2.0'
   contact:
     name: OpenAI Support
     email: support@openai.com
     url: https://help.openai.com
   termsOfService: https://openai.com/policies/terms-of-use
-externalDocs:
-  description: OpenAI Moderations API Documentation
-  url: https://platform.openai.com/docs/api-reference/moderations
 servers:
-  - url: https://api.openai.com/v1
-    description: OpenAI Production API
-tags:
-  - name: Moderations
-    description: Content moderation operations
+- url: https://api.openai.com/v1
+  description: OpenAI Production API
 security:
-  - bearerAuth: []
+- bearerAuth: []
+tags:
+- name: Moderations
+  description: Content moderation operations
 paths:
   /moderations:
     post:
       operationId: createModeration
       summary: OpenAI APIs Create moderation
-      description: >-
-        Classifies if text and/or images are potentially harmful across
-        several categories including hate, harassment, self-harm, sexual
-        content, and violence.
+      description: Classifies if text and/or images are potentially harmful across several categories including hate, harassment, self-harm, sexual content, and violence.
       tags:
-        - Moderations
+      - Moderations
       requestBody:
         required: true
         content:
@@ -55,33 +46,7 @@ paths:
         '500':
           description: Server error
 components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: API Key
-      description: OpenAI API key passed as a Bearer token
   schemas:
-    CreateModerationRequest:
-      type: object
-      required:
-        - input
-      properties:
-        input:
-          oneOf:
-            - type: string
-            - type: array
-              items:
-                type: string
-          description: The input text to classify for moderation
-        model:
-          type: string
-          description: >-
-            The content moderation model to use
-            (text-moderation-latest, text-moderation-stable, omni-moderation-latest)
-          default: omni-moderation-latest
-          examples:
-            - omni-moderation-latest
     ModerationResponse:
       type: object
       properties:
@@ -95,6 +60,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ModerationResult'
+    CreateModerationRequest:
+      type: object
+      required:
+      - input
+      properties:
+        input:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+          description: The input text to classify for moderation
+        model:
+          type: string
+          description: The content moderation model to use (text-moderation-latest, text-moderation-stable, omni-moderation-latest)
+          default: omni-moderation-latest
+          examples:
+          - omni-moderation-latest
     ModerationResult:
       type: object
       properties:
@@ -173,3 +156,12 @@ components:
             violence/graphic:
               type: number
               description: Score for violence/graphic category
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+      description: OpenAI API key passed as a Bearer token
+externalDocs:
+  description: OpenAI Assistants API Documentation
+  url: https://platform.openai.com/docs/api-reference/assistants

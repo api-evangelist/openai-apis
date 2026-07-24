@@ -1,0 +1,243 @@
+openapi: 3.1.0
+info:
+  title: OpenAI APIs OpenAI Assistants Messages API
+  description: API for building AI assistants with custom instructions, knowledge retrieval, code execution, and function calling capabilities. Supports managing assistants, threads, messages, and runs.
+  version: '2.0'
+  contact:
+    name: OpenAI Support
+    email: support@openai.com
+    url: https://help.openai.com
+  termsOfService: https://openai.com/policies/terms-of-use
+servers:
+- url: https://api.openai.com/v1
+  description: OpenAI Production API
+security:
+- bearerAuth: []
+tags:
+- name: Messages
+  description: Manage messages within threads
+paths:
+  /threads/{thread_id}/messages:
+    get:
+      operationId: listMessages
+      summary: OpenAI APIs List messages
+      description: Returns a list of messages for a given thread.
+      tags:
+      - Messages
+      parameters:
+      - $ref: '#/components/parameters/threadId'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/order'
+      - $ref: '#/components/parameters/after'
+      - $ref: '#/components/parameters/before'
+      - $ref: '#/components/parameters/OpenAIBeta'
+      responses:
+        '200':
+          description: List of messages
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListResponse'
+    post:
+      operationId: createMessage
+      summary: OpenAI APIs Create message
+      description: Create a message within a thread.
+      tags:
+      - Messages
+      parameters:
+      - $ref: '#/components/parameters/threadId'
+      - $ref: '#/components/parameters/OpenAIBeta'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMessageRequest'
+      responses:
+        '200':
+          description: Message created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+        '400':
+          description: Invalid request
+  /threads/{thread_id}/messages/{message_id}:
+    get:
+      operationId: getMessage
+      summary: OpenAI APIs Retrieve message
+      description: Retrieve a message by ID.
+      tags:
+      - Messages
+      parameters:
+      - $ref: '#/components/parameters/threadId'
+      - $ref: '#/components/parameters/messageId'
+      - $ref: '#/components/parameters/OpenAIBeta'
+      responses:
+        '200':
+          description: Message details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+        '404':
+          description: Message not found
+components:
+  parameters:
+    order:
+      name: order
+      in: query
+      description: Sort order by created_at timestamp
+      schema:
+        type: string
+        enum:
+        - asc
+        - desc
+        default: desc
+    after:
+      name: after
+      in: query
+      description: A cursor for pagination (object ID to start after)
+      schema:
+        type: string
+    threadId:
+      name: thread_id
+      in: path
+      required: true
+      description: The ID of the thread
+      schema:
+        type: string
+    messageId:
+      name: message_id
+      in: path
+      required: true
+      description: The ID of the message
+      schema:
+        type: string
+    before:
+      name: before
+      in: query
+      description: A cursor for pagination (object ID to end before)
+      schema:
+        type: string
+    OpenAIBeta:
+      name: OpenAI-Beta
+      in: header
+      required: true
+      description: Required header for the Assistants API beta
+      schema:
+        type: string
+        enum:
+        - assistants=v2
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of objects to return (1-100, default 20)
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+  schemas:
+    ListResponse:
+      type: object
+      properties:
+        object:
+          type: string
+          enum:
+          - list
+        data:
+          type: array
+          items:
+            type: object
+        first_id:
+          type: string
+        last_id:
+          type: string
+        has_more:
+          type: boolean
+    CreateMessageRequest:
+      type: object
+      required:
+      - role
+      - content
+      properties:
+        role:
+          type: string
+          enum:
+          - user
+          - assistant
+          description: The role of the entity creating the message
+        content:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: object
+          description: The content of the message
+        metadata:
+          type: object
+          description: Key-value metadata for the message
+    Message:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The identifier of the message
+        object:
+          type: string
+          enum:
+          - thread.message
+        created_at:
+          type: integer
+          description: Unix timestamp of creation
+        thread_id:
+          type: string
+          description: The thread this message belongs to
+        role:
+          type: string
+          enum:
+          - user
+          - assistant
+          description: The role of the entity that produced the message
+        content:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                enum:
+                - text
+                - image_file
+                - image_url
+              text:
+                type: object
+                properties:
+                  value:
+                    type: string
+                  annotations:
+                    type: array
+                    items:
+                      type: object
+          description: The content of the message
+        assistant_id:
+          type: string
+          nullable: true
+          description: The assistant that authored this message
+        run_id:
+          type: string
+          nullable: true
+          description: The run associated with this message
+        metadata:
+          type: object
+          description: Key-value metadata attached to the message
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+      description: OpenAI API key passed as a Bearer token
+externalDocs:
+  description: OpenAI Assistants API Documentation
+  url: https://platform.openai.com/docs/api-reference/assistants

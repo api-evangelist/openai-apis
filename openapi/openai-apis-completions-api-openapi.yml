@@ -1,37 +1,29 @@
 openapi: 3.1.0
 info:
-  title: OpenAI APIs OpenAI Completions API
-  description: >-
-    Legacy text completion API for generating text continuations using GPT
-    models. Given a prompt, the model returns one or more predicted
-    completions along with token probabilities.
-  version: '1.0'
+  title: OpenAI APIs OpenAI Assistants Completions API
+  description: API for building AI assistants with custom instructions, knowledge retrieval, code execution, and function calling capabilities. Supports managing assistants, threads, messages, and runs.
+  version: '2.0'
   contact:
     name: OpenAI Support
     email: support@openai.com
     url: https://help.openai.com
   termsOfService: https://openai.com/policies/terms-of-use
-externalDocs:
-  description: OpenAI Completions API Documentation
-  url: https://platform.openai.com/docs/api-reference/completions
 servers:
-  - url: https://api.openai.com/v1
-    description: OpenAI Production API
-tags:
-  - name: Completions
-    description: Legacy text completion operations
+- url: https://api.openai.com/v1
+  description: OpenAI Production API
 security:
-  - bearerAuth: []
+- bearerAuth: []
+tags:
+- name: Completions
+  description: Legacy text completion operations
 paths:
   /completions:
     post:
       operationId: createCompletion
       summary: OpenAI APIs Create completion
-      description: >-
-        Creates a completion for the provided prompt and parameters. This is
-        a legacy endpoint; use the Chat Completions API for new applications.
+      description: Creates a completion for the provided prompt and parameters. This is a legacy endpoint; use the Chat Completions API for new applications.
       tags:
-        - Completions
+      - Completions
       requestBody:
         required: true
         content:
@@ -54,30 +46,75 @@ paths:
         '500':
           description: Server error
 components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: API Key
-      description: OpenAI API key passed as a Bearer token
   schemas:
+    CompletionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A unique identifier for the completion
+        object:
+          type: string
+          enum:
+          - text_completion
+        created:
+          type: integer
+          description: Unix timestamp of when the completion was created
+        model:
+          type: string
+          description: The model used for the completion
+        choices:
+          type: array
+          items:
+            type: object
+            properties:
+              text:
+                type: string
+                description: The generated text
+              index:
+                type: integer
+              logprobs:
+                type: object
+                nullable: true
+              finish_reason:
+                type: string
+                enum:
+                - stop
+                - length
+        usage:
+          $ref: '#/components/schemas/Usage'
+        system_fingerprint:
+          type: string
+          description: Fingerprint of the backend configuration
+    Usage:
+      type: object
+      properties:
+        prompt_tokens:
+          type: integer
+          description: Number of tokens in the prompt
+        completion_tokens:
+          type: integer
+          description: Number of tokens in the generated completion
+        total_tokens:
+          type: integer
+          description: Total number of tokens used
     CreateCompletionRequest:
       type: object
       required:
-        - model
-        - prompt
+      - model
+      - prompt
       properties:
         model:
           type: string
           description: ID of the model to use (e.g., gpt-3.5-turbo-instruct)
           examples:
-            - gpt-3.5-turbo-instruct
+          - gpt-3.5-turbo-instruct
         prompt:
           oneOf:
-            - type: string
-            - type: array
-              items:
-                type: string
+          - type: string
+          - type: array
+            items:
+              type: string
           description: The prompt(s) to generate completions for
         suffix:
           type: string
@@ -118,10 +155,10 @@ components:
           description: Echo back the prompt in addition to the completion
         stop:
           oneOf:
-            - type: string
-            - type: array
-              items:
-                type: string
+          - type: string
+          - type: array
+            items:
+              type: string
           description: Up to 4 sequences where the API will stop generating
         presence_penalty:
           type: number
@@ -148,54 +185,12 @@ components:
         user:
           type: string
           description: A unique identifier representing your end-user
-    CompletionResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: A unique identifier for the completion
-        object:
-          type: string
-          enum:
-            - text_completion
-        created:
-          type: integer
-          description: Unix timestamp of when the completion was created
-        model:
-          type: string
-          description: The model used for the completion
-        choices:
-          type: array
-          items:
-            type: object
-            properties:
-              text:
-                type: string
-                description: The generated text
-              index:
-                type: integer
-              logprobs:
-                type: object
-                nullable: true
-              finish_reason:
-                type: string
-                enum:
-                  - stop
-                  - length
-        usage:
-          $ref: '#/components/schemas/Usage'
-        system_fingerprint:
-          type: string
-          description: Fingerprint of the backend configuration
-    Usage:
-      type: object
-      properties:
-        prompt_tokens:
-          type: integer
-          description: Number of tokens in the prompt
-        completion_tokens:
-          type: integer
-          description: Number of tokens in the generated completion
-        total_tokens:
-          type: integer
-          description: Total number of tokens used
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+      description: OpenAI API key passed as a Bearer token
+externalDocs:
+  description: OpenAI Assistants API Documentation
+  url: https://platform.openai.com/docs/api-reference/assistants

@@ -1,36 +1,29 @@
 openapi: 3.1.0
 info:
-  title: OpenAI APIs OpenAI Images API
-  description: >-
-    API for generating, editing, and creating variations of images using
-    DALL-E models. Supports text-to-image generation, image editing with
-    masks, and creating variations of existing images.
-  version: '1.0'
+  title: OpenAI APIs OpenAI Assistants Images API
+  description: API for building AI assistants with custom instructions, knowledge retrieval, code execution, and function calling capabilities. Supports managing assistants, threads, messages, and runs.
+  version: '2.0'
   contact:
     name: OpenAI Support
     email: support@openai.com
     url: https://help.openai.com
   termsOfService: https://openai.com/policies/terms-of-use
-externalDocs:
-  description: OpenAI Images API Documentation
-  url: https://platform.openai.com/docs/api-reference/images
 servers:
-  - url: https://api.openai.com/v1
-    description: OpenAI Production API
-tags:
-  - name: Images
-    description: Image generation, editing, and variation operations
+- url: https://api.openai.com/v1
+  description: OpenAI Production API
 security:
-  - bearerAuth: []
+- bearerAuth: []
+tags:
+- name: Images
+  description: Image generation, editing, and variation operations
 paths:
   /images/generations:
     post:
       operationId: createImage
       summary: OpenAI APIs Create image
-      description: >-
-        Creates an image given a text prompt using DALL-E models.
+      description: Creates an image given a text prompt using DALL-E models.
       tags:
-        - Images
+      - Images
       requestBody:
         required: true
         content:
@@ -56,11 +49,9 @@ paths:
     post:
       operationId: createImageEdit
       summary: OpenAI APIs Create image edit
-      description: >-
-        Creates an edited or extended image given an original image and a
-        prompt. The mask specifies which areas of the image to edit.
+      description: Creates an edited or extended image given an original image and a prompt. The mask specifies which areas of the image to edit.
       tags:
-        - Images
+      - Images
       requestBody:
         required: true
         content:
@@ -84,10 +75,9 @@ paths:
     post:
       operationId: createImageVariation
       summary: OpenAI APIs Create image variation
-      description: >-
-        Creates a variation of a given image.
+      description: Creates a variation of a given image.
       tags:
-        - Images
+      - Images
       requestBody:
         required: true
         content:
@@ -108,73 +98,12 @@ paths:
         '429':
           description: Rate limit exceeded
 components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: API Key
-      description: OpenAI API key passed as a Bearer token
   schemas:
-    CreateImageRequest:
-      type: object
-      required:
-        - prompt
-      properties:
-        prompt:
-          type: string
-          maxLength: 4000
-          description: A text description of the desired image(s)
-        model:
-          type: string
-          default: dall-e-2
-          description: The model to use for image generation (dall-e-2 or dall-e-3)
-          examples:
-            - dall-e-3
-        n:
-          type: integer
-          minimum: 1
-          maximum: 10
-          default: 1
-          description: The number of images to generate
-        quality:
-          type: string
-          enum:
-            - standard
-            - hd
-          default: standard
-          description: The quality of the image (dall-e-3 only)
-        response_format:
-          type: string
-          enum:
-            - url
-            - b64_json
-          default: url
-          description: The format in which the generated images are returned
-        size:
-          type: string
-          enum:
-            - 256x256
-            - 512x512
-            - 1024x1024
-            - 1792x1024
-            - 1024x1792
-          default: 1024x1024
-          description: The size of the generated images
-        style:
-          type: string
-          enum:
-            - vivid
-            - natural
-          default: vivid
-          description: The style of the generated images (dall-e-3 only)
-        user:
-          type: string
-          description: A unique identifier representing your end-user
     CreateImageEditRequest:
       type: object
       required:
-        - image
-        - prompt
+      - image
+      - prompt
       properties:
         image:
           type: string
@@ -201,16 +130,16 @@ components:
         size:
           type: string
           enum:
-            - 256x256
-            - 512x512
-            - 1024x1024
+          - 256x256
+          - 512x512
+          - 1024x1024
           default: 1024x1024
           description: The size of the generated images
         response_format:
           type: string
           enum:
-            - url
-            - b64_json
+          - url
+          - b64_json
           default: url
           description: The format in which the generated images are returned
         user:
@@ -219,7 +148,7 @@ components:
     CreateImageVariationRequest:
       type: object
       required:
-        - image
+      - image
       properties:
         image:
           type: string
@@ -238,18 +167,73 @@ components:
         response_format:
           type: string
           enum:
-            - url
-            - b64_json
+          - url
+          - b64_json
           default: url
           description: The format in which the generated images are returned
         size:
           type: string
           enum:
-            - 256x256
-            - 512x512
-            - 1024x1024
+          - 256x256
+          - 512x512
+          - 1024x1024
           default: 1024x1024
           description: The size of the generated images
+        user:
+          type: string
+          description: A unique identifier representing your end-user
+    CreateImageRequest:
+      type: object
+      required:
+      - prompt
+      properties:
+        prompt:
+          type: string
+          maxLength: 4000
+          description: A text description of the desired image(s)
+        model:
+          type: string
+          default: dall-e-2
+          description: The model to use for image generation (dall-e-2 or dall-e-3)
+          examples:
+          - dall-e-3
+        n:
+          type: integer
+          minimum: 1
+          maximum: 10
+          default: 1
+          description: The number of images to generate
+        quality:
+          type: string
+          enum:
+          - standard
+          - hd
+          default: standard
+          description: The quality of the image (dall-e-3 only)
+        response_format:
+          type: string
+          enum:
+          - url
+          - b64_json
+          default: url
+          description: The format in which the generated images are returned
+        size:
+          type: string
+          enum:
+          - 256x256
+          - 512x512
+          - 1024x1024
+          - 1792x1024
+          - 1024x1792
+          default: 1024x1024
+          description: The size of the generated images
+        style:
+          type: string
+          enum:
+          - vivid
+          - natural
+          default: vivid
+          description: The style of the generated images (dall-e-3 only)
         user:
           type: string
           description: A unique identifier representing your end-user
@@ -274,3 +258,12 @@ components:
               revised_prompt:
                 type: string
                 description: The revised prompt used for generation (dall-e-3 only)
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+      description: OpenAI API key passed as a Bearer token
+externalDocs:
+  description: OpenAI Assistants API Documentation
+  url: https://platform.openai.com/docs/api-reference/assistants

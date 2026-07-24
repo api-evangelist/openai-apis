@@ -1,0 +1,418 @@
+openapi: 3.1.0
+info:
+  title: OpenAI APIs OpenAI Assistants Runs API
+  description: API for building AI assistants with custom instructions, knowledge retrieval, code execution, and function calling capabilities. Supports managing assistants, threads, messages, and runs.
+  version: '2.0'
+  contact:
+    name: OpenAI Support
+    email: support@openai.com
+    url: https://help.openai.com
+  termsOfService: https://openai.com/policies/terms-of-use
+servers:
+- url: https://api.openai.com/v1
+  description: OpenAI Production API
+security:
+- bearerAuth: []
+tags:
+- name: Runs
+  description: Execute assistants on threads
+paths:
+  /threads/{thread_id}/runs:
+    get:
+      operationId: listRuns
+      summary: OpenAI APIs List runs
+      description: Returns a list of runs belonging to a thread.
+      tags:
+      - Runs
+      parameters:
+      - $ref: '#/components/parameters/threadId'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/order'
+      - $ref: '#/components/parameters/after'
+      - $ref: '#/components/parameters/before'
+      - $ref: '#/components/parameters/OpenAIBeta'
+      responses:
+        '200':
+          description: List of runs
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListResponse'
+    post:
+      operationId: createRun
+      summary: OpenAI APIs Create run
+      description: Create a run on a thread.
+      tags:
+      - Runs
+      parameters:
+      - $ref: '#/components/parameters/threadId'
+      - $ref: '#/components/parameters/OpenAIBeta'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRunRequest'
+      responses:
+        '200':
+          description: Run created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Run'
+        '400':
+          description: Invalid request
+  /threads/{thread_id}/runs/{run_id}:
+    get:
+      operationId: getRun
+      summary: OpenAI APIs Retrieve run
+      description: Retrieves a run by ID.
+      tags:
+      - Runs
+      parameters:
+      - $ref: '#/components/parameters/threadId'
+      - $ref: '#/components/parameters/runId'
+      - $ref: '#/components/parameters/OpenAIBeta'
+      responses:
+        '200':
+          description: Run details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Run'
+        '404':
+          description: Run not found
+  /threads/{thread_id}/runs/{run_id}/cancel:
+    post:
+      operationId: cancelRun
+      summary: OpenAI APIs Cancel run
+      description: Cancels an in-progress run.
+      tags:
+      - Runs
+      parameters:
+      - $ref: '#/components/parameters/threadId'
+      - $ref: '#/components/parameters/runId'
+      - $ref: '#/components/parameters/OpenAIBeta'
+      responses:
+        '200':
+          description: Run cancelled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Run'
+  /threads/{thread_id}/runs/{run_id}/submit_tool_outputs:
+    post:
+      operationId: submitToolOutputs
+      summary: OpenAI APIs Submit tool outputs
+      description: Submit outputs from tool calls when a run has the status requires_action with required_action type submit_tool_outputs.
+      tags:
+      - Runs
+      parameters:
+      - $ref: '#/components/parameters/threadId'
+      - $ref: '#/components/parameters/runId'
+      - $ref: '#/components/parameters/OpenAIBeta'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - tool_outputs
+              properties:
+                tool_outputs:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      tool_call_id:
+                        type: string
+                      output:
+                        type: string
+      responses:
+        '200':
+          description: Run resumed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Run'
+  /threads/runs:
+    post:
+      operationId: createThreadAndRun
+      summary: OpenAI APIs Create thread and run
+      description: Create a thread and run it in one request.
+      tags:
+      - Runs
+      parameters:
+      - $ref: '#/components/parameters/OpenAIBeta'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - assistant_id
+              properties:
+                assistant_id:
+                  type: string
+                  description: The ID of the assistant to use
+                thread:
+                  $ref: '#/components/schemas/CreateThreadRequest'
+                model:
+                  type: string
+                instructions:
+                  type: string
+                tools:
+                  type: array
+                  items:
+                    type: object
+                metadata:
+                  type: object
+      responses:
+        '200':
+          description: Run created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Run'
+components:
+  schemas:
+    CreateThreadRequest:
+      type: object
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateMessageRequest'
+          description: Initial messages to start the thread with
+        metadata:
+          type: object
+          description: Key-value metadata for the thread
+    CreateRunRequest:
+      type: object
+      required:
+      - assistant_id
+      properties:
+        assistant_id:
+          type: string
+          description: The ID of the assistant to use for this run
+        model:
+          type: string
+          description: Override the model for this run
+        instructions:
+          type: string
+          nullable: true
+          description: Override the instructions for this run
+        additional_instructions:
+          type: string
+          nullable: true
+          description: Additional instructions appended to the assistant's instructions
+        tools:
+          type: array
+          items:
+            type: object
+          description: Override the tools for this run
+        metadata:
+          type: object
+          description: Key-value metadata for the run
+        stream:
+          type: boolean
+          description: Whether to stream the run
+    CreateMessageRequest:
+      type: object
+      required:
+      - role
+      - content
+      properties:
+        role:
+          type: string
+          enum:
+          - user
+          - assistant
+          description: The role of the entity creating the message
+        content:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: object
+          description: The content of the message
+        metadata:
+          type: object
+          description: Key-value metadata for the message
+    ListResponse:
+      type: object
+      properties:
+        object:
+          type: string
+          enum:
+          - list
+        data:
+          type: array
+          items:
+            type: object
+        first_id:
+          type: string
+        last_id:
+          type: string
+        has_more:
+          type: boolean
+    Run:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The identifier of the run
+        object:
+          type: string
+          enum:
+          - thread.run
+        created_at:
+          type: integer
+          description: Unix timestamp of creation
+        thread_id:
+          type: string
+          description: The thread this run belongs to
+        assistant_id:
+          type: string
+          description: The assistant used for this run
+        status:
+          type: string
+          enum:
+          - queued
+          - in_progress
+          - requires_action
+          - cancelling
+          - cancelled
+          - failed
+          - completed
+          - incomplete
+          - expired
+          description: The status of the run
+        required_action:
+          type: object
+          nullable: true
+          properties:
+            type:
+              type: string
+              enum:
+              - submit_tool_outputs
+            submit_tool_outputs:
+              type: object
+              properties:
+                tool_calls:
+                  type: array
+                  items:
+                    type: object
+          description: Details on required action if status is requires_action
+        model:
+          type: string
+          description: The model used for this run
+        instructions:
+          type: string
+          nullable: true
+          description: The instructions used for this run
+        tools:
+          type: array
+          items:
+            type: object
+          description: The tools used for this run
+        metadata:
+          type: object
+          description: Key-value metadata attached to the run
+        usage:
+          type: object
+          nullable: true
+          properties:
+            prompt_tokens:
+              type: integer
+            completion_tokens:
+              type: integer
+            total_tokens:
+              type: integer
+          description: Token usage statistics for the run
+        started_at:
+          type: integer
+          nullable: true
+          description: Unix timestamp of when the run started
+        completed_at:
+          type: integer
+          nullable: true
+          description: Unix timestamp of when the run completed
+        cancelled_at:
+          type: integer
+          nullable: true
+          description: Unix timestamp of when the run was cancelled
+        failed_at:
+          type: integer
+          nullable: true
+          description: Unix timestamp of when the run failed
+        expires_at:
+          type: integer
+          nullable: true
+          description: Unix timestamp of when the run will expire
+  parameters:
+    after:
+      name: after
+      in: query
+      description: A cursor for pagination (object ID to start after)
+      schema:
+        type: string
+    order:
+      name: order
+      in: query
+      description: Sort order by created_at timestamp
+      schema:
+        type: string
+        enum:
+        - asc
+        - desc
+        default: desc
+    threadId:
+      name: thread_id
+      in: path
+      required: true
+      description: The ID of the thread
+      schema:
+        type: string
+    before:
+      name: before
+      in: query
+      description: A cursor for pagination (object ID to end before)
+      schema:
+        type: string
+    runId:
+      name: run_id
+      in: path
+      required: true
+      description: The ID of the run
+      schema:
+        type: string
+    OpenAIBeta:
+      name: OpenAI-Beta
+      in: header
+      required: true
+      description: Required header for the Assistants API beta
+      schema:
+        type: string
+        enum:
+        - assistants=v2
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of objects to return (1-100, default 20)
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+      description: OpenAI API key passed as a Bearer token
+externalDocs:
+  description: OpenAI Assistants API Documentation
+  url: https://platform.openai.com/docs/api-reference/assistants
