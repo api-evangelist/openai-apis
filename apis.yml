@@ -4,9 +4,22 @@ description: >-
   Collection of OpenAI's artificial intelligence APIs for natural language processing, image generation, speech, and
   embeddings including Chat Completions, Completions, Images, Audio, Embeddings, Moderations, and Assistants APIs.
 type: Index
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/openai-apis.png
 tags:
   - Artificial Intelligence
   - Embeddings
@@ -18,98 +31,297 @@ created: '2024-01-01'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: openai-apis:openai-chat-completions-api
-    name: OpenAI Chat Completions API
-    description: API for conversational AI using GPT models.
-    humanURL: https://platform.openai.com/docs/api-reference/chat
-    baseURL: https://api.openai.com/v1
-    tags:
-      - Chat
-      - GPT
-    properties:
-      - type: Documentation
-        url: https://platform.openai.com/docs/api-reference/chat
-      - type: OpenAPI
-        url: openapi/openai-chat-completions-openapi.yml
-  - aid: openai-apis:openai-completions-api
-    name: OpenAI Completions API
-    description: Legacy text completion API for generating text continuations from a prompt.
-    humanURL: https://platform.openai.com/docs/api-reference/completions
-    baseURL: https://api.openai.com/v1
-    tags:
-      - Completions
-      - GPT
-    properties:
-      - type: Documentation
-        url: https://platform.openai.com/docs/api-reference/completions
-      - type: OpenAPI
-        url: openapi/openai-completions-openapi.yml
-  - aid: openai-apis:openai-images-api
-    name: OpenAI Images API
-    description: API for generating, editing, and creating image variations using DALL-E.
-    humanURL: https://platform.openai.com/docs/api-reference/images
-    baseURL: https://api.openai.com/v1
-    tags:
-      - DALL-E
-      - Image Generation
-    properties:
-      - type: Documentation
-        url: https://platform.openai.com/docs/api-reference/images
-      - type: OpenAPI
-        url: openapi/openai-images-openapi.yml
-  - aid: openai-apis:openai-embeddings-api
-    name: OpenAI Embeddings API
-    description: API for converting text into vector representations.
-    humanURL: https://platform.openai.com/docs/api-reference/embeddings
-    baseURL: https://api.openai.com/v1
-    tags:
-      - Embeddings
-      - Vectors
-    properties:
-      - type: Documentation
-        url: https://platform.openai.com/docs/api-reference/embeddings
-      - type: OpenAPI
-        url: openapi/openai-embeddings-openapi.yml
-  - aid: openai-apis:openai-audio-api
-    name: OpenAI Audio API
-    description: API for speech-to-text transcription and text-to-speech generation.
-    humanURL: https://platform.openai.com/docs/api-reference/audio
-    baseURL: https://api.openai.com/v1
-    tags:
-      - Audio
-      - Speech
-    properties:
-      - type: Documentation
-        url: https://platform.openai.com/docs/api-reference/audio
-      - type: OpenAPI
-        url: openapi/openai-audio-openapi.yml
-  - aid: openai-apis:openai-moderations-api
-    name: OpenAI Moderations API
-    description: API for detecting potentially harmful or unsafe content across text and images.
-    humanURL: https://platform.openai.com/docs/api-reference/moderations
-    baseURL: https://api.openai.com/v1
-    tags:
-      - Moderation
-      - Safety
-    properties:
-      - type: Documentation
-        url: https://platform.openai.com/docs/api-reference/moderations
-      - type: OpenAPI
-        url: openapi/openai-moderations-openapi.yml
-  - aid: openai-apis:openai-assistants-api
-    name: OpenAI Assistants API
-    description: API for building AI assistants with custom instructions and tool access.
-    humanURL: https://platform.openai.com/docs/api-reference/assistants
-    baseURL: https://api.openai.com/v1
-    tags:
-      - Agents
-      - Assistants
-    properties:
-      - type: Documentation
-        url: https://platform.openai.com/docs/api-reference/assistants
-      - type: OpenAPI
-        url: openapi/openai-assistants-openapi.yml
+- aid: openai-apis:openai-apis-assistants-api
+  name: OpenAI APIs Assistants API
+  description: Manage AI assistants
+  humanURL: https://platform.openai.com/docs/api-reference/chat
+  baseURL: https://api.openai.com/v1
+  tags:
+  - Assistants
+  properties:
+  - type: OpenAPI
+    url: openapi/openai-apis-assistants-api-openapi.yml
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/chat
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/completions
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/images
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/embeddings
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/audio
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/moderations
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/assistants
+- aid: openai-apis:openai-apis-chat-api
+  name: OpenAI APIs Chat API
+  description: Chat completion operations
+  humanURL: https://platform.openai.com/docs/api-reference/chat
+  baseURL: https://api.openai.com/v1
+  tags:
+  - Chat
+  properties:
+  - type: OpenAPI
+    url: openapi/openai-apis-chat-api-openapi.yml
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/chat
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/completions
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/images
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/embeddings
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/audio
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/moderations
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/assistants
+- aid: openai-apis:openai-apis-completions-api
+  name: OpenAI APIs Completions API
+  description: Legacy text completion operations
+  humanURL: https://platform.openai.com/docs/api-reference/chat
+  baseURL: https://api.openai.com/v1
+  tags:
+  - Completions
+  properties:
+  - type: OpenAPI
+    url: openapi/openai-apis-completions-api-openapi.yml
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/chat
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/completions
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/images
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/embeddings
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/audio
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/moderations
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/assistants
+- aid: openai-apis:openai-apis-embeddings-api
+  name: OpenAI APIs Embeddings API
+  description: Text embedding operations
+  humanURL: https://platform.openai.com/docs/api-reference/chat
+  baseURL: https://api.openai.com/v1
+  tags:
+  - Embeddings
+  properties:
+  - type: OpenAPI
+    url: openapi/openai-apis-embeddings-api-openapi.yml
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/chat
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/completions
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/images
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/embeddings
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/audio
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/moderations
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/assistants
+- aid: openai-apis:openai-apis-images-api
+  name: OpenAI APIs Images API
+  description: Image generation, editing, and variation operations
+  humanURL: https://platform.openai.com/docs/api-reference/chat
+  baseURL: https://api.openai.com/v1
+  tags:
+  - Images
+  properties:
+  - type: OpenAPI
+    url: openapi/openai-apis-images-api-openapi.yml
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/chat
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/completions
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/images
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/embeddings
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/audio
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/moderations
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/assistants
+- aid: openai-apis:openai-apis-messages-api
+  name: OpenAI APIs Messages API
+  description: Manage messages within threads
+  humanURL: https://platform.openai.com/docs/api-reference/chat
+  baseURL: https://api.openai.com/v1
+  tags:
+  - Messages
+  properties:
+  - type: OpenAPI
+    url: openapi/openai-apis-messages-api-openapi.yml
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/chat
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/completions
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/images
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/embeddings
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/audio
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/moderations
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/assistants
+- aid: openai-apis:openai-apis-moderations-api
+  name: OpenAI APIs Moderations API
+  description: Content moderation operations
+  humanURL: https://platform.openai.com/docs/api-reference/chat
+  baseURL: https://api.openai.com/v1
+  tags:
+  - Moderations
+  properties:
+  - type: OpenAPI
+    url: openapi/openai-apis-moderations-api-openapi.yml
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/chat
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/completions
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/images
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/embeddings
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/audio
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/moderations
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/assistants
+- aid: openai-apis:openai-apis-runs-api
+  name: OpenAI APIs Runs API
+  description: Execute assistants on threads
+  humanURL: https://platform.openai.com/docs/api-reference/chat
+  baseURL: https://api.openai.com/v1
+  tags:
+  - Runs
+  properties:
+  - type: OpenAPI
+    url: openapi/openai-apis-runs-api-openapi.yml
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/chat
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/completions
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/images
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/embeddings
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/audio
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/moderations
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/assistants
+- aid: openai-apis:openai-apis-speech-api
+  name: OpenAI APIs Speech API
+  description: Text-to-speech operations
+  humanURL: https://platform.openai.com/docs/api-reference/chat
+  baseURL: https://api.openai.com/v1
+  tags:
+  - Speech
+  properties:
+  - type: OpenAPI
+    url: openapi/openai-apis-speech-api-openapi.yml
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/chat
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/completions
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/images
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/embeddings
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/audio
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/moderations
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/assistants
+- aid: openai-apis:openai-apis-threads-api
+  name: OpenAI APIs Threads API
+  description: Manage conversation threads
+  humanURL: https://platform.openai.com/docs/api-reference/chat
+  baseURL: https://api.openai.com/v1
+  tags:
+  - Threads
+  properties:
+  - type: OpenAPI
+    url: openapi/openai-apis-threads-api-openapi.yml
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/chat
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/completions
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/images
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/embeddings
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/audio
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/moderations
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/assistants
+- aid: openai-apis:openai-apis-transcription-api
+  name: OpenAI APIs Transcription API
+  description: Speech-to-text transcription operations
+  humanURL: https://platform.openai.com/docs/api-reference/chat
+  baseURL: https://api.openai.com/v1
+  tags:
+  - Transcription
+  properties:
+  - type: OpenAPI
+    url: openapi/openai-apis-transcription-api-openapi.yml
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/chat
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/completions
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/images
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/embeddings
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/audio
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/moderations
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/assistants
+- aid: openai-apis:openai-apis-translation-api
+  name: OpenAI APIs Translation API
+  description: Audio translation operations
+  humanURL: https://platform.openai.com/docs/api-reference/chat
+  baseURL: https://api.openai.com/v1
+  tags:
+  - Translation
+  properties:
+  - type: OpenAPI
+    url: openapi/openai-apis-translation-api-openapi.yml
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/chat
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/completions
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/images
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/embeddings
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/audio
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/moderations
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/assistants
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/openai-apis/overview
   - type: AgenticAccess
     url: agentic-access/openai-apis-agentic-access.yml
   - type: TrustCenter
