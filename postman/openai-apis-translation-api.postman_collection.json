@@ -1,0 +1,416 @@
+{
+  "info": {
+    "_postman_id": "66f13ac6-f498-4590-b3a1-ad5edb7abe85",
+    "name": "OpenAI APIs OpenAI Assistants Translation API",
+    "description": "API for building AI assistants with custom instructions, knowledge retrieval, code execution, and function calling capabilities. Supports managing assistants, threads, messages, and runs.\n\nContact Support:\n Name: OpenAI Support\n Email: support@openai.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:26:42.000Z",
+    "updatedAt": "2026-07-28T02:26:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-66f13ac6-f498-4590-b3a1-ad5edb7abe85"
+  },
+  "item": [
+    {
+      "name": "audio",
+      "item": [
+        {
+          "name": "translations",
+          "item": [
+            {
+              "name": "OpenAI APIs Create translation",
+              "id": "0706e227-c3fb-44e5-b874-bb97b1cc8a35",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": "(Required) The audio file to translate",
+                      "key": "file",
+                      "type": "file",
+                      "value": null
+                    },
+                    {
+                      "description": "(Required) The model to use for translation (whisper-1)",
+                      "key": "model",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "Optional text to guide the model's style",
+                      "key": "prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "The format of the translation output (This can only be one of json,text,srt,verbose_json,vtt)",
+                      "key": "response_format",
+                      "value": "json",
+                      "type": "text"
+                    },
+                    {
+                      "description": "Sampling temperature between 0 and 1",
+                      "key": "temperature",
+                      "value": "0",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/audio/translations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "audio",
+                    "translations"
+                  ]
+                },
+                "description": "Translates audio into English text using the Whisper model."
+              },
+              "response": [
+                {
+                  "id": "cd0495e1-2972-462c-93ce-098d9743bdc5",
+                  "name": "Translation response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) The audio file to translate",
+                          "key": "file",
+                          "type": "file"
+                        },
+                        {
+                          "description": "(Required) The model to use for translation (whisper-1)",
+                          "key": "model",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Optional text to guide the model's style",
+                          "key": "prompt",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The format of the translation output (This can only be one of json,text,srt,verbose_json,vtt)",
+                          "key": "response_format",
+                          "value": "json",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Sampling temperature between 0 and 1",
+                          "key": "temperature",
+                          "value": "0",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/audio/translations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "audio",
+                        "translations"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"text\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:26:43.000Z",
+                  "updatedAt": "2026-07-28T02:26:43.000Z",
+                  "uid": "35240-cd0495e1-2972-462c-93ce-098d9743bdc5"
+                },
+                {
+                  "id": "c6bcd3ac-f7cc-40d8-8717-697fb71ff6a8",
+                  "name": "Invalid request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) The audio file to translate",
+                          "key": "file",
+                          "type": "file"
+                        },
+                        {
+                          "description": "(Required) The model to use for translation (whisper-1)",
+                          "key": "model",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Optional text to guide the model's style",
+                          "key": "prompt",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The format of the translation output (This can only be one of json,text,srt,verbose_json,vtt)",
+                          "key": "response_format",
+                          "value": "json",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Sampling temperature between 0 and 1",
+                          "key": "temperature",
+                          "value": "0",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/audio/translations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "audio",
+                        "translations"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:26:43.000Z",
+                  "updatedAt": "2026-07-28T02:26:43.000Z",
+                  "uid": "35240-c6bcd3ac-f7cc-40d8-8717-697fb71ff6a8"
+                },
+                {
+                  "id": "a0cb25ca-b059-4b3e-b2bc-b0762817283d",
+                  "name": "Unauthorized - invalid or missing API key",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) The audio file to translate",
+                          "key": "file",
+                          "type": "file"
+                        },
+                        {
+                          "description": "(Required) The model to use for translation (whisper-1)",
+                          "key": "model",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Optional text to guide the model's style",
+                          "key": "prompt",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The format of the translation output (This can only be one of json,text,srt,verbose_json,vtt)",
+                          "key": "response_format",
+                          "value": "json",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Sampling temperature between 0 and 1",
+                          "key": "temperature",
+                          "value": "0",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/audio/translations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "audio",
+                        "translations"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:26:43.000Z",
+                  "updatedAt": "2026-07-28T02:26:43.000Z",
+                  "uid": "35240-a0cb25ca-b059-4b3e-b2bc-b0762817283d"
+                },
+                {
+                  "id": "1e1d8462-d162-4e2f-b5bb-bb12c9d616d9",
+                  "name": "Rate limit exceeded",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) The audio file to translate",
+                          "key": "file",
+                          "type": "file"
+                        },
+                        {
+                          "description": "(Required) The model to use for translation (whisper-1)",
+                          "key": "model",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Optional text to guide the model's style",
+                          "key": "prompt",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The format of the translation output (This can only be one of json,text,srt,verbose_json,vtt)",
+                          "key": "response_format",
+                          "value": "json",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Sampling temperature between 0 and 1",
+                          "key": "temperature",
+                          "value": "0",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/audio/translations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "audio",
+                        "translations"
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:26:43.000Z",
+                  "updatedAt": "2026-07-28T02:26:43.000Z",
+                  "uid": "35240-1e1d8462-d162-4e2f-b5bb-bb12c9d616d9"
+                }
+              ],
+              "createdAt": "2026-07-28T02:26:43.000Z",
+              "updatedAt": "2026-07-28T02:26:43.000Z",
+              "uid": "35240-0706e227-c3fb-44e5-b874-bb97b1cc8a35"
+            }
+          ],
+          "id": "5d3accea-ee15-43ed-a1ce-c0f2ccdbe16b",
+          "createdAt": "2026-07-28T02:26:43.000Z",
+          "updatedAt": "2026-07-28T02:26:43.000Z",
+          "uid": "35240-5d3accea-ee15-43ed-a1ce-c0f2ccdbe16b"
+        }
+      ],
+      "id": "e43f5da2-434a-4813-bbb4-1f557835d0d2",
+      "createdAt": "2026-07-28T02:26:43.000Z",
+      "updatedAt": "2026-07-28T02:26:43.000Z",
+      "uid": "35240-e43f5da2-434a-4813-bbb4-1f557835d0d2"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.openai.com/v1"
+    }
+  ]
+}

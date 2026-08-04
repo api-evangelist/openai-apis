@@ -1,0 +1,1213 @@
+{
+  "info": {
+    "_postman_id": "01332743-7976-4899-9e41-512329a46045",
+    "name": "OpenAI APIs OpenAI Assistants Images API",
+    "description": "API for building AI assistants with custom instructions, knowledge retrieval, code execution, and function calling capabilities. Supports managing assistants, threads, messages, and runs.\n\nContact Support:\n Name: OpenAI Support\n Email: support@openai.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:25:35.000Z",
+    "updatedAt": "2026-07-28T02:25:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-01332743-7976-4899-9e41-512329a46045"
+  },
+  "item": [
+    {
+      "name": "images",
+      "item": [
+        {
+          "name": "generations",
+          "item": [
+            {
+              "name": "OpenAI APIs Create image",
+              "id": "43cdd6d8-8a21-457b-8d92-d8992924a78b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"prompt\": \"<string>\",\n  \"model\": \"dall-e-2\",\n  \"n\": 1,\n  \"quality\": \"standard\",\n  \"response_format\": \"url\",\n  \"size\": \"1024x1024\",\n  \"style\": \"vivid\",\n  \"user\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/images/generations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "images",
+                    "generations"
+                  ]
+                },
+                "description": "Creates an image given a text prompt using DALL-E models."
+              },
+              "response": [
+                {
+                  "id": "a6192011-dffa-49a6-b38f-40dc35b9ad87",
+                  "name": "Image generation response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"prompt\": \"<string>\",\n  \"model\": \"dall-e-2\",\n  \"n\": 1,\n  \"quality\": \"standard\",\n  \"response_format\": \"url\",\n  \"size\": \"1024x1024\",\n  \"style\": \"vivid\",\n  \"user\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/images/generations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "images",
+                        "generations"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"created\": \"<integer>\",\n  \"data\": [\n    {\n      \"url\": \"<uri>\",\n      \"b64_json\": \"<string>\",\n      \"revised_prompt\": \"<string>\"\n    },\n    {\n      \"url\": \"<uri>\",\n      \"b64_json\": \"<string>\",\n      \"revised_prompt\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:25:36.000Z",
+                  "updatedAt": "2026-07-28T02:25:36.000Z",
+                  "uid": "35240-a6192011-dffa-49a6-b38f-40dc35b9ad87"
+                },
+                {
+                  "id": "aa00d48d-05cd-4280-998c-ac0638d4a5d0",
+                  "name": "Invalid request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"prompt\": \"<string>\",\n  \"model\": \"dall-e-2\",\n  \"n\": 1,\n  \"quality\": \"standard\",\n  \"response_format\": \"url\",\n  \"size\": \"1024x1024\",\n  \"style\": \"vivid\",\n  \"user\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/images/generations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "images",
+                        "generations"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:25:36.000Z",
+                  "updatedAt": "2026-07-28T02:25:36.000Z",
+                  "uid": "35240-aa00d48d-05cd-4280-998c-ac0638d4a5d0"
+                },
+                {
+                  "id": "c4518545-1111-4e8b-89c9-a710557a866d",
+                  "name": "Unauthorized - invalid or missing API key",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"prompt\": \"<string>\",\n  \"model\": \"dall-e-2\",\n  \"n\": 1,\n  \"quality\": \"standard\",\n  \"response_format\": \"url\",\n  \"size\": \"1024x1024\",\n  \"style\": \"vivid\",\n  \"user\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/images/generations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "images",
+                        "generations"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:25:36.000Z",
+                  "updatedAt": "2026-07-28T02:25:36.000Z",
+                  "uid": "35240-c4518545-1111-4e8b-89c9-a710557a866d"
+                },
+                {
+                  "id": "5cf38d41-258b-444f-b416-01d8ab1064f3",
+                  "name": "Rate limit exceeded",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"prompt\": \"<string>\",\n  \"model\": \"dall-e-2\",\n  \"n\": 1,\n  \"quality\": \"standard\",\n  \"response_format\": \"url\",\n  \"size\": \"1024x1024\",\n  \"style\": \"vivid\",\n  \"user\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/images/generations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "images",
+                        "generations"
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:25:36.000Z",
+                  "updatedAt": "2026-07-28T02:25:36.000Z",
+                  "uid": "35240-5cf38d41-258b-444f-b416-01d8ab1064f3"
+                },
+                {
+                  "id": "13f698d2-7847-4e33-9ade-b6cfaaa28802",
+                  "name": "Server error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"prompt\": \"<string>\",\n  \"model\": \"dall-e-2\",\n  \"n\": 1,\n  \"quality\": \"standard\",\n  \"response_format\": \"url\",\n  \"size\": \"1024x1024\",\n  \"style\": \"vivid\",\n  \"user\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/images/generations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "images",
+                        "generations"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:25:36.000Z",
+                  "updatedAt": "2026-07-28T02:25:36.000Z",
+                  "uid": "35240-13f698d2-7847-4e33-9ade-b6cfaaa28802"
+                }
+              ],
+              "createdAt": "2026-07-28T02:25:36.000Z",
+              "updatedAt": "2026-07-28T02:25:36.000Z",
+              "uid": "35240-43cdd6d8-8a21-457b-8d92-d8992924a78b"
+            }
+          ],
+          "id": "f0aab4b4-84eb-4125-a816-c7ed4efa2963",
+          "createdAt": "2026-07-28T02:25:36.000Z",
+          "updatedAt": "2026-07-28T02:25:36.000Z",
+          "uid": "35240-f0aab4b4-84eb-4125-a816-c7ed4efa2963"
+        },
+        {
+          "name": "edits",
+          "item": [
+            {
+              "name": "OpenAI APIs Create image edit",
+              "id": "4d9d95f5-0d01-4e14-9b56-0a505edd81ae",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": "(Required) The image to edit (PNG, less than 4MB, square)",
+                      "key": "image",
+                      "type": "file",
+                      "value": null
+                    },
+                    {
+                      "description": "(Required) A text description of the desired edits",
+                      "key": "prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "Additional image whose transparent areas indicate where to edit",
+                      "key": "mask",
+                      "type": "file",
+                      "value": null
+                    },
+                    {
+                      "description": "The model to use for image editing",
+                      "key": "model",
+                      "value": "dall-e-2",
+                      "type": "text"
+                    },
+                    {
+                      "description": "The number of images to generate",
+                      "key": "n",
+                      "value": "1",
+                      "type": "text"
+                    },
+                    {
+                      "description": "The size of the generated images (This can only be one of 256x256,512x512,1024x1024)",
+                      "key": "size",
+                      "value": "1024x1024",
+                      "type": "text"
+                    },
+                    {
+                      "description": "The format in which the generated images are returned (This can only be one of url,b64_json)",
+                      "key": "response_format",
+                      "value": "url",
+                      "type": "text"
+                    },
+                    {
+                      "description": "A unique identifier representing your end-user",
+                      "key": "user",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/images/edits",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "images",
+                    "edits"
+                  ]
+                },
+                "description": "Creates an edited or extended image given an original image and a prompt. The mask specifies which areas of the image to edit."
+              },
+              "response": [
+                {
+                  "id": "7dd378d0-b81c-4e59-90fd-b49736383f31",
+                  "name": "Image edit response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) The image to edit (PNG, less than 4MB, square)",
+                          "key": "image",
+                          "type": "file"
+                        },
+                        {
+                          "description": "(Required) A text description of the desired edits",
+                          "key": "prompt",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Additional image whose transparent areas indicate where to edit",
+                          "key": "mask",
+                          "type": "file"
+                        },
+                        {
+                          "description": "The model to use for image editing",
+                          "key": "model",
+                          "value": "dall-e-2",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The number of images to generate",
+                          "key": "n",
+                          "value": "1",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The size of the generated images (This can only be one of 256x256,512x512,1024x1024)",
+                          "key": "size",
+                          "value": "1024x1024",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The format in which the generated images are returned (This can only be one of url,b64_json)",
+                          "key": "response_format",
+                          "value": "url",
+                          "type": "text"
+                        },
+                        {
+                          "description": "A unique identifier representing your end-user",
+                          "key": "user",
+                          "value": "<string>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/images/edits",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "images",
+                        "edits"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"created\": \"<integer>\",\n  \"data\": [\n    {\n      \"url\": \"<uri>\",\n      \"b64_json\": \"<string>\",\n      \"revised_prompt\": \"<string>\"\n    },\n    {\n      \"url\": \"<uri>\",\n      \"b64_json\": \"<string>\",\n      \"revised_prompt\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:25:36.000Z",
+                  "updatedAt": "2026-07-28T02:25:36.000Z",
+                  "uid": "35240-7dd378d0-b81c-4e59-90fd-b49736383f31"
+                },
+                {
+                  "id": "27aae8bc-48b1-4824-827a-0358e985aeb9",
+                  "name": "Invalid request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) The image to edit (PNG, less than 4MB, square)",
+                          "key": "image",
+                          "type": "file"
+                        },
+                        {
+                          "description": "(Required) A text description of the desired edits",
+                          "key": "prompt",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Additional image whose transparent areas indicate where to edit",
+                          "key": "mask",
+                          "type": "file"
+                        },
+                        {
+                          "description": "The model to use for image editing",
+                          "key": "model",
+                          "value": "dall-e-2",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The number of images to generate",
+                          "key": "n",
+                          "value": "1",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The size of the generated images (This can only be one of 256x256,512x512,1024x1024)",
+                          "key": "size",
+                          "value": "1024x1024",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The format in which the generated images are returned (This can only be one of url,b64_json)",
+                          "key": "response_format",
+                          "value": "url",
+                          "type": "text"
+                        },
+                        {
+                          "description": "A unique identifier representing your end-user",
+                          "key": "user",
+                          "value": "<string>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/images/edits",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "images",
+                        "edits"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:25:36.000Z",
+                  "updatedAt": "2026-07-28T02:25:36.000Z",
+                  "uid": "35240-27aae8bc-48b1-4824-827a-0358e985aeb9"
+                },
+                {
+                  "id": "a9231528-dcf1-4dc9-b8ef-d36aad225400",
+                  "name": "Unauthorized - invalid or missing API key",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) The image to edit (PNG, less than 4MB, square)",
+                          "key": "image",
+                          "type": "file"
+                        },
+                        {
+                          "description": "(Required) A text description of the desired edits",
+                          "key": "prompt",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Additional image whose transparent areas indicate where to edit",
+                          "key": "mask",
+                          "type": "file"
+                        },
+                        {
+                          "description": "The model to use for image editing",
+                          "key": "model",
+                          "value": "dall-e-2",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The number of images to generate",
+                          "key": "n",
+                          "value": "1",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The size of the generated images (This can only be one of 256x256,512x512,1024x1024)",
+                          "key": "size",
+                          "value": "1024x1024",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The format in which the generated images are returned (This can only be one of url,b64_json)",
+                          "key": "response_format",
+                          "value": "url",
+                          "type": "text"
+                        },
+                        {
+                          "description": "A unique identifier representing your end-user",
+                          "key": "user",
+                          "value": "<string>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/images/edits",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "images",
+                        "edits"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:25:36.000Z",
+                  "updatedAt": "2026-07-28T02:25:36.000Z",
+                  "uid": "35240-a9231528-dcf1-4dc9-b8ef-d36aad225400"
+                },
+                {
+                  "id": "f109e4c1-1400-4c0b-b813-3463fd5a2e96",
+                  "name": "Rate limit exceeded",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) The image to edit (PNG, less than 4MB, square)",
+                          "key": "image",
+                          "type": "file"
+                        },
+                        {
+                          "description": "(Required) A text description of the desired edits",
+                          "key": "prompt",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Additional image whose transparent areas indicate where to edit",
+                          "key": "mask",
+                          "type": "file"
+                        },
+                        {
+                          "description": "The model to use for image editing",
+                          "key": "model",
+                          "value": "dall-e-2",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The number of images to generate",
+                          "key": "n",
+                          "value": "1",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The size of the generated images (This can only be one of 256x256,512x512,1024x1024)",
+                          "key": "size",
+                          "value": "1024x1024",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The format in which the generated images are returned (This can only be one of url,b64_json)",
+                          "key": "response_format",
+                          "value": "url",
+                          "type": "text"
+                        },
+                        {
+                          "description": "A unique identifier representing your end-user",
+                          "key": "user",
+                          "value": "<string>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/images/edits",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "images",
+                        "edits"
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:25:36.000Z",
+                  "updatedAt": "2026-07-28T02:25:36.000Z",
+                  "uid": "35240-f109e4c1-1400-4c0b-b813-3463fd5a2e96"
+                }
+              ],
+              "createdAt": "2026-07-28T02:25:36.000Z",
+              "updatedAt": "2026-07-28T02:25:36.000Z",
+              "uid": "35240-4d9d95f5-0d01-4e14-9b56-0a505edd81ae"
+            }
+          ],
+          "id": "d3273290-c8e2-43b3-a7fd-3aab3d043421",
+          "createdAt": "2026-07-28T02:25:36.000Z",
+          "updatedAt": "2026-07-28T02:25:36.000Z",
+          "uid": "35240-d3273290-c8e2-43b3-a7fd-3aab3d043421"
+        },
+        {
+          "name": "variations",
+          "item": [
+            {
+              "name": "OpenAI APIs Create image variation",
+              "id": "44d8fa1d-5366-4f7b-8a52-f931accd6ef2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": "(Required) The image to use as the basis for variation(s)",
+                      "key": "image",
+                      "type": "file",
+                      "value": null
+                    },
+                    {
+                      "description": "The model to use for creating variations",
+                      "key": "model",
+                      "value": "dall-e-2",
+                      "type": "text"
+                    },
+                    {
+                      "description": "The number of images to generate",
+                      "key": "n",
+                      "value": "1",
+                      "type": "text"
+                    },
+                    {
+                      "description": "The format in which the generated images are returned (This can only be one of url,b64_json)",
+                      "key": "response_format",
+                      "value": "url",
+                      "type": "text"
+                    },
+                    {
+                      "description": "The size of the generated images (This can only be one of 256x256,512x512,1024x1024)",
+                      "key": "size",
+                      "value": "1024x1024",
+                      "type": "text"
+                    },
+                    {
+                      "description": "A unique identifier representing your end-user",
+                      "key": "user",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/images/variations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "images",
+                    "variations"
+                  ]
+                },
+                "description": "Creates a variation of a given image."
+              },
+              "response": [
+                {
+                  "id": "a3d6e74b-3d32-4f09-b93f-46f97621697b",
+                  "name": "Image variation response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) The image to use as the basis for variation(s)",
+                          "key": "image",
+                          "type": "file"
+                        },
+                        {
+                          "description": "The model to use for creating variations",
+                          "key": "model",
+                          "value": "dall-e-2",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The number of images to generate",
+                          "key": "n",
+                          "value": "1",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The format in which the generated images are returned (This can only be one of url,b64_json)",
+                          "key": "response_format",
+                          "value": "url",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The size of the generated images (This can only be one of 256x256,512x512,1024x1024)",
+                          "key": "size",
+                          "value": "1024x1024",
+                          "type": "text"
+                        },
+                        {
+                          "description": "A unique identifier representing your end-user",
+                          "key": "user",
+                          "value": "<string>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/images/variations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "images",
+                        "variations"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"created\": \"<integer>\",\n  \"data\": [\n    {\n      \"url\": \"<uri>\",\n      \"b64_json\": \"<string>\",\n      \"revised_prompt\": \"<string>\"\n    },\n    {\n      \"url\": \"<uri>\",\n      \"b64_json\": \"<string>\",\n      \"revised_prompt\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:25:36.000Z",
+                  "updatedAt": "2026-07-28T02:25:36.000Z",
+                  "uid": "35240-a3d6e74b-3d32-4f09-b93f-46f97621697b"
+                },
+                {
+                  "id": "e4d02f3e-071b-4074-903c-3139a6430d4f",
+                  "name": "Invalid request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) The image to use as the basis for variation(s)",
+                          "key": "image",
+                          "type": "file"
+                        },
+                        {
+                          "description": "The model to use for creating variations",
+                          "key": "model",
+                          "value": "dall-e-2",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The number of images to generate",
+                          "key": "n",
+                          "value": "1",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The format in which the generated images are returned (This can only be one of url,b64_json)",
+                          "key": "response_format",
+                          "value": "url",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The size of the generated images (This can only be one of 256x256,512x512,1024x1024)",
+                          "key": "size",
+                          "value": "1024x1024",
+                          "type": "text"
+                        },
+                        {
+                          "description": "A unique identifier representing your end-user",
+                          "key": "user",
+                          "value": "<string>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/images/variations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "images",
+                        "variations"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:25:36.000Z",
+                  "updatedAt": "2026-07-28T02:25:36.000Z",
+                  "uid": "35240-e4d02f3e-071b-4074-903c-3139a6430d4f"
+                },
+                {
+                  "id": "c10f9cfc-ca11-4fec-8ee8-d0ab2524fb79",
+                  "name": "Unauthorized - invalid or missing API key",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) The image to use as the basis for variation(s)",
+                          "key": "image",
+                          "type": "file"
+                        },
+                        {
+                          "description": "The model to use for creating variations",
+                          "key": "model",
+                          "value": "dall-e-2",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The number of images to generate",
+                          "key": "n",
+                          "value": "1",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The format in which the generated images are returned (This can only be one of url,b64_json)",
+                          "key": "response_format",
+                          "value": "url",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The size of the generated images (This can only be one of 256x256,512x512,1024x1024)",
+                          "key": "size",
+                          "value": "1024x1024",
+                          "type": "text"
+                        },
+                        {
+                          "description": "A unique identifier representing your end-user",
+                          "key": "user",
+                          "value": "<string>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/images/variations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "images",
+                        "variations"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:25:36.000Z",
+                  "updatedAt": "2026-07-28T02:25:36.000Z",
+                  "uid": "35240-c10f9cfc-ca11-4fec-8ee8-d0ab2524fb79"
+                },
+                {
+                  "id": "f563a9fb-e958-4769-923f-dcb30ba0e7b9",
+                  "name": "Rate limit exceeded",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) The image to use as the basis for variation(s)",
+                          "key": "image",
+                          "type": "file"
+                        },
+                        {
+                          "description": "The model to use for creating variations",
+                          "key": "model",
+                          "value": "dall-e-2",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The number of images to generate",
+                          "key": "n",
+                          "value": "1",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The format in which the generated images are returned (This can only be one of url,b64_json)",
+                          "key": "response_format",
+                          "value": "url",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The size of the generated images (This can only be one of 256x256,512x512,1024x1024)",
+                          "key": "size",
+                          "value": "1024x1024",
+                          "type": "text"
+                        },
+                        {
+                          "description": "A unique identifier representing your end-user",
+                          "key": "user",
+                          "value": "<string>",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/images/variations",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "images",
+                        "variations"
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:25:36.000Z",
+                  "updatedAt": "2026-07-28T02:25:36.000Z",
+                  "uid": "35240-f563a9fb-e958-4769-923f-dcb30ba0e7b9"
+                }
+              ],
+              "createdAt": "2026-07-28T02:25:36.000Z",
+              "updatedAt": "2026-07-28T02:25:36.000Z",
+              "uid": "35240-44d8fa1d-5366-4f7b-8a52-f931accd6ef2"
+            }
+          ],
+          "id": "1a94e9b0-c7a1-4607-8fff-9b9bb5876f80",
+          "createdAt": "2026-07-28T02:25:36.000Z",
+          "updatedAt": "2026-07-28T02:25:36.000Z",
+          "uid": "35240-1a94e9b0-c7a1-4607-8fff-9b9bb5876f80"
+        }
+      ],
+      "id": "e823aa36-55df-4a7a-9a53-ef91d0244f7a",
+      "createdAt": "2026-07-28T02:25:36.000Z",
+      "updatedAt": "2026-07-28T02:25:36.000Z",
+      "uid": "35240-e823aa36-55df-4a7a-9a53-ef91d0244f7a"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.openai.com/v1"
+    }
+  ]
+}

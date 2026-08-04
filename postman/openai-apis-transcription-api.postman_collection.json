@@ -1,0 +1,476 @@
+{
+  "info": {
+    "_postman_id": "a07e6b30-6f89-4a68-aa73-3bd55ef2826b",
+    "name": "OpenAI APIs OpenAI Assistants Transcription API",
+    "description": "API for building AI assistants with custom instructions, knowledge retrieval, code execution, and function calling capabilities. Supports managing assistants, threads, messages, and runs.\n\nContact Support:\n Name: OpenAI Support\n Email: support@openai.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:26:39.000Z",
+    "updatedAt": "2026-07-28T02:26:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a07e6b30-6f89-4a68-aa73-3bd55ef2826b"
+  },
+  "item": [
+    {
+      "name": "audio",
+      "item": [
+        {
+          "name": "transcriptions",
+          "item": [
+            {
+              "name": "OpenAI APIs Create transcription",
+              "id": "2cc3fc75-d431-4030-b375-974cdf7bc85b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": "(Required) The audio file to transcribe (flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm)",
+                      "key": "file",
+                      "type": "file",
+                      "value": null
+                    },
+                    {
+                      "description": "(Required) The model to use for transcription (whisper-1)",
+                      "key": "model",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "The language of the input audio in ISO-639-1 format",
+                      "key": "language",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "Optional text to guide the model's style or continue a previous segment",
+                      "key": "prompt",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": "The format of the transcription output (This can only be one of json,text,srt,verbose_json,vtt)",
+                      "key": "response_format",
+                      "value": "json",
+                      "type": "text"
+                    },
+                    {
+                      "description": "Sampling temperature between 0 and 1",
+                      "key": "temperature",
+                      "value": "0",
+                      "type": "text"
+                    },
+                    {
+                      "description": "The timestamp granularities to populate",
+                      "key": "timestamp_granularities",
+                      "value": "word,word",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/audio/transcriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "audio",
+                    "transcriptions"
+                  ]
+                },
+                "description": "Transcribes audio into the input language as text using the Whisper model."
+              },
+              "response": [
+                {
+                  "id": "1bbc519a-b4ae-4883-a708-bf4648270ec0",
+                  "name": "Transcription response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) The audio file to transcribe (flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm)",
+                          "key": "file",
+                          "type": "file"
+                        },
+                        {
+                          "description": "(Required) The model to use for transcription (whisper-1)",
+                          "key": "model",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The language of the input audio in ISO-639-1 format",
+                          "key": "language",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Optional text to guide the model's style or continue a previous segment",
+                          "key": "prompt",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The format of the transcription output (This can only be one of json,text,srt,verbose_json,vtt)",
+                          "key": "response_format",
+                          "value": "json",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Sampling temperature between 0 and 1",
+                          "key": "temperature",
+                          "value": "0",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The timestamp granularities to populate",
+                          "key": "timestamp_granularities",
+                          "value": "word,word",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/audio/transcriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "audio",
+                        "transcriptions"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"text\": \"<string>\",\n  \"task\": \"<string>\",\n  \"language\": \"<string>\",\n  \"duration\": \"<number>\",\n  \"words\": [\n    {\n      \"word\": \"<string>\",\n      \"start\": \"<number>\",\n      \"end\": \"<number>\"\n    },\n    {\n      \"word\": \"<string>\",\n      \"start\": \"<number>\",\n      \"end\": \"<number>\"\n    }\n  ],\n  \"segments\": [\n    {\n      \"id\": \"<integer>\",\n      \"start\": \"<number>\",\n      \"end\": \"<number>\",\n      \"text\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"start\": \"<number>\",\n      \"end\": \"<number>\",\n      \"text\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:26:39.000Z",
+                  "updatedAt": "2026-07-28T02:26:39.000Z",
+                  "uid": "35240-1bbc519a-b4ae-4883-a708-bf4648270ec0"
+                },
+                {
+                  "id": "d8c32b59-5258-4e0d-9ffc-916957f5d966",
+                  "name": "Invalid request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) The audio file to transcribe (flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm)",
+                          "key": "file",
+                          "type": "file"
+                        },
+                        {
+                          "description": "(Required) The model to use for transcription (whisper-1)",
+                          "key": "model",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The language of the input audio in ISO-639-1 format",
+                          "key": "language",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Optional text to guide the model's style or continue a previous segment",
+                          "key": "prompt",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The format of the transcription output (This can only be one of json,text,srt,verbose_json,vtt)",
+                          "key": "response_format",
+                          "value": "json",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Sampling temperature between 0 and 1",
+                          "key": "temperature",
+                          "value": "0",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The timestamp granularities to populate",
+                          "key": "timestamp_granularities",
+                          "value": "word,word",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/audio/transcriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "audio",
+                        "transcriptions"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:26:39.000Z",
+                  "updatedAt": "2026-07-28T02:26:39.000Z",
+                  "uid": "35240-d8c32b59-5258-4e0d-9ffc-916957f5d966"
+                },
+                {
+                  "id": "a859918e-e46e-4451-883b-2ed8d3d1d12f",
+                  "name": "Unauthorized - invalid or missing API key",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) The audio file to transcribe (flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm)",
+                          "key": "file",
+                          "type": "file"
+                        },
+                        {
+                          "description": "(Required) The model to use for transcription (whisper-1)",
+                          "key": "model",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The language of the input audio in ISO-639-1 format",
+                          "key": "language",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Optional text to guide the model's style or continue a previous segment",
+                          "key": "prompt",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The format of the transcription output (This can only be one of json,text,srt,verbose_json,vtt)",
+                          "key": "response_format",
+                          "value": "json",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Sampling temperature between 0 and 1",
+                          "key": "temperature",
+                          "value": "0",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The timestamp granularities to populate",
+                          "key": "timestamp_granularities",
+                          "value": "word,word",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/audio/transcriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "audio",
+                        "transcriptions"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:26:39.000Z",
+                  "updatedAt": "2026-07-28T02:26:39.000Z",
+                  "uid": "35240-a859918e-e46e-4451-883b-2ed8d3d1d12f"
+                },
+                {
+                  "id": "c2275c6e-efba-4176-a5a9-c27fc61ccd47",
+                  "name": "Rate limit exceeded",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "(Required) The audio file to transcribe (flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm)",
+                          "key": "file",
+                          "type": "file"
+                        },
+                        {
+                          "description": "(Required) The model to use for transcription (whisper-1)",
+                          "key": "model",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The language of the input audio in ISO-639-1 format",
+                          "key": "language",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Optional text to guide the model's style or continue a previous segment",
+                          "key": "prompt",
+                          "value": "<string>",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The format of the transcription output (This can only be one of json,text,srt,verbose_json,vtt)",
+                          "key": "response_format",
+                          "value": "json",
+                          "type": "text"
+                        },
+                        {
+                          "description": "Sampling temperature between 0 and 1",
+                          "key": "temperature",
+                          "value": "0",
+                          "type": "text"
+                        },
+                        {
+                          "description": "The timestamp granularities to populate",
+                          "key": "timestamp_granularities",
+                          "value": "word,word",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/audio/transcriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "audio",
+                        "transcriptions"
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:26:39.000Z",
+                  "updatedAt": "2026-07-28T02:26:39.000Z",
+                  "uid": "35240-c2275c6e-efba-4176-a5a9-c27fc61ccd47"
+                }
+              ],
+              "createdAt": "2026-07-28T02:26:39.000Z",
+              "updatedAt": "2026-07-28T02:26:39.000Z",
+              "uid": "35240-2cc3fc75-d431-4030-b375-974cdf7bc85b"
+            }
+          ],
+          "id": "e499c31d-084c-45e3-ae11-197f87a1802d",
+          "createdAt": "2026-07-28T02:26:39.000Z",
+          "updatedAt": "2026-07-28T02:26:39.000Z",
+          "uid": "35240-e499c31d-084c-45e3-ae11-197f87a1802d"
+        }
+      ],
+      "id": "bcbe0655-ffa3-4da4-97fe-bc5771875c01",
+      "createdAt": "2026-07-28T02:26:39.000Z",
+      "updatedAt": "2026-07-28T02:26:39.000Z",
+      "uid": "35240-bcbe0655-ffa3-4da4-97fe-bc5771875c01"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.openai.com/v1"
+    }
+  ]
+}

@@ -1,0 +1,295 @@
+{
+  "info": {
+    "_postman_id": "ccd2d2cd-af4e-41cd-adb1-693c9985d476",
+    "name": "OpenAI APIs OpenAI Assistants Speech API",
+    "description": "API for building AI assistants with custom instructions, knowledge retrieval, code execution, and function calling capabilities. Supports managing assistants, threads, messages, and runs.\n\nContact Support:\n Name: OpenAI Support\n Email: support@openai.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:25:44.000Z",
+    "updatedAt": "2026-07-28T02:25:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ccd2d2cd-af4e-41cd-adb1-693c9985d476"
+  },
+  "item": [
+    {
+      "name": "audio",
+      "item": [
+        {
+          "name": "speech",
+          "item": [
+            {
+              "name": "OpenAI APIs Create speech",
+              "id": "e90104d7-bbdc-45c5-a090-d20920cacf81",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "audio/mpeg"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"voice\": \"shimmer\",\n  \"response_format\": \"mp3\",\n  \"speed\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/audio/speech",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "audio",
+                    "speech"
+                  ]
+                },
+                "description": "Generates audio from the input text using the specified voice and model."
+              },
+              "response": [
+                {
+                  "id": "797d0ada-e746-4bc1-80bc-daca941470ef",
+                  "name": "Audio file containing the generated speech",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "audio/mpeg"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"voice\": \"shimmer\",\n  \"response_format\": \"mp3\",\n  \"speed\": 1\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/audio/speech",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "audio",
+                        "speech"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "audio/mpeg"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<binary>",
+                  "createdAt": "2026-07-28T02:25:45.000Z",
+                  "updatedAt": "2026-07-28T02:25:45.000Z",
+                  "uid": "35240-797d0ada-e746-4bc1-80bc-daca941470ef"
+                },
+                {
+                  "id": "9c584446-b139-4d6b-8e96-6143d8fd493b",
+                  "name": "Invalid request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"voice\": \"shimmer\",\n  \"response_format\": \"mp3\",\n  \"speed\": 1\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/audio/speech",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "audio",
+                        "speech"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:25:45.000Z",
+                  "updatedAt": "2026-07-28T02:25:45.000Z",
+                  "uid": "35240-9c584446-b139-4d6b-8e96-6143d8fd493b"
+                },
+                {
+                  "id": "c3ad0969-c5f5-4bed-ad92-27b5038fb30e",
+                  "name": "Unauthorized - invalid or missing API key",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"voice\": \"shimmer\",\n  \"response_format\": \"mp3\",\n  \"speed\": 1\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/audio/speech",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "audio",
+                        "speech"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:25:45.000Z",
+                  "updatedAt": "2026-07-28T02:25:45.000Z",
+                  "uid": "35240-c3ad0969-c5f5-4bed-ad92-27b5038fb30e"
+                },
+                {
+                  "id": "c89a5bc2-1f0e-4408-97f8-a24e7f7118a0",
+                  "name": "Rate limit exceeded",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"voice\": \"shimmer\",\n  \"response_format\": \"mp3\",\n  \"speed\": 1\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/audio/speech",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "audio",
+                        "speech"
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:25:45.000Z",
+                  "updatedAt": "2026-07-28T02:25:45.000Z",
+                  "uid": "35240-c89a5bc2-1f0e-4408-97f8-a24e7f7118a0"
+                }
+              ],
+              "createdAt": "2026-07-28T02:25:45.000Z",
+              "updatedAt": "2026-07-28T02:25:45.000Z",
+              "uid": "35240-e90104d7-bbdc-45c5-a090-d20920cacf81"
+            }
+          ],
+          "id": "32c47955-8cdf-4ff2-af71-fe749dd46995",
+          "createdAt": "2026-07-28T02:25:45.000Z",
+          "updatedAt": "2026-07-28T02:25:45.000Z",
+          "uid": "35240-32c47955-8cdf-4ff2-af71-fe749dd46995"
+        }
+      ],
+      "id": "a8a79c82-d7cd-4c47-845c-e46aa04bcb88",
+      "createdAt": "2026-07-28T02:25:45.000Z",
+      "updatedAt": "2026-07-28T02:25:45.000Z",
+      "uid": "35240-a8a79c82-d7cd-4c47-845c-e46aa04bcb88"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.openai.com/v1"
+    }
+  ]
+}

@@ -1,0 +1,328 @@
+{
+  "info": {
+    "_postman_id": "b8e36cfa-e6a9-4055-92fe-1f7926265e82",
+    "name": "OpenAI APIs OpenAI Assistants Completions API",
+    "description": "API for building AI assistants with custom instructions, knowledge retrieval, code execution, and function calling capabilities. Supports managing assistants, threads, messages, and runs.\n\nContact Support:\n Name: OpenAI Support\n Email: support@openai.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:25:33.000Z",
+    "updatedAt": "2026-07-28T02:25:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b8e36cfa-e6a9-4055-92fe-1f7926265e82"
+  },
+  "item": [
+    {
+      "name": "completions",
+      "item": [
+        {
+          "name": "OpenAI APIs Create completion",
+          "id": "77ba7271-c608-4ccd-96e4-6d5cb2d0eea1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"max_tokens\": 16,\n  \"temperature\": 1,\n  \"top_p\": 1,\n  \"n\": 1,\n  \"stream\": false,\n  \"logprobs\": \"<integer>\",\n  \"echo\": false,\n  \"stop\": \"<string>\",\n  \"presence_penalty\": 0,\n  \"frequency_penalty\": 0,\n  \"best_of\": 1,\n  \"logit_bias\": {\n    \"cupidatat_e_\": \"<number>\",\n    \"reprehenderit_d74\": \"<number>\"\n  },\n  \"user\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/completions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "completions"
+              ]
+            },
+            "description": "Creates a completion for the provided prompt and parameters. This is a legacy endpoint; use the Chat Completions API for new applications."
+          },
+          "response": [
+            {
+              "id": "c5f1eae5-abf7-4aa8-b39b-56f9dc0914d7",
+              "name": "Completion response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"max_tokens\": 16,\n  \"temperature\": 1,\n  \"top_p\": 1,\n  \"n\": 1,\n  \"stream\": false,\n  \"logprobs\": \"<integer>\",\n  \"echo\": false,\n  \"stop\": \"<string>\",\n  \"presence_penalty\": 0,\n  \"frequency_penalty\": 0,\n  \"best_of\": 1,\n  \"logit_bias\": {\n    \"cupidatat_e_\": \"<number>\",\n    \"reprehenderit_d74\": \"<number>\"\n  },\n  \"user\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/completions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "completions"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"text_completion\",\n  \"created\": \"<integer>\",\n  \"model\": \"<string>\",\n  \"choices\": [\n    {\n      \"text\": \"<string>\",\n      \"index\": \"<integer>\",\n      \"logprobs\": {},\n      \"finish_reason\": \"length\"\n    },\n    {\n      \"text\": \"<string>\",\n      \"index\": \"<integer>\",\n      \"logprobs\": {},\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": \"<integer>\",\n    \"completion_tokens\": \"<integer>\",\n    \"total_tokens\": \"<integer>\"\n  },\n  \"system_fingerprint\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:25:34.000Z",
+              "updatedAt": "2026-07-28T02:25:34.000Z",
+              "uid": "35240-c5f1eae5-abf7-4aa8-b39b-56f9dc0914d7"
+            },
+            {
+              "id": "b23ea3b2-0b2d-4931-aff6-aee289c42c3b",
+              "name": "Invalid request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"max_tokens\": 16,\n  \"temperature\": 1,\n  \"top_p\": 1,\n  \"n\": 1,\n  \"stream\": false,\n  \"logprobs\": \"<integer>\",\n  \"echo\": false,\n  \"stop\": \"<string>\",\n  \"presence_penalty\": 0,\n  \"frequency_penalty\": 0,\n  \"best_of\": 1,\n  \"logit_bias\": {\n    \"cupidatat_e_\": \"<number>\",\n    \"reprehenderit_d74\": \"<number>\"\n  },\n  \"user\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/completions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "completions"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:25:34.000Z",
+              "updatedAt": "2026-07-28T02:25:34.000Z",
+              "uid": "35240-b23ea3b2-0b2d-4931-aff6-aee289c42c3b"
+            },
+            {
+              "id": "43024f14-05dc-45a9-b50e-691677b1fcfb",
+              "name": "Unauthorized - invalid or missing API key",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"max_tokens\": 16,\n  \"temperature\": 1,\n  \"top_p\": 1,\n  \"n\": 1,\n  \"stream\": false,\n  \"logprobs\": \"<integer>\",\n  \"echo\": false,\n  \"stop\": \"<string>\",\n  \"presence_penalty\": 0,\n  \"frequency_penalty\": 0,\n  \"best_of\": 1,\n  \"logit_bias\": {\n    \"cupidatat_e_\": \"<number>\",\n    \"reprehenderit_d74\": \"<number>\"\n  },\n  \"user\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/completions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "completions"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:25:34.000Z",
+              "updatedAt": "2026-07-28T02:25:34.000Z",
+              "uid": "35240-43024f14-05dc-45a9-b50e-691677b1fcfb"
+            },
+            {
+              "id": "abe886ba-0256-4d17-b92b-59e76b52bbd3",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"max_tokens\": 16,\n  \"temperature\": 1,\n  \"top_p\": 1,\n  \"n\": 1,\n  \"stream\": false,\n  \"logprobs\": \"<integer>\",\n  \"echo\": false,\n  \"stop\": \"<string>\",\n  \"presence_penalty\": 0,\n  \"frequency_penalty\": 0,\n  \"best_of\": 1,\n  \"logit_bias\": {\n    \"cupidatat_e_\": \"<number>\",\n    \"reprehenderit_d74\": \"<number>\"\n  },\n  \"user\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/completions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "completions"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:25:34.000Z",
+              "updatedAt": "2026-07-28T02:25:34.000Z",
+              "uid": "35240-abe886ba-0256-4d17-b92b-59e76b52bbd3"
+            },
+            {
+              "id": "2764a8f6-932d-4b44-96ff-b9ca8be15fc1",
+              "name": "Server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"max_tokens\": 16,\n  \"temperature\": 1,\n  \"top_p\": 1,\n  \"n\": 1,\n  \"stream\": false,\n  \"logprobs\": \"<integer>\",\n  \"echo\": false,\n  \"stop\": \"<string>\",\n  \"presence_penalty\": 0,\n  \"frequency_penalty\": 0,\n  \"best_of\": 1,\n  \"logit_bias\": {\n    \"cupidatat_e_\": \"<number>\",\n    \"reprehenderit_d74\": \"<number>\"\n  },\n  \"user\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/completions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "completions"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:25:34.000Z",
+              "updatedAt": "2026-07-28T02:25:34.000Z",
+              "uid": "35240-2764a8f6-932d-4b44-96ff-b9ca8be15fc1"
+            }
+          ],
+          "createdAt": "2026-07-28T02:25:34.000Z",
+          "updatedAt": "2026-07-28T02:25:34.000Z",
+          "uid": "35240-77ba7271-c608-4ccd-96e4-6d5cb2d0eea1"
+        }
+      ],
+      "id": "b1274566-40bf-4413-80d1-7f33416e74fc",
+      "createdAt": "2026-07-28T02:25:34.000Z",
+      "updatedAt": "2026-07-28T02:25:34.000Z",
+      "uid": "35240-b1274566-40bf-4413-80d1-7f33416e74fc"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.openai.com/v1"
+    }
+  ]
+}

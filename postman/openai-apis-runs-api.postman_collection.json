@@ -1,0 +1,951 @@
+{
+  "info": {
+    "_postman_id": "63756fba-e886-49cf-b76d-4bb782b13935",
+    "name": "OpenAI APIs OpenAI Assistants Runs API",
+    "description": "API for building AI assistants with custom instructions, knowledge retrieval, code execution, and function calling capabilities. Supports managing assistants, threads, messages, and runs.\n\nContact Support:\n Name: OpenAI Support\n Email: support@openai.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:25:43.000Z",
+    "updatedAt": "2026-07-28T02:25:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-63756fba-e886-49cf-b76d-4bb782b13935"
+  },
+  "item": [
+    {
+      "name": "threads",
+      "item": [
+        {
+          "name": "{thread_id}",
+          "item": [
+            {
+              "name": "runs",
+              "item": [
+                {
+                  "name": "{run_id}",
+                  "item": [
+                    {
+                      "name": "cancel",
+                      "item": [
+                        {
+                          "name": "OpenAI APIs Cancel run",
+                          "id": "d795cc25-d427-4bcb-a82a-ea4bd3a367fb",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) Required header for the Assistants API beta",
+                                "key": "OpenAI-Beta",
+                                "value": "assistants=v2"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/threads/:thread_id/runs/:run_id/cancel",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "threads",
+                                ":thread_id",
+                                "runs",
+                                ":run_id",
+                                "cancel"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "85d83f57-82c9-48ea-9107-880d15010a39",
+                                  "key": "thread_id",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the thread"
+                                },
+                                {
+                                  "id": "29caa6ed-b894-4e24-9c0b-371b0f53bf00",
+                                  "key": "run_id",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the run"
+                                }
+                              ]
+                            },
+                            "description": "Cancels an in-progress run."
+                          },
+                          "response": [
+                            {
+                              "id": "48da8c76-dabf-4ff5-92c2-e6df07b489ec",
+                              "name": "Run cancelled",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "(Required) Required header for the Assistants API beta",
+                                    "key": "OpenAI-Beta",
+                                    "value": "assistants=v2"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/threads/:thread_id/runs/:run_id/cancel",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "threads",
+                                    ":thread_id",
+                                    "runs",
+                                    ":run_id",
+                                    "cancel"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "thread_id"
+                                    },
+                                    {
+                                      "key": "run_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"thread.run\",\n  \"created_at\": \"<integer>\",\n  \"thread_id\": \"<string>\",\n  \"assistant_id\": \"<string>\",\n  \"status\": \"expired\",\n  \"required_action\": {\n    \"type\": \"submit_tool_outputs\",\n    \"submit_tool_outputs\": {}\n  },\n  \"model\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"metadata\": {},\n  \"usage\": {\n    \"prompt_tokens\": \"<integer>\",\n    \"completion_tokens\": \"<integer>\",\n    \"total_tokens\": \"<integer>\"\n  },\n  \"started_at\": \"<integer>\",\n  \"completed_at\": \"<integer>\",\n  \"cancelled_at\": \"<integer>\",\n  \"failed_at\": \"<integer>\",\n  \"expires_at\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T02:25:43.000Z",
+                              "updatedAt": "2026-07-28T02:25:43.000Z",
+                              "uid": "35240-48da8c76-dabf-4ff5-92c2-e6df07b489ec"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:25:43.000Z",
+                          "updatedAt": "2026-07-28T02:25:43.000Z",
+                          "uid": "35240-d795cc25-d427-4bcb-a82a-ea4bd3a367fb"
+                        }
+                      ],
+                      "id": "2873d91c-71c3-4d7e-a1ec-8f9b7997211e",
+                      "createdAt": "2026-07-28T02:25:43.000Z",
+                      "updatedAt": "2026-07-28T02:25:43.000Z",
+                      "uid": "35240-2873d91c-71c3-4d7e-a1ec-8f9b7997211e"
+                    },
+                    {
+                      "name": "submit_tool_outputs",
+                      "item": [
+                        {
+                          "name": "OpenAI APIs Submit tool outputs",
+                          "id": "2f94f4c7-c8dc-405f-959d-fcd6fecd4784",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) Required header for the Assistants API beta",
+                                "key": "OpenAI-Beta",
+                                "value": "assistants=v2"
+                              },
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"tool_outputs\": [\n    {\n      \"tool_call_id\": \"<string>\",\n      \"output\": \"<string>\"\n    },\n    {\n      \"tool_call_id\": \"<string>\",\n      \"output\": \"<string>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/threads/:thread_id/runs/:run_id/submit_tool_outputs",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "threads",
+                                ":thread_id",
+                                "runs",
+                                ":run_id",
+                                "submit_tool_outputs"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "fce45a0e-681c-481d-abb7-3b4ed1ac036e",
+                                  "key": "thread_id",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the thread"
+                                },
+                                {
+                                  "id": "60da185e-a12b-4cf2-a76b-97336b8c973b",
+                                  "key": "run_id",
+                                  "value": "<string>",
+                                  "description": "(Required) The ID of the run"
+                                }
+                              ]
+                            },
+                            "description": "Submit outputs from tool calls when a run has the status requires_action with required_action type submit_tool_outputs."
+                          },
+                          "response": [
+                            {
+                              "id": "81bd05d7-e18a-45cd-94e2-803782398ec3",
+                              "name": "Run resumed",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "(Required) Required header for the Assistants API beta",
+                                    "key": "OpenAI-Beta",
+                                    "value": "assistants=v2"
+                                  },
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"tool_outputs\": [\n    {\n      \"tool_call_id\": \"<string>\",\n      \"output\": \"<string>\"\n    },\n    {\n      \"tool_call_id\": \"<string>\",\n      \"output\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/threads/:thread_id/runs/:run_id/submit_tool_outputs",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "threads",
+                                    ":thread_id",
+                                    "runs",
+                                    ":run_id",
+                                    "submit_tool_outputs"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "thread_id"
+                                    },
+                                    {
+                                      "key": "run_id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"thread.run\",\n  \"created_at\": \"<integer>\",\n  \"thread_id\": \"<string>\",\n  \"assistant_id\": \"<string>\",\n  \"status\": \"expired\",\n  \"required_action\": {\n    \"type\": \"submit_tool_outputs\",\n    \"submit_tool_outputs\": {}\n  },\n  \"model\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"metadata\": {},\n  \"usage\": {\n    \"prompt_tokens\": \"<integer>\",\n    \"completion_tokens\": \"<integer>\",\n    \"total_tokens\": \"<integer>\"\n  },\n  \"started_at\": \"<integer>\",\n  \"completed_at\": \"<integer>\",\n  \"cancelled_at\": \"<integer>\",\n  \"failed_at\": \"<integer>\",\n  \"expires_at\": \"<integer>\"\n}",
+                              "createdAt": "2026-07-28T02:25:43.000Z",
+                              "updatedAt": "2026-07-28T02:25:43.000Z",
+                              "uid": "35240-81bd05d7-e18a-45cd-94e2-803782398ec3"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:25:43.000Z",
+                          "updatedAt": "2026-07-28T02:25:43.000Z",
+                          "uid": "35240-2f94f4c7-c8dc-405f-959d-fcd6fecd4784"
+                        }
+                      ],
+                      "id": "bd29da3f-8e66-4dda-90cc-79f6f28d63bd",
+                      "createdAt": "2026-07-28T02:25:43.000Z",
+                      "updatedAt": "2026-07-28T02:25:43.000Z",
+                      "uid": "35240-bd29da3f-8e66-4dda-90cc-79f6f28d63bd"
+                    },
+                    {
+                      "name": "OpenAI APIs Retrieve run",
+                      "id": "1dd3f251-bfdf-45dc-8463-c851f71b6551",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Required header for the Assistants API beta",
+                            "key": "OpenAI-Beta",
+                            "value": "assistants=v2"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/threads/:thread_id/runs/:run_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "threads",
+                            ":thread_id",
+                            "runs",
+                            ":run_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "d23b73f5-31f3-4a3e-880d-4840fdab8a94",
+                              "key": "thread_id",
+                              "value": "<string>",
+                              "description": "(Required) The ID of the thread"
+                            },
+                            {
+                              "id": "d37cec59-1676-4240-998e-e835d059f196",
+                              "key": "run_id",
+                              "value": "<string>",
+                              "description": "(Required) The ID of the run"
+                            }
+                          ]
+                        },
+                        "description": "Retrieves a run by ID."
+                      },
+                      "response": [
+                        {
+                          "id": "f12b8023-308b-44b7-b59b-fa8096120f2e",
+                          "name": "Run details",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) Required header for the Assistants API beta",
+                                "key": "OpenAI-Beta",
+                                "value": "assistants=v2"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/threads/:thread_id/runs/:run_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "threads",
+                                ":thread_id",
+                                "runs",
+                                ":run_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "thread_id"
+                                },
+                                {
+                                  "key": "run_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"thread.run\",\n  \"created_at\": \"<integer>\",\n  \"thread_id\": \"<string>\",\n  \"assistant_id\": \"<string>\",\n  \"status\": \"expired\",\n  \"required_action\": {\n    \"type\": \"submit_tool_outputs\",\n    \"submit_tool_outputs\": {}\n  },\n  \"model\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"metadata\": {},\n  \"usage\": {\n    \"prompt_tokens\": \"<integer>\",\n    \"completion_tokens\": \"<integer>\",\n    \"total_tokens\": \"<integer>\"\n  },\n  \"started_at\": \"<integer>\",\n  \"completed_at\": \"<integer>\",\n  \"cancelled_at\": \"<integer>\",\n  \"failed_at\": \"<integer>\",\n  \"expires_at\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T02:25:43.000Z",
+                          "updatedAt": "2026-07-28T02:25:43.000Z",
+                          "uid": "35240-f12b8023-308b-44b7-b59b-fa8096120f2e"
+                        },
+                        {
+                          "id": "fa9241bc-f0b0-4ae7-9e05-d33cc12f8fe5",
+                          "name": "Run not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "(Required) Required header for the Assistants API beta",
+                                "key": "OpenAI-Beta",
+                                "value": "assistants=v2"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/threads/:thread_id/runs/:run_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "threads",
+                                ":thread_id",
+                                "runs",
+                                ":run_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "thread_id"
+                                },
+                                {
+                                  "key": "run_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:25:43.000Z",
+                          "updatedAt": "2026-07-28T02:25:43.000Z",
+                          "uid": "35240-fa9241bc-f0b0-4ae7-9e05-d33cc12f8fe5"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:25:43.000Z",
+                      "updatedAt": "2026-07-28T02:25:43.000Z",
+                      "uid": "35240-1dd3f251-bfdf-45dc-8463-c851f71b6551"
+                    }
+                  ],
+                  "id": "8b0723ff-cc13-48c3-90d1-c6fce4c22813",
+                  "createdAt": "2026-07-28T02:25:43.000Z",
+                  "updatedAt": "2026-07-28T02:25:43.000Z",
+                  "uid": "35240-8b0723ff-cc13-48c3-90d1-c6fce4c22813"
+                },
+                {
+                  "name": "OpenAI APIs List runs",
+                  "id": "30110658-56cd-4d45-b2e2-8e482bcf7045",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Required header for the Assistants API beta",
+                        "key": "OpenAI-Beta",
+                        "value": "assistants=v2"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/threads/:thread_id/runs?limit=20&order=desc&after=<string>&before=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "threads",
+                        ":thread_id",
+                        "runs"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of objects to return (1-100, default 20)",
+                          "key": "limit",
+                          "value": "20"
+                        },
+                        {
+                          "description": "Sort order by created_at timestamp",
+                          "key": "order",
+                          "value": "desc"
+                        },
+                        {
+                          "description": "A cursor for pagination (object ID to start after)",
+                          "key": "after",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A cursor for pagination (object ID to end before)",
+                          "key": "before",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "9d41eba4-11f9-4bbb-827c-97fd79891f2a",
+                          "key": "thread_id",
+                          "value": "<string>",
+                          "description": "(Required) The ID of the thread"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of runs belonging to a thread."
+                  },
+                  "response": [
+                    {
+                      "id": "fa186cb7-a7b3-4892-9e2e-5027cdaf7e9f",
+                      "name": "List of runs",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Required header for the Assistants API beta",
+                            "key": "OpenAI-Beta",
+                            "value": "assistants=v2"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/threads/:thread_id/runs?limit=20&order=desc&after=<string>&before=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "threads",
+                            ":thread_id",
+                            "runs"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of objects to return (1-100, default 20)",
+                              "key": "limit",
+                              "value": "20"
+                            },
+                            {
+                              "description": "Sort order by created_at timestamp",
+                              "key": "order",
+                              "value": "desc"
+                            },
+                            {
+                              "description": "A cursor for pagination (object ID to start after)",
+                              "key": "after",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A cursor for pagination (object ID to end before)",
+                              "key": "before",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "thread_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"object\": \"list\",\n  \"first_id\": \"<string>\",\n  \"last_id\": \"<string>\",\n  \"has_more\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T02:25:43.000Z",
+                      "updatedAt": "2026-07-28T02:25:43.000Z",
+                      "uid": "35240-fa186cb7-a7b3-4892-9e2e-5027cdaf7e9f"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:25:43.000Z",
+                  "updatedAt": "2026-07-28T02:25:43.000Z",
+                  "uid": "35240-30110658-56cd-4d45-b2e2-8e482bcf7045"
+                },
+                {
+                  "name": "OpenAI APIs Create run",
+                  "id": "bd5c03b9-3dc5-4ac6-b9d0-834842885aec",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) Required header for the Assistants API beta",
+                        "key": "OpenAI-Beta",
+                        "value": "assistants=v2"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"assistant_id\": \"<string>\",\n  \"model\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"additional_instructions\": \"<string>\",\n  \"metadata\": {},\n  \"stream\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/threads/:thread_id/runs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "threads",
+                        ":thread_id",
+                        "runs"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e08c97b7-c176-4328-a8b0-2926e19a07c1",
+                          "key": "thread_id",
+                          "value": "<string>",
+                          "description": "(Required) The ID of the thread"
+                        }
+                      ]
+                    },
+                    "description": "Create a run on a thread."
+                  },
+                  "response": [
+                    {
+                      "id": "f997dbd2-3d87-41c4-8962-3fb551cab43d",
+                      "name": "Run created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Required header for the Assistants API beta",
+                            "key": "OpenAI-Beta",
+                            "value": "assistants=v2"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"assistant_id\": \"<string>\",\n  \"model\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"additional_instructions\": \"<string>\",\n  \"metadata\": {},\n  \"stream\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/threads/:thread_id/runs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "threads",
+                            ":thread_id",
+                            "runs"
+                          ],
+                          "variable": [
+                            {
+                              "key": "thread_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"thread.run\",\n  \"created_at\": \"<integer>\",\n  \"thread_id\": \"<string>\",\n  \"assistant_id\": \"<string>\",\n  \"status\": \"expired\",\n  \"required_action\": {\n    \"type\": \"submit_tool_outputs\",\n    \"submit_tool_outputs\": {}\n  },\n  \"model\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"metadata\": {},\n  \"usage\": {\n    \"prompt_tokens\": \"<integer>\",\n    \"completion_tokens\": \"<integer>\",\n    \"total_tokens\": \"<integer>\"\n  },\n  \"started_at\": \"<integer>\",\n  \"completed_at\": \"<integer>\",\n  \"cancelled_at\": \"<integer>\",\n  \"failed_at\": \"<integer>\",\n  \"expires_at\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T02:25:43.000Z",
+                      "updatedAt": "2026-07-28T02:25:43.000Z",
+                      "uid": "35240-f997dbd2-3d87-41c4-8962-3fb551cab43d"
+                    },
+                    {
+                      "id": "fd4cddd0-46c9-43f9-9d4a-9e3020f4c942",
+                      "name": "Invalid request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Required header for the Assistants API beta",
+                            "key": "OpenAI-Beta",
+                            "value": "assistants=v2"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"assistant_id\": \"<string>\",\n  \"model\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"additional_instructions\": \"<string>\",\n  \"metadata\": {},\n  \"stream\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/threads/:thread_id/runs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "threads",
+                            ":thread_id",
+                            "runs"
+                          ],
+                          "variable": [
+                            {
+                              "key": "thread_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:25:43.000Z",
+                      "updatedAt": "2026-07-28T02:25:43.000Z",
+                      "uid": "35240-fd4cddd0-46c9-43f9-9d4a-9e3020f4c942"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:25:43.000Z",
+                  "updatedAt": "2026-07-28T02:25:43.000Z",
+                  "uid": "35240-bd5c03b9-3dc5-4ac6-b9d0-834842885aec"
+                }
+              ],
+              "id": "f82fabad-59f3-4065-8e41-bbbe15f212c2",
+              "createdAt": "2026-07-28T02:25:43.000Z",
+              "updatedAt": "2026-07-28T02:25:43.000Z",
+              "uid": "35240-f82fabad-59f3-4065-8e41-bbbe15f212c2"
+            }
+          ],
+          "id": "5d4787bb-1442-4e86-a282-28d293259f47",
+          "createdAt": "2026-07-28T02:25:43.000Z",
+          "updatedAt": "2026-07-28T02:25:43.000Z",
+          "uid": "35240-5d4787bb-1442-4e86-a282-28d293259f47"
+        },
+        {
+          "name": "runs",
+          "item": [
+            {
+              "name": "OpenAI APIs Create thread and run",
+              "id": "d4dad115-a917-42a4-b0e3-01913d1c9c09",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "(Required) Required header for the Assistants API beta",
+                    "key": "OpenAI-Beta",
+                    "value": "assistants=v2"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assistant_id\": \"<string>\",\n  \"thread\": {\n    \"messages\": [\n      {\n        \"role\": \"user\",\n        \"content\": \"<string>\",\n        \"metadata\": {}\n      },\n      {\n        \"role\": \"assistant\",\n        \"content\": \"<string>\",\n        \"metadata\": {}\n      }\n    ],\n    \"metadata\": {}\n  },\n  \"model\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"metadata\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/threads/runs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "threads",
+                    "runs"
+                  ]
+                },
+                "description": "Create a thread and run it in one request."
+              },
+              "response": [
+                {
+                  "id": "0771dcb7-e3c6-473d-a72a-5061e3cffec9",
+                  "name": "Run created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) Required header for the Assistants API beta",
+                        "key": "OpenAI-Beta",
+                        "value": "assistants=v2"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"assistant_id\": \"<string>\",\n  \"thread\": {\n    \"messages\": [\n      {\n        \"role\": \"user\",\n        \"content\": \"<string>\",\n        \"metadata\": {}\n      },\n      {\n        \"role\": \"assistant\",\n        \"content\": \"<string>\",\n        \"metadata\": {}\n      }\n    ],\n    \"metadata\": {}\n  },\n  \"model\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"metadata\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/threads/runs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "threads",
+                        "runs"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"thread.run\",\n  \"created_at\": \"<integer>\",\n  \"thread_id\": \"<string>\",\n  \"assistant_id\": \"<string>\",\n  \"status\": \"expired\",\n  \"required_action\": {\n    \"type\": \"submit_tool_outputs\",\n    \"submit_tool_outputs\": {}\n  },\n  \"model\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"metadata\": {},\n  \"usage\": {\n    \"prompt_tokens\": \"<integer>\",\n    \"completion_tokens\": \"<integer>\",\n    \"total_tokens\": \"<integer>\"\n  },\n  \"started_at\": \"<integer>\",\n  \"completed_at\": \"<integer>\",\n  \"cancelled_at\": \"<integer>\",\n  \"failed_at\": \"<integer>\",\n  \"expires_at\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T02:25:43.000Z",
+                  "updatedAt": "2026-07-28T02:25:43.000Z",
+                  "uid": "35240-0771dcb7-e3c6-473d-a72a-5061e3cffec9"
+                }
+              ],
+              "createdAt": "2026-07-28T02:25:43.000Z",
+              "updatedAt": "2026-07-28T02:25:43.000Z",
+              "uid": "35240-d4dad115-a917-42a4-b0e3-01913d1c9c09"
+            }
+          ],
+          "id": "1cb59afe-83aa-42f7-bdf1-e09bdca4435d",
+          "createdAt": "2026-07-28T02:25:43.000Z",
+          "updatedAt": "2026-07-28T02:25:43.000Z",
+          "uid": "35240-1cb59afe-83aa-42f7-bdf1-e09bdca4435d"
+        }
+      ],
+      "id": "5ceb43e9-115f-4413-a6ce-b7d37f2e7390",
+      "createdAt": "2026-07-28T02:25:43.000Z",
+      "updatedAt": "2026-07-28T02:25:43.000Z",
+      "uid": "35240-5ceb43e9-115f-4413-a6ce-b7d37f2e7390"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.openai.com/v1"
+    }
+  ]
+}

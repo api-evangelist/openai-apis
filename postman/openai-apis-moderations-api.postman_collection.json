@@ -1,0 +1,328 @@
+{
+  "info": {
+    "_postman_id": "9cbabd7d-d0ad-4fa0-bf23-021d6749a2f7",
+    "name": "OpenAI APIs OpenAI Assistants Moderations API",
+    "description": "API for building AI assistants with custom instructions, knowledge retrieval, code execution, and function calling capabilities. Supports managing assistants, threads, messages, and runs.\n\nContact Support:\n Name: OpenAI Support\n Email: support@openai.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:25:41.000Z",
+    "updatedAt": "2026-07-28T02:25:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9cbabd7d-d0ad-4fa0-bf23-021d6749a2f7"
+  },
+  "item": [
+    {
+      "name": "moderations",
+      "item": [
+        {
+          "name": "OpenAI APIs Create moderation",
+          "id": "de314272-d48a-4c12-8eb0-8a769eb6d242",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"input\": \"<string>\",\n  \"model\": \"omni-moderation-latest\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/moderations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "moderations"
+              ]
+            },
+            "description": "Classifies if text and/or images are potentially harmful across several categories including hate, harassment, self-harm, sexual content, and violence."
+          },
+          "response": [
+            {
+              "id": "5492278e-19cc-461b-a52a-2ce38099ccf2",
+              "name": "Moderation response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": \"<string>\",\n  \"model\": \"omni-moderation-latest\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/moderations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "moderations"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"model\": \"<string>\",\n  \"results\": [\n    {\n      \"flagged\": \"<boolean>\",\n      \"categories\": {\n        \"hate\": \"<boolean>\",\n        \"hate/threatening\": \"<boolean>\",\n        \"harassment\": \"<boolean>\",\n        \"harassment/threatening\": \"<boolean>\",\n        \"self-harm\": \"<boolean>\",\n        \"self-harm/intent\": \"<boolean>\",\n        \"self-harm/instructions\": \"<boolean>\",\n        \"sexual\": \"<boolean>\",\n        \"sexual/minors\": \"<boolean>\",\n        \"violence\": \"<boolean>\",\n        \"violence/graphic\": \"<boolean>\"\n      },\n      \"category_scores\": {\n        \"hate\": \"<number>\",\n        \"hate/threatening\": \"<number>\",\n        \"harassment\": \"<number>\",\n        \"harassment/threatening\": \"<number>\",\n        \"self-harm\": \"<number>\",\n        \"self-harm/intent\": \"<number>\",\n        \"self-harm/instructions\": \"<number>\",\n        \"sexual\": \"<number>\",\n        \"sexual/minors\": \"<number>\",\n        \"violence\": \"<number>\",\n        \"violence/graphic\": \"<number>\"\n      }\n    },\n    {\n      \"flagged\": \"<boolean>\",\n      \"categories\": {\n        \"hate\": \"<boolean>\",\n        \"hate/threatening\": \"<boolean>\",\n        \"harassment\": \"<boolean>\",\n        \"harassment/threatening\": \"<boolean>\",\n        \"self-harm\": \"<boolean>\",\n        \"self-harm/intent\": \"<boolean>\",\n        \"self-harm/instructions\": \"<boolean>\",\n        \"sexual\": \"<boolean>\",\n        \"sexual/minors\": \"<boolean>\",\n        \"violence\": \"<boolean>\",\n        \"violence/graphic\": \"<boolean>\"\n      },\n      \"category_scores\": {\n        \"hate\": \"<number>\",\n        \"hate/threatening\": \"<number>\",\n        \"harassment\": \"<number>\",\n        \"harassment/threatening\": \"<number>\",\n        \"self-harm\": \"<number>\",\n        \"self-harm/intent\": \"<number>\",\n        \"self-harm/instructions\": \"<number>\",\n        \"sexual\": \"<number>\",\n        \"sexual/minors\": \"<number>\",\n        \"violence\": \"<number>\",\n        \"violence/graphic\": \"<number>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:25:42.000Z",
+              "updatedAt": "2026-07-28T02:25:42.000Z",
+              "uid": "35240-5492278e-19cc-461b-a52a-2ce38099ccf2"
+            },
+            {
+              "id": "b58c35a4-5a3a-4a1b-af6d-e70fc50f65d9",
+              "name": "Invalid request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": \"<string>\",\n  \"model\": \"omni-moderation-latest\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/moderations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "moderations"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:25:42.000Z",
+              "updatedAt": "2026-07-28T02:25:42.000Z",
+              "uid": "35240-b58c35a4-5a3a-4a1b-af6d-e70fc50f65d9"
+            },
+            {
+              "id": "8b1f6a7c-c236-4e22-9b44-5f0c7f102347",
+              "name": "Unauthorized - invalid or missing API key",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": \"<string>\",\n  \"model\": \"omni-moderation-latest\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/moderations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "moderations"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:25:42.000Z",
+              "updatedAt": "2026-07-28T02:25:42.000Z",
+              "uid": "35240-8b1f6a7c-c236-4e22-9b44-5f0c7f102347"
+            },
+            {
+              "id": "6d351edc-7536-422a-90aa-117f8f4e03c7",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": \"<string>\",\n  \"model\": \"omni-moderation-latest\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/moderations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "moderations"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:25:42.000Z",
+              "updatedAt": "2026-07-28T02:25:42.000Z",
+              "uid": "35240-6d351edc-7536-422a-90aa-117f8f4e03c7"
+            },
+            {
+              "id": "7efd899a-2694-4532-a4b3-1938b2781a4e",
+              "name": "Server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": \"<string>\",\n  \"model\": \"omni-moderation-latest\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/moderations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "moderations"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:25:42.000Z",
+              "updatedAt": "2026-07-28T02:25:42.000Z",
+              "uid": "35240-7efd899a-2694-4532-a4b3-1938b2781a4e"
+            }
+          ],
+          "createdAt": "2026-07-28T02:25:42.000Z",
+          "updatedAt": "2026-07-28T02:25:42.000Z",
+          "uid": "35240-de314272-d48a-4c12-8eb0-8a769eb6d242"
+        }
+      ],
+      "id": "4d8582ce-628f-43f2-9832-726436c1f6eb",
+      "createdAt": "2026-07-28T02:25:42.000Z",
+      "updatedAt": "2026-07-28T02:25:42.000Z",
+      "uid": "35240-4d8582ce-628f-43f2-9832-726436c1f6eb"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.openai.com/v1"
+    }
+  ]
+}

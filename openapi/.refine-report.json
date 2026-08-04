@@ -1,0 +1,36 @@
+{
+  "provider": "openai-apis",
+  "sources": [
+    "openai-apis-assistants-api-openapi.yml",
+    "openai-apis-chat-api-openapi.yml",
+    "openai-apis-completions-api-openapi.yml",
+    "openai-apis-embeddings-api-openapi.yml",
+    "openai-apis-images-api-openapi.yml",
+    "openai-apis-messages-api-openapi.yml",
+    "openai-apis-moderations-api-openapi.yml",
+    "openai-apis-runs-api-openapi.yml",
+    "openai-apis-speech-api-openapi.yml",
+    "openai-apis-threads-api-openapi.yml",
+    "openai-apis-transcription-api-openapi.yml",
+    "openai-apis-translation-api-openapi.yml"
+  ],
+  "outputs": [
+    "openai-apis-assistants-api-openapi.yml",
+    "openai-apis-chat-api-openapi.yml",
+    "openai-apis-completions-api-openapi.yml",
+    "openai-apis-embeddings-api-openapi.yml",
+    "openai-apis-images-api-openapi.yml",
+    "openai-apis-messages-api-openapi.yml",
+    "openai-apis-moderations-api-openapi.yml",
+    "openai-apis-runs-api-openapi.yml",
+    "openai-apis-speech-api-openapi.yml",
+    "openai-apis-threads-api-openapi.yml",
+    "openai-apis-transcription-api-openapi.yml",
+    "openai-apis-translation-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
