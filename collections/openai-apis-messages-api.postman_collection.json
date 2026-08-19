@@ -1,0 +1,576 @@
+{
+  "item": [
+    {
+      "id": "87e267bb-0e96-439e-a042-a287c494e4b4",
+      "name": "Messages",
+      "description": {
+        "content": "Manage messages within threads",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4d47b422-915d-488e-b904-cd6e8414cb68",
+          "name": "OpenAI APIs List messages",
+          "request": {
+            "name": "OpenAI APIs List messages",
+            "description": {
+              "content": "Returns a list of messages for a given thread.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "threads",
+                ":thread_id",
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Maximum number of objects to return (1-100, default 20)"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "desc",
+                  "description": "Sort order by created_at timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>",
+                  "description": "A cursor for pagination (object ID to start after)"
+                },
+                {
+                  "disabled": false,
+                  "key": "before",
+                  "value": "<string>",
+                  "description": "A cursor for pagination (object ID to end before)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "thread_id",
+                  "description": "(Required) The ID of the thread"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Required header for the Assistants API beta",
+                "key": "OpenAI-Beta",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9cd68e34-b2fd-4793-9fc7-5472d5fa151d",
+              "name": "List of messages",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threads",
+                    ":thread_id",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "order",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "before",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "thread_id",
+                      "description": "(Required) The ID of the thread"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required header for the Assistants API beta",
+                    "key": "OpenAI-Beta",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"first_id\": \"string\",\n  \"last_id\": \"string\",\n  \"has_more\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3082ee6-39d0-4667-9067-a3a0eed60fae",
+          "name": "OpenAI APIs Create message",
+          "request": {
+            "name": "OpenAI APIs Create message",
+            "description": {
+              "content": "Create a message within a thread.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "threads",
+                ":thread_id",
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "thread_id",
+                  "description": "(Required) The ID of the thread"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Required header for the Assistants API beta",
+                "key": "OpenAI-Beta",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"role\": \"<string>\",\n  \"content\": \"<string>\",\n  \"metadata\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9f71a4e8-8904-4f24-81d5-b67dc95fd61e",
+              "name": "Message created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threads",
+                    ":thread_id",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "thread_id",
+                      "description": "(Required) The ID of the thread"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required header for the Assistants API beta",
+                    "key": "OpenAI-Beta",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role\": \"<string>\",\n  \"content\": \"<string>\",\n  \"metadata\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"thread.message\",\n  \"created_at\": 5843,\n  \"thread_id\": \"string\",\n  \"role\": \"assistant\",\n  \"content\": [\n    {\n      \"type\": \"image_url\",\n      \"text\": {\n        \"value\": \"string\"\n      }\n    },\n    {\n      \"type\": \"image_url\",\n      \"text\": {\n        \"value\": \"string\"\n      }\n    }\n  ],\n  \"assistant_id\": \"string\",\n  \"run_id\": \"string\",\n  \"metadata\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a342c7dc-35c4-4236-8881-33bdbc69c043",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threads",
+                    ":thread_id",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "thread_id",
+                      "description": "(Required) The ID of the thread"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required header for the Assistants API beta",
+                    "key": "OpenAI-Beta",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"role\": \"<string>\",\n  \"content\": \"<string>\",\n  \"metadata\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9df6ce1-f134-4034-b1af-7775972c12fb",
+          "name": "OpenAI APIs Retrieve message",
+          "request": {
+            "name": "OpenAI APIs Retrieve message",
+            "description": {
+              "content": "Retrieve a message by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "threads",
+                ":thread_id",
+                "messages",
+                ":message_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "thread_id",
+                  "description": "(Required) The ID of the thread"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "message_id",
+                  "description": "(Required) The ID of the message"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Required header for the Assistants API beta",
+                "key": "OpenAI-Beta",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1824240c-fa7a-4af3-8f7f-dfa2bf3a234b",
+              "name": "Message details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threads",
+                    ":thread_id",
+                    "messages",
+                    ":message_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "thread_id",
+                      "description": "(Required) The ID of the thread"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "message_id",
+                      "description": "(Required) The ID of the message"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required header for the Assistants API beta",
+                    "key": "OpenAI-Beta",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"thread.message\",\n  \"created_at\": 5843,\n  \"thread_id\": \"string\",\n  \"role\": \"assistant\",\n  \"content\": [\n    {\n      \"type\": \"image_url\",\n      \"text\": {\n        \"value\": \"string\"\n      }\n    },\n    {\n      \"type\": \"image_url\",\n      \"text\": {\n        \"value\": \"string\"\n      }\n    }\n  ],\n  \"assistant_id\": \"string\",\n  \"run_id\": \"string\",\n  \"metadata\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a107a5d5-a65e-4bb1-ae10-7672f56961f4",
+              "name": "Message not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threads",
+                    ":thread_id",
+                    "messages",
+                    ":message_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "thread_id",
+                      "description": "(Required) The ID of the thread"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "message_id",
+                      "description": "(Required) The ID of the message"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required header for the Assistants API beta",
+                    "key": "OpenAI-Beta",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openai.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f198ec6e-7a8e-4ea3-b3ff-9e41f1fa05a0",
+    "name": "OpenAI APIs OpenAI Assistants Messages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for building AI assistants with custom instructions, knowledge retrieval, code execution, and function calling capabilities. Supports managing assistants, threads, messages, and runs.\n\nContact Support:\n Name: OpenAI Support\n Email: support@openai.com",
+      "type": "text/plain"
+    }
+  }
+}

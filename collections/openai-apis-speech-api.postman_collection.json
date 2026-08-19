@@ -1,0 +1,286 @@
+{
+  "item": [
+    {
+      "id": "96bc8d8e-c2ba-41b0-8306-8b7ed659b8b0",
+      "name": "Speech",
+      "description": {
+        "content": "Text-to-speech operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f142e592-b624-49a1-8b01-a21378eaf4fb",
+          "name": "OpenAI APIs Create speech",
+          "request": {
+            "name": "OpenAI APIs Create speech",
+            "description": {
+              "content": "Generates audio from the input text using the specified voice and model.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "audio",
+                "speech"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "audio/mpeg"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"input\": \"<string>\",\n  \"voice\": \"<string>\",\n  \"response_format\": \"mp3\",\n  \"speed\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "53320bd1-b758-42db-b6bb-a951357f997c",
+              "name": "Audio file containing the generated speech",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audio",
+                    "speech"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "audio/mpeg"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"tts-1\",\n  \"input\": \"<string>\",\n  \"voice\": \"<string>\",\n  \"response_format\": \"mp3\",\n  \"speed\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "audio/mpeg"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b6485735-8375-4841-ad5f-eeaeaa78c5bf",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audio",
+                    "speech"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"tts-1\",\n  \"input\": \"<string>\",\n  \"voice\": \"<string>\",\n  \"response_format\": \"mp3\",\n  \"speed\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ea7e74d2-023e-44c6-8192-a83215cb2503",
+              "name": "Unauthorized - invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audio",
+                    "speech"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"tts-1\",\n  \"input\": \"<string>\",\n  \"voice\": \"<string>\",\n  \"response_format\": \"mp3\",\n  \"speed\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "affff1c4-6908-453f-a91b-eb2adc298f97",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audio",
+                    "speech"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"tts-1\",\n  \"input\": \"<string>\",\n  \"voice\": \"<string>\",\n  \"response_format\": \"mp3\",\n  \"speed\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openai.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "747bc1fa-39bf-44a0-8f45-03809e635827",
+    "name": "OpenAI APIs OpenAI Assistants Speech API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for building AI assistants with custom instructions, knowledge retrieval, code execution, and function calling capabilities. Supports managing assistants, threads, messages, and runs.\n\nContact Support:\n Name: OpenAI Support\n Email: support@openai.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+[
+  {
+    "repo": "openai-apis",
+    "captured_at": "2026-08-07T190525",
+    "source_url": "https://openai.com",
+    "source_type": "root-domain",
+    "file": "openai-apis-2026-08-07T190525.png",
+    "bytes": 21715
+  },
+  {
+    "repo": "openai-apis",
+    "captured_at": "2026-08-17T083218",
+    "source_url": "https://openai.com",
+    "source_type": "root-domain",
+    "file": "openai-apis-2026-08-17T083218.png",
+    "bytes": 388155,
+    "capture": "playwright-local"
+  }
+]

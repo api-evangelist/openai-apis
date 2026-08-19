@@ -1,0 +1,328 @@
+{
+  "item": [
+    {
+      "id": "6ad26218-29ee-4273-91a0-f2ecc6e73a17",
+      "name": "Completions",
+      "description": {
+        "content": "Legacy text completion operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bd714825-61d9-4763-a883-11c356d2b712",
+          "name": "OpenAI APIs Create completion",
+          "request": {
+            "name": "OpenAI APIs Create completion",
+            "description": {
+              "content": "Creates a completion for the provided prompt and parameters. This is a legacy endpoint; use the Chat Completions API for new applications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "completions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"max_tokens\": 16,\n  \"temperature\": 1,\n  \"top_p\": 1,\n  \"n\": 1,\n  \"stream\": false,\n  \"logprobs\": \"<integer>\",\n  \"echo\": false,\n  \"stop\": \"<string>\",\n  \"presence_penalty\": 0,\n  \"frequency_penalty\": 0,\n  \"best_of\": 1,\n  \"logit_bias\": {\n    \"key_0\": \"<number>\",\n    \"key_1\": \"<number>\",\n    \"key_2\": \"<number>\"\n  },\n  \"user\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9cfb37dd-6257-409b-9810-e538cf8bcea9",
+              "name": "Completion response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"gpt-3.5-turbo-instruct\",\n  \"prompt\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"max_tokens\": 16,\n  \"temperature\": 1,\n  \"top_p\": 1,\n  \"n\": 1,\n  \"stream\": false,\n  \"logprobs\": \"<integer>\",\n  \"echo\": false,\n  \"stop\": \"<string>\",\n  \"presence_penalty\": 0,\n  \"frequency_penalty\": 0,\n  \"best_of\": 1,\n  \"logit_bias\": {\n    \"key_0\": \"<number>\",\n    \"key_1\": \"<number>\",\n    \"key_2\": \"<number>\"\n  },\n  \"user\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"text_completion\",\n  \"created\": 5662,\n  \"model\": \"string\",\n  \"choices\": [\n    {\n      \"text\": \"string\",\n      \"index\": 9858,\n      \"logprobs\": {},\n      \"finish_reason\": \"length\"\n    },\n    {\n      \"text\": \"string\",\n      \"index\": 1276,\n      \"logprobs\": {},\n      \"finish_reason\": \"length\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 2220,\n    \"completion_tokens\": 8536,\n    \"total_tokens\": 7531\n  },\n  \"system_fingerprint\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8da746b-ff0e-4c25-8c6d-7c4e803b7a76",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"gpt-3.5-turbo-instruct\",\n  \"prompt\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"max_tokens\": 16,\n  \"temperature\": 1,\n  \"top_p\": 1,\n  \"n\": 1,\n  \"stream\": false,\n  \"logprobs\": \"<integer>\",\n  \"echo\": false,\n  \"stop\": \"<string>\",\n  \"presence_penalty\": 0,\n  \"frequency_penalty\": 0,\n  \"best_of\": 1,\n  \"logit_bias\": {\n    \"key_0\": \"<number>\",\n    \"key_1\": \"<number>\",\n    \"key_2\": \"<number>\"\n  },\n  \"user\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "16b33d31-0612-409f-9486-acf543e8116d",
+              "name": "Unauthorized - invalid or missing API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"gpt-3.5-turbo-instruct\",\n  \"prompt\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"max_tokens\": 16,\n  \"temperature\": 1,\n  \"top_p\": 1,\n  \"n\": 1,\n  \"stream\": false,\n  \"logprobs\": \"<integer>\",\n  \"echo\": false,\n  \"stop\": \"<string>\",\n  \"presence_penalty\": 0,\n  \"frequency_penalty\": 0,\n  \"best_of\": 1,\n  \"logit_bias\": {\n    \"key_0\": \"<number>\",\n    \"key_1\": \"<number>\",\n    \"key_2\": \"<number>\"\n  },\n  \"user\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "267df8ae-c30d-4fa2-bd4c-a0843ba0a655",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"gpt-3.5-turbo-instruct\",\n  \"prompt\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"max_tokens\": 16,\n  \"temperature\": 1,\n  \"top_p\": 1,\n  \"n\": 1,\n  \"stream\": false,\n  \"logprobs\": \"<integer>\",\n  \"echo\": false,\n  \"stop\": \"<string>\",\n  \"presence_penalty\": 0,\n  \"frequency_penalty\": 0,\n  \"best_of\": 1,\n  \"logit_bias\": {\n    \"key_0\": \"<number>\",\n    \"key_1\": \"<number>\",\n    \"key_2\": \"<number>\"\n  },\n  \"user\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "308ea4b4-ecf6-4030-8696-377d7d4f32e0",
+              "name": "Server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"gpt-3.5-turbo-instruct\",\n  \"prompt\": \"<string>\",\n  \"suffix\": \"<string>\",\n  \"max_tokens\": 16,\n  \"temperature\": 1,\n  \"top_p\": 1,\n  \"n\": 1,\n  \"stream\": false,\n  \"logprobs\": \"<integer>\",\n  \"echo\": false,\n  \"stop\": \"<string>\",\n  \"presence_penalty\": 0,\n  \"frequency_penalty\": 0,\n  \"best_of\": 1,\n  \"logit_bias\": {\n    \"key_0\": \"<number>\",\n    \"key_1\": \"<number>\",\n    \"key_2\": \"<number>\"\n  },\n  \"user\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openai.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a174fb0c-ea32-4d2a-b7d4-abb0d46c1580",
+    "name": "OpenAI APIs OpenAI Assistants Completions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for building AI assistants with custom instructions, knowledge retrieval, code execution, and function calling capabilities. Supports managing assistants, threads, messages, and runs.\n\nContact Support:\n Name: OpenAI Support\n Email: support@openai.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,967 @@
+{
+  "item": [
+    {
+      "id": "760d4b7c-0b41-4e0a-8daf-7b99db6aba25",
+      "name": "Assistants",
+      "description": {
+        "content": "Manage AI assistants",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "88d72181-2d5d-482d-bb17-fe559f372d96",
+          "name": "OpenAI APIs List assistants",
+          "request": {
+            "name": "OpenAI APIs List assistants",
+            "description": {
+              "content": "Returns a list of assistants.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "assistants"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Maximum number of objects to return (1-100, default 20)"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "desc",
+                  "description": "Sort order by created_at timestamp"
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>",
+                  "description": "A cursor for pagination (object ID to start after)"
+                },
+                {
+                  "disabled": false,
+                  "key": "before",
+                  "value": "<string>",
+                  "description": "A cursor for pagination (object ID to end before)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Required header for the Assistants API beta",
+                "key": "OpenAI-Beta",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b9328c6f-6aef-4a12-89bd-9cce79e29ed0",
+              "name": "List of assistants",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assistants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "order",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "before",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required header for the Assistants API beta",
+                    "key": "OpenAI-Beta",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"object\": \"list\",\n  \"first_id\": \"string\",\n  \"last_id\": \"string\",\n  \"has_more\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c662cc7-fb3b-4941-abc7-81bcbb3fdd34",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assistants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "order",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "before",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required header for the Assistants API beta",
+                    "key": "OpenAI-Beta",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5aa1b45d-3d98-47a8-a30b-8e9c5a1afbbf",
+          "name": "OpenAI APIs Create assistant",
+          "request": {
+            "name": "OpenAI APIs Create assistant",
+            "description": {
+              "content": "Create an assistant with a model and instructions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "assistants"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Required header for the Assistants API beta",
+                "key": "OpenAI-Beta",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"tools\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"metadata\": \"<object>\",\n  \"temperature\": \"<number>\",\n  \"top_p\": \"<number>\",\n  \"response_format\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c6d6a847-cacd-4bc3-a70d-3c827031a47d",
+              "name": "Assistant created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assistants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required header for the Assistants API beta",
+                    "key": "OpenAI-Beta",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"tools\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"metadata\": \"<object>\",\n  \"temperature\": \"<number>\",\n  \"top_p\": \"<number>\",\n  \"response_format\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"assistant\",\n  \"created_at\": 6610,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"model\": \"string\",\n  \"instructions\": \"string\",\n  \"tools\": [\n    {\n      \"type\": \"file_search\"\n    },\n    {\n      \"type\": \"code_interpreter\"\n    }\n  ],\n  \"metadata\": {},\n  \"temperature\": 5106.7810221497175,\n  \"top_p\": 5700.039849177964,\n  \"response_format\": \"auto\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6fdf9d3c-b4d7-4a44-bbfd-3571c7741c04",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assistants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required header for the Assistants API beta",
+                    "key": "OpenAI-Beta",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"tools\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"metadata\": \"<object>\",\n  \"temperature\": \"<number>\",\n  \"top_p\": \"<number>\",\n  \"response_format\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a26584cc-e1c8-4434-9f24-a01b055f0249",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assistants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required header for the Assistants API beta",
+                    "key": "OpenAI-Beta",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"tools\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"metadata\": \"<object>\",\n  \"temperature\": \"<number>\",\n  \"top_p\": \"<number>\",\n  \"response_format\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a6dba3d-be9a-40ab-a122-9077c705c7c4",
+          "name": "OpenAI APIs Retrieve assistant",
+          "request": {
+            "name": "OpenAI APIs Retrieve assistant",
+            "description": {
+              "content": "Retrieves an assistant by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "assistants",
+                ":assistant_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assistant_id",
+                  "description": "(Required) The ID of the assistant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Required header for the Assistants API beta",
+                "key": "OpenAI-Beta",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f65f230c-f624-4774-a576-a437ffed7055",
+              "name": "Assistant details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assistants",
+                    ":assistant_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assistant_id",
+                      "description": "(Required) The ID of the assistant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required header for the Assistants API beta",
+                    "key": "OpenAI-Beta",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"assistant\",\n  \"created_at\": 6610,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"model\": \"string\",\n  \"instructions\": \"string\",\n  \"tools\": [\n    {\n      \"type\": \"file_search\"\n    },\n    {\n      \"type\": \"code_interpreter\"\n    }\n  ],\n  \"metadata\": {},\n  \"temperature\": 5106.7810221497175,\n  \"top_p\": 5700.039849177964,\n  \"response_format\": \"auto\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "641f6373-d834-4750-bc11-b712f10acf4a",
+              "name": "Assistant not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assistants",
+                    ":assistant_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assistant_id",
+                      "description": "(Required) The ID of the assistant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required header for the Assistants API beta",
+                    "key": "OpenAI-Beta",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "28239eb1-d84b-4d78-9fea-0ef0ed48273e",
+          "name": "OpenAI APIs Modify assistant",
+          "request": {
+            "name": "OpenAI APIs Modify assistant",
+            "description": {
+              "content": "Modifies an assistant.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "assistants",
+                ":assistant_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assistant_id",
+                  "description": "(Required) The ID of the assistant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Required header for the Assistants API beta",
+                "key": "OpenAI-Beta",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"tools\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"metadata\": \"<object>\",\n  \"temperature\": \"<number>\",\n  \"top_p\": \"<number>\",\n  \"response_format\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f4397c4b-d5d2-4d15-a46e-a30677a5de04",
+              "name": "Assistant modified",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assistants",
+                    ":assistant_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assistant_id",
+                      "description": "(Required) The ID of the assistant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required header for the Assistants API beta",
+                    "key": "OpenAI-Beta",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"tools\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"metadata\": \"<object>\",\n  \"temperature\": \"<number>\",\n  \"top_p\": \"<number>\",\n  \"response_format\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"assistant\",\n  \"created_at\": 6610,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"model\": \"string\",\n  \"instructions\": \"string\",\n  \"tools\": [\n    {\n      \"type\": \"file_search\"\n    },\n    {\n      \"type\": \"code_interpreter\"\n    }\n  ],\n  \"metadata\": {},\n  \"temperature\": 5106.7810221497175,\n  \"top_p\": 5700.039849177964,\n  \"response_format\": \"auto\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04f111f0-1927-4b6c-93fe-1b8066712d66",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assistants",
+                    ":assistant_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assistant_id",
+                      "description": "(Required) The ID of the assistant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required header for the Assistants API beta",
+                    "key": "OpenAI-Beta",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"tools\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"metadata\": \"<object>\",\n  \"temperature\": \"<number>\",\n  \"top_p\": \"<number>\",\n  \"response_format\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7ece6d3c-7bf1-4c86-84c4-02ae63210855",
+          "name": "OpenAI APIs Delete assistant",
+          "request": {
+            "name": "OpenAI APIs Delete assistant",
+            "description": {
+              "content": "Delete an assistant by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "assistants",
+                ":assistant_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "assistant_id",
+                  "description": "(Required) The ID of the assistant"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Required header for the Assistants API beta",
+                "key": "OpenAI-Beta",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "77856db5-8e27-49fe-a3a3-200cbcb26973",
+              "name": "Assistant deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assistants",
+                    ":assistant_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assistant_id",
+                      "description": "(Required) The ID of the assistant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required header for the Assistants API beta",
+                    "key": "OpenAI-Beta",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"object\": \"string\",\n  \"deleted\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c629c0ef-0da5-4667-a83d-12b9b1c17ab8",
+              "name": "Assistant not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assistants",
+                    ":assistant_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "assistant_id",
+                      "description": "(Required) The ID of the assistant"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Required header for the Assistants API beta",
+                    "key": "OpenAI-Beta",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openai.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1ee87823-e07f-410b-9f86-3a6465d3d323",
+    "name": "OpenAI APIs OpenAI Assistants API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for building AI assistants with custom instructions, knowledge retrieval, code execution, and function calling capabilities. Supports managing assistants, threads, messages, and runs.\n\nContact Support:\n Name: OpenAI Support\n Email: support@openai.com",
+      "type": "text/plain"
+    }
+  }
+}

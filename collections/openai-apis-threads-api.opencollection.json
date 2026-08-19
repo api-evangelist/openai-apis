@@ -1,0 +1,124 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenAI APIs OpenAI Assistants Threads API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Threads",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "OpenAI APIs Create thread",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openai.com/v1/threads",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a thread."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Retrieve thread",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openai.com/v1/threads/:thread_id",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "thread_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the thread"
+              }
+            ]
+          },
+          "docs": "Retrieves a thread by ID."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Modify thread",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openai.com/v1/threads/:thread_id",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "thread_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the thread"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modifies a thread."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Delete thread",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.openai.com/v1/threads/:thread_id",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "thread_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the thread"
+              }
+            ]
+          },
+          "docs": "Delete a thread by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,133 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenAI APIs OpenAI Assistants Messages API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Messages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "OpenAI APIs List messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openai.com/v1/threads/:thread_id/messages",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "thread_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the thread"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of objects to return (1-100, default 20)"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order by created_at timestamp"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "A cursor for pagination (object ID to start after)"
+              },
+              {
+                "name": "before",
+                "value": "",
+                "type": "query",
+                "description": "A cursor for pagination (object ID to end before)"
+              }
+            ]
+          },
+          "docs": "Returns a list of messages for a given thread."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Create message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openai.com/v1/threads/:thread_id/messages",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "thread_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the thread"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a message within a thread."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Retrieve message",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openai.com/v1/threads/:thread_id/messages/:message_id",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "thread_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the thread"
+              },
+              {
+                "name": "message_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the message"
+              }
+            ]
+          },
+          "docs": "Retrieve a message by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

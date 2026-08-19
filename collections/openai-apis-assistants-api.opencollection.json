@@ -1,0 +1,167 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenAI APIs OpenAI Assistants API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Assistants",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "OpenAI APIs List assistants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openai.com/v1/assistants",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of objects to return (1-100, default 20)"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order by created_at timestamp"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "A cursor for pagination (object ID to start after)"
+              },
+              {
+                "name": "before",
+                "value": "",
+                "type": "query",
+                "description": "A cursor for pagination (object ID to end before)"
+              }
+            ]
+          },
+          "docs": "Returns a list of assistants."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Create assistant",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openai.com/v1/assistants",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an assistant with a model and instructions."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Retrieve assistant",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openai.com/v1/assistants/:assistant_id",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "assistant_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the assistant"
+              }
+            ]
+          },
+          "docs": "Retrieves an assistant by ID."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Modify assistant",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openai.com/v1/assistants/:assistant_id",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "assistant_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the assistant"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modifies an assistant."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Delete assistant",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.openai.com/v1/assistants/:assistant_id",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "assistant_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the assistant"
+              }
+            ]
+          },
+          "docs": "Delete an assistant by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

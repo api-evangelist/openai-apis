@@ -1,0 +1,220 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenAI APIs OpenAI Assistants Runs API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Runs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "OpenAI APIs List runs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openai.com/v1/threads/:thread_id/runs",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "thread_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the thread"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of objects to return (1-100, default 20)"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Sort order by created_at timestamp"
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "A cursor for pagination (object ID to start after)"
+              },
+              {
+                "name": "before",
+                "value": "",
+                "type": "query",
+                "description": "A cursor for pagination (object ID to end before)"
+              }
+            ]
+          },
+          "docs": "Returns a list of runs belonging to a thread."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Create run",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openai.com/v1/threads/:thread_id/runs",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "thread_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the thread"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a run on a thread."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Retrieve run",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openai.com/v1/threads/:thread_id/runs/:run_id",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "thread_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the thread"
+              },
+              {
+                "name": "run_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the run"
+              }
+            ]
+          },
+          "docs": "Retrieves a run by ID."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Cancel run",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openai.com/v1/threads/:thread_id/runs/:run_id/cancel",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "thread_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the thread"
+              },
+              {
+                "name": "run_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the run"
+              }
+            ]
+          },
+          "docs": "Cancels an in-progress run."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Submit tool outputs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openai.com/v1/threads/:thread_id/runs/:run_id/submit_tool_outputs",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "thread_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the thread"
+              },
+              {
+                "name": "run_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the run"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit outputs from tool calls when a run has the status requires_action with required_action type submit_tool_outputs."
+        },
+        {
+          "info": {
+            "name": "OpenAI APIs Create thread and run",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openai.com/v1/threads/runs",
+            "headers": [
+              {
+                "name": "OpenAI-Beta",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a thread and run it in one request."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
