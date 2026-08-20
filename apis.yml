@@ -23,6 +23,12 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/openai-api
 tags:
   - Artificial Intelligence
   - Embeddings
+  - Image-Generation
+  - Language Models
+  - Speech
+tags_raw:
+  - Artificial Intelligence
+  - Embeddings
   - Image Generation
   - Language Models
   - Speech
@@ -133,6 +139,8 @@ apis:
   humanURL: https://platform.openai.com/docs/api-reference/chat
   baseURL: https://api.openai.com/v1
   tags:
+  - Image
+  tags_raw:
   - Images
   properties:
   - type: OpenAPI
@@ -157,6 +165,8 @@ apis:
   humanURL: https://platform.openai.com/docs/api-reference/chat
   baseURL: https://api.openai.com/v1
   tags:
+  - Message
+  tags_raw:
   - Messages
   properties:
   - type: OpenAPI
