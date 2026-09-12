@@ -343,6 +343,8 @@ apis:
   - type: Documentation
     url: https://platform.openai.com/docs/api-reference/assistants
 common:
+  - type: Website
+    url: https://www.openai.com/
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/openai-apis/overview
   - type: AgenticAccess
