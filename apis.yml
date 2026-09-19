@@ -56,6 +56,8 @@ apis:
   humanURL: https://platform.openai.com/docs/api-reference/chat
   baseURL: https://api.openai.com/v1
   tags:
+  - Assistant
+  tags_raw:
   - Assistants
   properties:
   - type: OpenAPI
