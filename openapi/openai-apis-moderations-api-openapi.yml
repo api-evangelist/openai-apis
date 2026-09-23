@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: OpenAI APIs OpenAI Assistants Moderations API
-  description: API for building AI assistants with custom instructions, knowledge retrieval, code execution, and function calling capabilities. Supports managing assistants, threads, messages, and runs.
-  version: '2.0'
+  title: OpenAI APIs OpenAI Moderations API
+  description: API for detecting potentially harmful or unsafe content. Classifies text and images against categories such as hate, harassment, self-harm, sexual content, and violence.
+  version: '1.0'
   contact:
     name: OpenAI Support
     email: support@openai.com
@@ -47,19 +47,6 @@ paths:
           description: Server error
 components:
   schemas:
-    ModerationResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The unique identifier for the moderation request
-        model:
-          type: string
-          description: The model used for moderation
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ModerationResult'
     CreateModerationRequest:
       type: object
       required:
@@ -156,6 +143,19 @@ components:
             violence/graphic:
               type: number
               description: Score for violence/graphic category
+    ModerationResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the moderation request
+        model:
+          type: string
+          description: The model used for moderation
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModerationResult'
   securitySchemes:
     bearerAuth:
       type: http
@@ -163,5 +163,5 @@ components:
       bearerFormat: API Key
       description: OpenAI API key passed as a Bearer token
 externalDocs:
-  description: OpenAI Assistants API Documentation
-  url: https://platform.openai.com/docs/api-reference/assistants
+  description: OpenAI Moderations API Documentation
+  url: https://platform.openai.com/docs/api-reference/moderations

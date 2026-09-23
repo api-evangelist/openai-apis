@@ -1,36 +1,54 @@
 {
   "provider": "openai-apis",
   "sources": [
-    "openai-apis-assistants-api-openapi.yml",
-    "openai-apis-chat-api-openapi.yml",
-    "openai-apis-completions-api-openapi.yml",
-    "openai-apis-embeddings-api-openapi.yml",
-    "openai-apis-images-api-openapi.yml",
-    "openai-apis-messages-api-openapi.yml",
-    "openai-apis-moderations-api-openapi.yml",
-    "openai-apis-runs-api-openapi.yml",
-    "openai-apis-speech-api-openapi.yml",
-    "openai-apis-threads-api-openapi.yml",
-    "openai-apis-transcription-api-openapi.yml",
-    "openai-apis-translation-api-openapi.yml"
+    "_original/openai-assistants-openapi.yml",
+    "_original/openai-audio-openapi.yml",
+    "_original/openai-chat-completions-openapi.yml",
+    "_original/openai-completions-openapi.yml",
+    "_original/openai-embeddings-openapi.yml",
+    "_original/openai-images-openapi.yml",
+    "_original/openai-moderations-openapi.yml"
   ],
   "outputs": [
     "openai-apis-assistants-api-openapi.yml",
+    "openai-apis-messages-api-openapi.yml",
+    "openai-apis-runs-api-openapi.yml",
+    "openai-apis-threads-api-openapi.yml",
+    "openai-apis-speech-api-openapi.yml",
+    "openai-apis-transcription-api-openapi.yml",
+    "openai-apis-translation-api-openapi.yml",
     "openai-apis-chat-api-openapi.yml",
     "openai-apis-completions-api-openapi.yml",
     "openai-apis-embeddings-api-openapi.yml",
     "openai-apis-images-api-openapi.yml",
-    "openai-apis-messages-api-openapi.yml",
-    "openai-apis-moderations-api-openapi.yml",
-    "openai-apis-runs-api-openapi.yml",
-    "openai-apis-speech-api-openapi.yml",
-    "openai-apis-threads-api-openapi.yml",
-    "openai-apis-transcription-api-openapi.yml",
-    "openai-apis-translation-api-openapi.yml"
+    "openai-apis-moderations-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (7 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "openai-assistants-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "openai-audio-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "openai-chat-completions-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "openai-completions-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "openai-embeddings-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "openai-images-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "openai-moderations-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "openai-apis-assistants-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openai-apis-chat-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openai-apis-completions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openai-apis-embeddings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openai-apis-images-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openai-apis-messages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openai-apis-moderations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openai-apis-runs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openai-apis-speech-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openai-apis-threads-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openai-apis-transcription-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "openai-apis-translation-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

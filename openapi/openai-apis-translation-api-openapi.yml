@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: OpenAI APIs OpenAI Assistants Translation API
-  description: API for building AI assistants with custom instructions, knowledge retrieval, code execution, and function calling capabilities. Supports managing assistants, threads, messages, and runs.
-  version: '2.0'
+  title: OpenAI APIs OpenAI Audio Translation API
+  description: API for speech-to-text transcription, translation, and text-to-speech generation. Uses the Whisper model for transcription and translation, and the TTS model for speech synthesis.
+  version: '1.0'
   contact:
     name: OpenAI Support
     email: support@openai.com
@@ -92,5 +92,5 @@ components:
       bearerFormat: API Key
       description: OpenAI API key passed as a Bearer token
 externalDocs:
-  description: OpenAI Assistants API Documentation
-  url: https://platform.openai.com/docs/api-reference/assistants
+  description: OpenAI Audio API Documentation
+  url: https://platform.openai.com/docs/api-reference/audio

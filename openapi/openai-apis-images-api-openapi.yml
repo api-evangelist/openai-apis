@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: OpenAI APIs OpenAI Assistants Images API
-  description: API for building AI assistants with custom instructions, knowledge retrieval, code execution, and function calling capabilities. Supports managing assistants, threads, messages, and runs.
-  version: '2.0'
+  title: OpenAI APIs OpenAI Images API
+  description: API for generating, editing, and creating variations of images using DALL-E models. Supports text-to-image generation, image editing with masks, and creating variations of existing images.
+  version: '1.0'
   contact:
     name: OpenAI Support
     email: support@openai.com
@@ -182,6 +182,27 @@ components:
         user:
           type: string
           description: A unique identifier representing your end-user
+    ImageResponse:
+      type: object
+      properties:
+        created:
+          type: integer
+          description: Unix timestamp of when the image was created
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+                format: uri
+                description: The URL of the generated image (when response_format is url)
+              b64_json:
+                type: string
+                description: Base64-encoded JSON of the image (when response_format is b64_json)
+              revised_prompt:
+                type: string
+                description: The revised prompt used for generation (dall-e-3 only)
     CreateImageRequest:
       type: object
       required:
@@ -237,27 +258,6 @@ components:
         user:
           type: string
           description: A unique identifier representing your end-user
-    ImageResponse:
-      type: object
-      properties:
-        created:
-          type: integer
-          description: Unix timestamp of when the image was created
-        data:
-          type: array
-          items:
-            type: object
-            properties:
-              url:
-                type: string
-                format: uri
-                description: The URL of the generated image (when response_format is url)
-              b64_json:
-                type: string
-                description: Base64-encoded JSON of the image (when response_format is b64_json)
-              revised_prompt:
-                type: string
-                description: The revised prompt used for generation (dall-e-3 only)
   securitySchemes:
     bearerAuth:
       type: http
@@ -265,5 +265,5 @@ components:
       bearerFormat: API Key
       description: OpenAI API key passed as a Bearer token
 externalDocs:
-  description: OpenAI Assistants API Documentation
-  url: https://platform.openai.com/docs/api-reference/assistants
+  description: OpenAI Images API Documentation
+  url: https://platform.openai.com/docs/api-reference/images

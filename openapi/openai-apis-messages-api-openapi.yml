@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: OpenAI APIs OpenAI Assistants Messages API
   description: API for building AI assistants with custom instructions, knowledge retrieval, code execution, and function calling capabilities. Supports managing assistants, threads, messages, and runs.
@@ -84,6 +84,37 @@ paths:
           description: Message not found
 components:
   parameters:
+    messageId:
+      name: message_id
+      in: path
+      required: true
+      description: The ID of the message
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      description: Maximum number of objects to return (1-100, default 20)
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+    OpenAIBeta:
+      name: OpenAI-Beta
+      in: header
+      required: true
+      description: Required header for the Assistants API beta
+      schema:
+        type: string
+        enum:
+        - assistants=v2
+    before:
+      name: before
+      in: query
+      description: A cursor for pagination (object ID to end before)
+      schema:
+        type: string
     order:
       name: order
       in: query
@@ -107,77 +138,7 @@ components:
       description: The ID of the thread
       schema:
         type: string
-    messageId:
-      name: message_id
-      in: path
-      required: true
-      description: The ID of the message
-      schema:
-        type: string
-    before:
-      name: before
-      in: query
-      description: A cursor for pagination (object ID to end before)
-      schema:
-        type: string
-    OpenAIBeta:
-      name: OpenAI-Beta
-      in: header
-      required: true
-      description: Required header for the Assistants API beta
-      schema:
-        type: string
-        enum:
-        - assistants=v2
-    limit:
-      name: limit
-      in: query
-      description: Maximum number of objects to return (1-100, default 20)
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 20
   schemas:
-    ListResponse:
-      type: object
-      properties:
-        object:
-          type: string
-          enum:
-          - list
-        data:
-          type: array
-          items:
-            type: object
-        first_id:
-          type: string
-        last_id:
-          type: string
-        has_more:
-          type: boolean
-    CreateMessageRequest:
-      type: object
-      required:
-      - role
-      - content
-      properties:
-        role:
-          type: string
-          enum:
-          - user
-          - assistant
-          description: The role of the entity creating the message
-        content:
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: object
-          description: The content of the message
-        metadata:
-          type: object
-          description: Key-value metadata for the message
     Message:
       type: object
       properties:
@@ -232,6 +193,45 @@ components:
         metadata:
           type: object
           description: Key-value metadata attached to the message
+    ListResponse:
+      type: object
+      properties:
+        object:
+          type: string
+          enum:
+          - list
+        data:
+          type: array
+          items:
+            type: object
+        first_id:
+          type: string
+        last_id:
+          type: string
+        has_more:
+          type: boolean
+    CreateMessageRequest:
+      type: object
+      required:
+      - role
+      - content
+      properties:
+        role:
+          type: string
+          enum:
+          - user
+          - assistant
+          description: The role of the entity creating the message
+        content:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: object
+          description: The content of the message
+        metadata:
+          type: object
+          description: Key-value metadata for the message
   securitySchemes:
     bearerAuth:
       type: http

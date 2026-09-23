@@ -1,8 +1,8 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: OpenAI APIs OpenAI Assistants Completions API
-  description: API for building AI assistants with custom instructions, knowledge retrieval, code execution, and function calling capabilities. Supports managing assistants, threads, messages, and runs.
-  version: '2.0'
+  title: OpenAI APIs OpenAI Completions API
+  description: Legacy text completion API for generating text continuations using GPT models. Given a prompt, the model returns one or more predicted completions along with token probabilities.
+  version: '1.0'
   contact:
     name: OpenAI Support
     email: support@openai.com
@@ -47,6 +47,18 @@ paths:
           description: Server error
 components:
   schemas:
+    Usage:
+      type: object
+      properties:
+        prompt_tokens:
+          type: integer
+          description: Number of tokens in the prompt
+        completion_tokens:
+          type: integer
+          description: Number of tokens in the generated completion
+        total_tokens:
+          type: integer
+          description: Total number of tokens used
     CompletionResponse:
       type: object
       properties:
@@ -86,18 +98,6 @@ components:
         system_fingerprint:
           type: string
           description: Fingerprint of the backend configuration
-    Usage:
-      type: object
-      properties:
-        prompt_tokens:
-          type: integer
-          description: Number of tokens in the prompt
-        completion_tokens:
-          type: integer
-          description: Number of tokens in the generated completion
-        total_tokens:
-          type: integer
-          description: Total number of tokens used
     CreateCompletionRequest:
       type: object
       required:
@@ -192,5 +192,5 @@ components:
       bearerFormat: API Key
       description: OpenAI API key passed as a Bearer token
 externalDocs:
-  description: OpenAI Assistants API Documentation
-  url: https://platform.openai.com/docs/api-reference/assistants
+  description: OpenAI Completions API Documentation
+  url: https://platform.openai.com/docs/api-reference/completions
