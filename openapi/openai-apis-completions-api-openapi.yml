@@ -47,18 +47,6 @@ paths:
           description: Server error
 components:
   schemas:
-    Usage:
-      type: object
-      properties:
-        prompt_tokens:
-          type: integer
-          description: Number of tokens in the prompt
-        completion_tokens:
-          type: integer
-          description: Number of tokens in the generated completion
-        total_tokens:
-          type: integer
-          description: Total number of tokens used
     CompletionResponse:
       type: object
       properties:
@@ -185,6 +173,18 @@ components:
         user:
           type: string
           description: A unique identifier representing your end-user
+    Usage:
+      type: object
+      properties:
+        prompt_tokens:
+          type: integer
+          description: Number of tokens in the prompt
+        completion_tokens:
+          type: integer
+          description: Number of tokens in the generated completion
+        total_tokens:
+          type: integer
+          description: Total number of tokens used
   securitySchemes:
     bearerAuth:
       type: http

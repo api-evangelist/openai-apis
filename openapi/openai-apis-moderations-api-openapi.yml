@@ -47,24 +47,6 @@ paths:
           description: Server error
 components:
   schemas:
-    CreateModerationRequest:
-      type: object
-      required:
-      - input
-      properties:
-        input:
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-          description: The input text to classify for moderation
-        model:
-          type: string
-          description: The content moderation model to use (text-moderation-latest, text-moderation-stable, omni-moderation-latest)
-          default: omni-moderation-latest
-          examples:
-          - omni-moderation-latest
     ModerationResult:
       type: object
       properties:
@@ -143,6 +125,24 @@ components:
             violence/graphic:
               type: number
               description: Score for violence/graphic category
+    CreateModerationRequest:
+      type: object
+      required:
+      - input
+      properties:
+        input:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+          description: The input text to classify for moderation
+        model:
+          type: string
+          description: The content moderation model to use (text-moderation-latest, text-moderation-stable, omni-moderation-latest)
+          default: omni-moderation-latest
+          examples:
+          - omni-moderation-latest
     ModerationResponse:
       type: object
       properties:

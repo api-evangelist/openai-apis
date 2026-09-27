@@ -84,13 +84,6 @@ paths:
           description: Message not found
 components:
   parameters:
-    messageId:
-      name: message_id
-      in: path
-      required: true
-      description: The ID of the message
-      schema:
-        type: string
     limit:
       name: limit
       in: query
@@ -100,19 +93,17 @@ components:
         minimum: 1
         maximum: 100
         default: 20
-    OpenAIBeta:
-      name: OpenAI-Beta
-      in: header
+    threadId:
+      name: thread_id
+      in: path
       required: true
-      description: Required header for the Assistants API beta
+      description: The ID of the thread
       schema:
         type: string
-        enum:
-        - assistants=v2
-    before:
-      name: before
+    after:
+      name: after
       in: query
-      description: A cursor for pagination (object ID to end before)
+      description: A cursor for pagination (object ID to start after)
       schema:
         type: string
     order:
@@ -125,19 +116,28 @@ components:
         - asc
         - desc
         default: desc
-    after:
-      name: after
+    before:
+      name: before
       in: query
-      description: A cursor for pagination (object ID to start after)
+      description: A cursor for pagination (object ID to end before)
       schema:
         type: string
-    threadId:
-      name: thread_id
+    messageId:
+      name: message_id
       in: path
       required: true
-      description: The ID of the thread
+      description: The ID of the message
       schema:
         type: string
+    OpenAIBeta:
+      name: OpenAI-Beta
+      in: header
+      required: true
+      description: Required header for the Assistants API beta
+      schema:
+        type: string
+        enum:
+        - assistants=v2
   schemas:
     Message:
       type: object
@@ -193,23 +193,6 @@ components:
         metadata:
           type: object
           description: Key-value metadata attached to the message
-    ListResponse:
-      type: object
-      properties:
-        object:
-          type: string
-          enum:
-          - list
-        data:
-          type: array
-          items:
-            type: object
-        first_id:
-          type: string
-        last_id:
-          type: string
-        has_more:
-          type: boolean
     CreateMessageRequest:
       type: object
       required:
@@ -232,6 +215,23 @@ components:
         metadata:
           type: object
           description: Key-value metadata for the message
+    ListResponse:
+      type: object
+      properties:
+        object:
+          type: string
+          enum:
+          - list
+        data:
+          type: array
+          items:
+            type: object
+        first_id:
+          type: string
+        last_id:
+          type: string
+        has_more:
+          type: boolean
   securitySchemes:
     bearerAuth:
       type: http

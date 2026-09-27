@@ -36,7 +36,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/openai-api
 tags:
   - Artificial Intelligence
   - Embeddings
-  - Image-Generation
+  - Image Generation
   - Language Models
   - Speech
 tags_raw:
@@ -45,6 +45,7 @@ tags_raw:
   - Image Generation
   - Language Models
   - Speech
+  - Image-Generation
 url: https://raw.githubusercontent.com/api-evangelist/openai-apis/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-05-19'

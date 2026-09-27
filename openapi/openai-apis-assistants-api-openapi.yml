@@ -136,19 +136,17 @@ components:
         minimum: 1
         maximum: 100
         default: 20
-    OpenAIBeta:
-      name: OpenAI-Beta
-      in: header
+    assistantId:
+      name: assistant_id
+      in: path
       required: true
-      description: Required header for the Assistants API beta
+      description: The ID of the assistant
       schema:
         type: string
-        enum:
-        - assistants=v2
-    before:
-      name: before
+    after:
+      name: after
       in: query
-      description: A cursor for pagination (object ID to end before)
+      description: A cursor for pagination (object ID to start after)
       schema:
         type: string
     order:
@@ -161,20 +159,76 @@ components:
         - asc
         - desc
         default: desc
-    after:
-      name: after
+    before:
+      name: before
       in: query
-      description: A cursor for pagination (object ID to start after)
+      description: A cursor for pagination (object ID to end before)
       schema:
         type: string
-    assistantId:
-      name: assistant_id
-      in: path
+    OpenAIBeta:
+      name: OpenAI-Beta
+      in: header
       required: true
-      description: The ID of the assistant
+      description: Required header for the Assistants API beta
       schema:
         type: string
+        enum:
+        - assistants=v2
   schemas:
+    CreateAssistantRequest:
+      type: object
+      required:
+      - model
+      properties:
+        model:
+          type: string
+          description: ID of the model to use
+        name:
+          type: string
+          nullable: true
+          description: The name of the assistant (max 256 chars)
+        description:
+          type: string
+          nullable: true
+          description: The description of the assistant (max 512 chars)
+        instructions:
+          type: string
+          nullable: true
+          description: System instructions for the assistant (max 256000 chars)
+        tools:
+          type: array
+          items:
+            type: object
+          description: List of tools enabled on the assistant (max 128)
+        metadata:
+          type: object
+          description: Key-value metadata (max 16 pairs)
+        temperature:
+          type: number
+          minimum: 0
+          maximum: 2
+          description: Sampling temperature
+        top_p:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: Nucleus sampling parameter
+        response_format:
+          oneOf:
+          - type: string
+            enum:
+            - auto
+          - type: object
+          description: Response format configuration
+    DeleteResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        deleted:
+          type: boolean
     ModifyAssistantRequest:
       type: object
       properties:
@@ -251,60 +305,6 @@ components:
           description: Sampling temperature for the assistant
         top_p:
           type: number
-          description: Nucleus sampling parameter
-        response_format:
-          oneOf:
-          - type: string
-            enum:
-            - auto
-          - type: object
-          description: Response format configuration
-    DeleteResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        object:
-          type: string
-        deleted:
-          type: boolean
-    CreateAssistantRequest:
-      type: object
-      required:
-      - model
-      properties:
-        model:
-          type: string
-          description: ID of the model to use
-        name:
-          type: string
-          nullable: true
-          description: The name of the assistant (max 256 chars)
-        description:
-          type: string
-          nullable: true
-          description: The description of the assistant (max 512 chars)
-        instructions:
-          type: string
-          nullable: true
-          description: System instructions for the assistant (max 256000 chars)
-        tools:
-          type: array
-          items:
-            type: object
-          description: List of tools enabled on the assistant (max 128)
-        metadata:
-          type: object
-          description: Key-value metadata (max 16 pairs)
-        temperature:
-          type: number
-          minimum: 0
-          maximum: 2
-          description: Sampling temperature
-        top_p:
-          type: number
-          minimum: 0
-          maximum: 1
           description: Nucleus sampling parameter
         response_format:
           oneOf:
