@@ -103,13 +103,6 @@ paths:
                 $ref: '#/components/schemas/DeleteResponse'
 components:
   parameters:
-    threadId:
-      name: thread_id
-      in: path
-      required: true
-      description: The ID of the thread
-      schema:
-        type: string
     OpenAIBeta:
       name: OpenAI-Beta
       in: header
@@ -119,7 +112,34 @@ components:
         type: string
         enum:
         - assistants=v2
+    threadId:
+      name: thread_id
+      in: path
+      required: true
+      description: The ID of the thread
+      schema:
+        type: string
   schemas:
+    DeleteResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        deleted:
+          type: boolean
+    CreateThreadRequest:
+      type: object
+      properties:
+        messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateMessageRequest'
+          description: Initial messages to start the thread with
+        metadata:
+          type: object
+          description: Key-value metadata for the thread
     CreateMessageRequest:
       type: object
       required:
@@ -142,15 +162,6 @@ components:
         metadata:
           type: object
           description: Key-value metadata for the message
-    DeleteResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        object:
-          type: string
-        deleted:
-          type: boolean
     Thread:
       type: object
       properties:
@@ -167,17 +178,6 @@ components:
         metadata:
           type: object
           description: Key-value metadata attached to the thread
-    CreateThreadRequest:
-      type: object
-      properties:
-        messages:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateMessageRequest'
-          description: Initial messages to start the thread with
-        metadata:
-          type: object
-          description: Key-value metadata for the thread
   securitySchemes:
     bearerAuth:
       type: http

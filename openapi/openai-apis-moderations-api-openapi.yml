@@ -125,6 +125,19 @@ components:
             violence/graphic:
               type: number
               description: Score for violence/graphic category
+    ModerationResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier for the moderation request
+        model:
+          type: string
+          description: The model used for moderation
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ModerationResult'
     CreateModerationRequest:
       type: object
       required:
@@ -143,19 +156,6 @@ components:
           default: omni-moderation-latest
           examples:
           - omni-moderation-latest
-    ModerationResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The unique identifier for the moderation request
-        model:
-          type: string
-          description: The model used for moderation
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/ModerationResult'
   securitySchemes:
     bearerAuth:
       type: http
