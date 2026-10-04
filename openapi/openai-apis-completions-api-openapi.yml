@@ -47,6 +47,57 @@ paths:
           description: Server error
 components:
   schemas:
+    CompletionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A unique identifier for the completion
+        object:
+          type: string
+          enum:
+          - text_completion
+        created:
+          type: integer
+          description: Unix timestamp of when the completion was created
+        model:
+          type: string
+          description: The model used for the completion
+        choices:
+          type: array
+          items:
+            type: object
+            properties:
+              text:
+                type: string
+                description: The generated text
+              index:
+                type: integer
+              logprobs:
+                type: object
+                nullable: true
+              finish_reason:
+                type: string
+                enum:
+                - stop
+                - length
+        usage:
+          $ref: '#/components/schemas/Usage'
+        system_fingerprint:
+          type: string
+          description: Fingerprint of the backend configuration
+    Usage:
+      type: object
+      properties:
+        prompt_tokens:
+          type: integer
+          description: Number of tokens in the prompt
+        completion_tokens:
+          type: integer
+          description: Number of tokens in the generated completion
+        total_tokens:
+          type: integer
+          description: Total number of tokens used
     CreateCompletionRequest:
       type: object
       required:
@@ -134,57 +185,6 @@ components:
         user:
           type: string
           description: A unique identifier representing your end-user
-    CompletionResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: A unique identifier for the completion
-        object:
-          type: string
-          enum:
-          - text_completion
-        created:
-          type: integer
-          description: Unix timestamp of when the completion was created
-        model:
-          type: string
-          description: The model used for the completion
-        choices:
-          type: array
-          items:
-            type: object
-            properties:
-              text:
-                type: string
-                description: The generated text
-              index:
-                type: integer
-              logprobs:
-                type: object
-                nullable: true
-              finish_reason:
-                type: string
-                enum:
-                - stop
-                - length
-        usage:
-          $ref: '#/components/schemas/Usage'
-        system_fingerprint:
-          type: string
-          description: Fingerprint of the backend configuration
-    Usage:
-      type: object
-      properties:
-        prompt_tokens:
-          type: integer
-          description: Number of tokens in the prompt
-        completion_tokens:
-          type: integer
-          description: Number of tokens in the generated completion
-        total_tokens:
-          type: integer
-          description: Total number of tokens used
   securitySchemes:
     bearerAuth:
       type: http

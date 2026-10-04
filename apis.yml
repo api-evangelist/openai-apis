@@ -77,30 +77,6 @@ apis:
     url: https://platform.openai.com/docs/api-reference/moderations
   - type: Documentation
     url: https://platform.openai.com/docs/api-reference/assistants
-- aid: openai-apis:openai-apis-chat-api
-  name: OpenAI APIs Chat API
-  description: Chat completion operations
-  humanURL: https://platform.openai.com/docs/api-reference/chat
-  baseURL: https://api.openai.com/v1
-  tags:
-  - Chat
-  properties:
-  - type: OpenAPI
-    url: openapi/openai-apis-chat-api-openapi.yml
-  - type: Documentation
-    url: https://platform.openai.com/docs/api-reference/chat
-  - type: Documentation
-    url: https://platform.openai.com/docs/api-reference/completions
-  - type: Documentation
-    url: https://platform.openai.com/docs/api-reference/images
-  - type: Documentation
-    url: https://platform.openai.com/docs/api-reference/embeddings
-  - type: Documentation
-    url: https://platform.openai.com/docs/api-reference/audio
-  - type: Documentation
-    url: https://platform.openai.com/docs/api-reference/moderations
-  - type: Documentation
-    url: https://platform.openai.com/docs/api-reference/assistants
 - aid: openai-apis:openai-apis-completions-api
   name: OpenAI APIs Completions API
   description: Legacy text completion operations
@@ -331,6 +307,30 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/openai-apis-translation-api-openapi.yml
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/chat
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/completions
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/images
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/embeddings
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/audio
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/moderations
+  - type: Documentation
+    url: https://platform.openai.com/docs/api-reference/assistants
+- aid: openai-apis:openai-apis-chat-completions-api
+  name: OpenAI APIs Chat Completions API
+  description: Chat completion operations
+  humanURL: https://platform.openai.com/docs/api-reference/chat
+  baseURL: https://api.openai.com/v1
+  tags:
+  - Chat Completions
+  properties:
+  - type: OpenAPI
+    url: openapi/openai-apis-chat-completions-api-openapi.yml
   - type: Documentation
     url: https://platform.openai.com/docs/api-reference/chat
   - type: Documentation

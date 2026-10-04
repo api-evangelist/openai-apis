@@ -47,46 +47,6 @@ paths:
           description: Server error
 components:
   schemas:
-    EmbeddingResponse:
-      type: object
-      properties:
-        object:
-          type: string
-          enum:
-          - list
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Embedding'
-        model:
-          type: string
-          description: The model used for embedding
-        usage:
-          type: object
-          properties:
-            prompt_tokens:
-              type: integer
-              description: Number of tokens in the input
-            total_tokens:
-              type: integer
-              description: Total number of tokens used
-    Embedding:
-      type: object
-      properties:
-        object:
-          type: string
-          enum:
-          - embedding
-        embedding:
-          oneOf:
-          - type: array
-            items:
-              type: number
-          - type: string
-          description: The embedding vector (float array or base64)
-        index:
-          type: integer
-          description: The index of the embedding in the list of embeddings
     CreateEmbeddingRequest:
       type: object
       required:
@@ -126,6 +86,46 @@ components:
         user:
           type: string
           description: A unique identifier representing your end-user
+    Embedding:
+      type: object
+      properties:
+        object:
+          type: string
+          enum:
+          - embedding
+        embedding:
+          oneOf:
+          - type: array
+            items:
+              type: number
+          - type: string
+          description: The embedding vector (float array or base64)
+        index:
+          type: integer
+          description: The index of the embedding in the list of embeddings
+    EmbeddingResponse:
+      type: object
+      properties:
+        object:
+          type: string
+          enum:
+          - list
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Embedding'
+        model:
+          type: string
+          description: The model used for embedding
+        usage:
+          type: object
+          properties:
+            prompt_tokens:
+              type: integer
+              description: Number of tokens in the input
+            total_tokens:
+              type: integer
+              description: Total number of tokens used
   securitySchemes:
     bearerAuth:
       type: http
