@@ -346,6 +346,12 @@ apis:
   - type: Documentation
     url: https://platform.openai.com/docs/api-reference/assistants
 common:
+  - type: Plans
+    url: plans/openai-apis-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/openai-apis-rate-limits.yml
+  - type: FinOps
+    url: finops/openai-apis-finops.yml
   - type: Website
     url: https://www.openai.com/
   - type: PostmanWorkspace
