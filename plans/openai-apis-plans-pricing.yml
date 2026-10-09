@@ -324,3 +324,67 @@ plans:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - metered
+  - subscription
+  units:
+  - compute
+  - data
+  - negotiated
+  - request
+  - token
+  plans:
+  - name: Flagship Text Models
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - token
+    periods:
+    - per-use
+  - name: Specialized Models
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - token
+    periods:
+    - per-use
+  - name: Multimodal (Image, Audio, Video)
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - compute
+    - token
+    periods:
+    - per-use
+  - name: Platform Fees
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - data
+    - request
+    periods:
+    - day
+    - per-use
+  - name: Batch API
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - token
+    periods:
+    - per-use
+  - name: Scale / Enterprise
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - month
