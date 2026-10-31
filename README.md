@@ -64,6 +64,45 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-This profile has been **merged into [openai](https://apis.io/providers/openai/)** — the two records described the same company, and that one is canonical.
+> **Retired — merged into [OpenAI](https://apis.io/providers/openai/).** The two records described the same company, and that one is canonical. Nothing in this repository is maintained any more.
 
-Nothing here is maintained any more. The company's current profile, rating and artifacts are at [apis.io/providers/openai/](https://apis.io/providers/openai/).
+**Why:** Duplicate of openai (same company, openai.com). openai is canonical and every operation in the twelve openai-apis split specs is already in an openai spec. Speech, Transcription and Translation pages point at the openai Audio API, Messages and Runs at Threads; the rest and the artifacts map 1:1 where an equivalent exists, otherwise to the provider page. openai-apis stays live as a pointer profile with no APIs. Approved by Kin Lane 2026-10-13.
+
+**Retired:** 2026-10-13
+
+## Where to go now
+
+The current profile, APIs, artifacts and rating for OpenAI are on APIs.io at **[apis.io/providers/openai/](https://apis.io/providers/openai/)**.
+
+Pages that used to belong to this profile now live at:
+
+- [Openai Agentic Access](https://apis.io/agentic-access/openai/openai-agentic-access/)
+- [Openai Assistants API](https://apis.io/apis/openai/openai-assistants-api/)
+- [Openai Chat Completions API](https://apis.io/apis/openai/openai-chat-completions-api/)
+- [Openai Completions API](https://apis.io/apis/openai/openai-completions-api/)
+- [Openai Embeddings API](https://apis.io/apis/openai/openai-embeddings-api/)
+- [Openai Images API](https://apis.io/apis/openai/openai-images-api/)
+- [Openai Threads API](https://apis.io/apis/openai/openai-threads-api/)
+- [Openai Moderations API](https://apis.io/apis/openai/openai-moderations-api/)
+- [Openai Audio API](https://apis.io/apis/openai/openai-audio-api/)
+- [Open Openai Assistants API](https://apis.io/collections/openai/open-openai-assistants-api/)
+- [Open Openai Chat API](https://apis.io/collections/openai/open-openai-chat-api/)
+- [Open Openai Completions API](https://apis.io/collections/openai/open-openai-completions-api/)
+- [Open Openai Embeddings API](https://apis.io/collections/openai/open-openai-embeddings-api/)
+- [Open Openai Images API](https://apis.io/collections/openai/open-openai-images-api/)
+- [Open Openai Moderations API](https://apis.io/collections/openai/open-openai-moderations-api/)
+- [Open Openai Threads API](https://apis.io/collections/openai/open-openai-threads-api/)
+- [Open Openai Audio](https://apis.io/collections/openai/open-openai-audio/)
+- [Open Openai Chat Completions](https://apis.io/collections/openai/open-openai-chat-completions/)
+- [Open Openai Embeddings](https://apis.io/collections/openai/open-openai-embeddings/)
+- [Open Openai Images](https://apis.io/collections/openai/open-openai-images/)
+- [Postman Openai Embeddings](https://apis.io/collections/openai/postman-openai-embeddings/)
+- [Postman Openai Images](https://apis.io/collections/openai/postman-openai-images/)
+- [Openai FinOps](https://apis.io/finops/openai/openai-finops/)
+- [Openai Context](https://apis.io/jsonld/openai/openai-context/)
+- [Openai Plans Pricing](https://apis.io/plans/openai/openai-plans-pricing/)
+- …and 9 more on the OpenAI profile
+
+## Open an issue
+
+Issues about OpenAI belong on the canonical profile: [open one on api-evangelist/openai](https://github.com/api-evangelist/openai/issues/new). If you think this merge was a mistake — these were really two companies — say so there or email [info@apievangelist.com](mailto:info@apievangelist.com).
